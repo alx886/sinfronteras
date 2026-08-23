@@ -95,6 +95,18 @@
       </svg>
     );
 
+    const MapPinIcon = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+      </svg>
+    );
+
+    const CalendarIcon = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+      </svg>
+    );
+
     const PRODUCTS = [
       {
         id: 1,
@@ -379,7 +391,7 @@
         notes: ''
       });
 
-      const BUSINESS_PHONE = "56943854919"; // Susana & Willie's WhatsApp
+      const BUSINESS_PHONE = "6478651507"; // Updated WhatsApp number
 
       const addToCart = (product, size, qtyToAdd = 1) => {
         const priceForSize = product.prices[size];
@@ -524,7 +536,7 @@
               </h2>
               
               <p className="text-slate-200 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed mb-8">
-                Disfruta de nuestras exquisitas empanadas caseras. Elige tus favoritas, arma tu pedido y haz tu encargo directo por WhatsApp con nosotros.
+                Disfruta de nuestras exquisitas empanadas caseras. Añade lo que necesites al carro y envía tu pedido directamente por WhatsApp.
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-4">
@@ -568,12 +580,127 @@
                 <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center text-[#ce1126] mb-4 shadow-sm">
                   <ShieldCheckIcon className="w-7 h-7" />
                 </div>
-                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">Pedidos Directos</h3>
+                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">Pedidos por WhatsApp</h3>
                 <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                  Coordinación rápida y personalizada por WhatsApp para asegurar tus empanadas calentitas en la mesa.
+                  Arma tu carrito y envíanos tu pedido al número <span className="font-bold text-slate-900">647-865-1507</span> de forma rápida y sencilla.
                 </p>
               </div>
 
+            </div>
+          </section>
+
+          {/* Dr. Flea's Flea Market Section */}
+          <section className="py-20 px-4 bg-slate-100 border-b border-slate-200">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex items-center gap-6 mb-12">
+                <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight shrink-0">Encuéntranos en el Mercado</h2>
+                <div className="h-2 bg-[#ce1126] w-24 rounded-full"></div>
+                <div className="h-px bg-slate-300 flex-1"></div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border-2 border-slate-200">
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-[#ce1126] rounded-xl text-xs font-black uppercase tracking-wider">
+                    <MapPinIcon className="w-4 h-4" /> Highway 27, Toronto
+                  </div>
+                  
+                  <h3 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight">
+                    ¡Visítanos cada <span className="text-[#ce1126]">Sábado y Domingo</span> en Dr. Flea's!
+                  </h3>
+
+                  <p className="text-slate-700 text-base font-medium leading-relaxed">
+                    Susana y Willie te esperan todos los fines de semana con el mejor sabor chileno en <strong className="text-slate-900">Dr. Flea's Flea Market</strong>, ubicado en la zona de Highway 27. Disfruta de nuestras empanadas recién horneadas y comparte un momento agradable en persona.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                      <CalendarIcon className="w-6 h-6 text-[#003366] shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-black text-sm text-slate-900 uppercase">Sábados y Domingos</h4>
+                        <p className="text-xs text-slate-600 mt-0.5">Abierto durante horario regular de mercado.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                      <MapPinIcon className="w-6 h-6 text-[#ce1126] shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-black text-sm text-slate-900 uppercase">Dr. Flea's Market</h4>
+                        <p className="text-xs text-slate-600 mt-0.5">Highway 27 & Finch Ave area.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    <a 
+                      href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#003366] hover:bg-[#002244] text-white rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-md"
+                    >
+                      Ver actualizaciones en Facebook <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="relative overflow-hidden rounded-3xl shadow-lg border-2 border-slate-200 aspect-[4/3] bg-slate-200">
+                  <img 
+                    src="https://i.ibb.co/C5vLZscs/fleamarket.png" 
+                    alt="Dr. Flea's Flea Market Stand" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://placehold.co/800x600/003366/ffffff?text=Dr.+Flea's+Market";
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Ordering Process Section */}
+          <section className="py-20 px-4 bg-white border-b border-slate-200">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center max-w-3xl mx-auto mb-16">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-[#003366] rounded-xl text-xs font-black uppercase tracking-widest mb-4">
+                  Fácil y Rápido
+                </span>
+                <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tight">¿Cómo hacer tu pedido?</h2>
+                <p className="text-slate-600 text-base mt-3 font-medium">
+                  Sigue estos simples pasos para encargar tus empanadas favoritas directamente con nosotros por WhatsApp.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="flex flex-col p-8 bg-slate-50 rounded-3xl border-2 border-slate-200 relative">
+                  <div className="w-12 h-12 bg-[#003366] text-white font-black text-lg rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                    1
+                  </div>
+                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">Elige tus Empanadas</h3>
+                  <p className="text-slate-600 text-sm font-medium leading-relaxed">
+                    Navega por nuestro menú, selecciona las variedades que más te gusten y añádelas a tu carrito de compras con sus respectivas cantidades.
+                  </p>
+                </div>
+
+                <div className="flex flex-col p-8 bg-slate-50 rounded-3xl border-2 border-slate-200 relative">
+                  <div className="w-12 h-12 bg-[#ce1126] text-white font-black text-lg rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                    2
+                  </div>
+                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">Completa tus Datos</h3>
+                  <p className="text-slate-600 text-sm font-medium leading-relaxed">
+                    Abre tu carro de compras, ingresa tu nombre, número de contacto y detalles de retiro o entrega para personalizar tu pedido.
+                  </p>
+                </div>
+
+                <div className="flex flex-col p-8 bg-slate-50 rounded-3xl border-2 border-slate-200 relative">
+                  <div className="w-12 h-12 bg-[#25D366] text-white font-black text-lg rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                    3
+                  </div>
+                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">Envía por WhatsApp</h3>
+                  <p className="text-slate-600 text-sm font-medium leading-relaxed">
+                    Haz clic en el botón de enviar para transmitir tu pedido directamente a nuestro WhatsApp oficial: <strong className="text-slate-900">647-865-1507</strong>.
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -614,7 +741,7 @@
                 <div className="p-6 border-b-4 border-[#ce1126] flex items-center justify-between bg-[#003366] text-white">
                   <div>
                     <h3 className="font-black text-2xl uppercase tracking-tight">Tu Pedido</h3>
-                    <p className="text-xs text-red-300 font-bold uppercase tracking-widest mt-1">Sin Fronteras • Chile</p>
+                    <p className="text-xs text-red-300 font-bold uppercase tracking-widest mt-1">WhatsApp: 647-865-1507</p>
                   </div>
                   <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-[#002244] rounded-full transition-colors text-white">
                     <XIcon className="w-6 h-6" />
@@ -677,7 +804,7 @@
                         <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">WhatsApp de Contacto</label>
                         <input 
                           type="tel" 
-                          placeholder="Ej: +56 9 1234 5678" 
+                          placeholder="Ej: +1 647 865 1507" 
                           className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
                           value={formData.phone}
                           onChange={e => setFormData({...formData, phone: e.target.value})}
@@ -688,7 +815,7 @@
                         <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">Dirección de Entrega / Notas</label>
                         <input 
                           type="text" 
-                          placeholder="Ej: Retiro en local / Dirección" 
+                          placeholder="Ej: Retiro en Dr. Flea's / Dirección" 
                           className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
                           value={formData.address}
                           onChange={e => setFormData({...formData, address: e.target.value})}
@@ -706,7 +833,7 @@
                       disabled={!formData.name || !formData.phone}
                       className="w-full bg-[#25D366] hover:bg-[#1da851] disabled:opacity-40 text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all shadow-lg uppercase tracking-wider text-xs"
                     >
-                      <SendIcon className="w-5 h-5 fill-current" /> Enviar Pedido por WhatsApp
+                      <SendIcon className="w-5 h-5 fill-current" /> Enviar Pedido por WhatsApp (647-865-1507)
                     </button>
                   </div>
                 )}
@@ -729,7 +856,7 @@
                   <h4 className="text-lg font-black uppercase tracking-tight">Sin Fronteras</h4>
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed">
-                  Empanadas chilenas artesanales preparadas con dedicación por Susana y Willie. Sabor casero sin límites.
+                  Empanadas chilenas artesanales preparadas con dedicación por Susana y Willie. Encuéntranos cada fin de semana en Dr. Flea's Flea Market.
                 </p>
               </div>
               
@@ -747,8 +874,11 @@
 
               <div>
                 <h4 className="text-sm font-black uppercase tracking-widest text-[#ce1126] mb-4">Contacto & Pedidos</h4>
-                <p className="text-slate-300 text-sm font-medium">
-                  Comunícate directamente con nosotros a través de nuestro WhatsApp de pedidos para coordinar entregas y disponibilidad.
+                <p className="text-slate-300 text-sm font-medium mb-2">
+                  WhatsApp oficial de pedidos: <strong className="text-white">647-865-1507</strong>
+                </p>
+                <p className="text-slate-300 text-xs">
+                  Sábados y Domingos en Dr. Flea's Flea Market (Highway 27).
                 </p>
               </div>
             </div>
