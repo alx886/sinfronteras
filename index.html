@@ -1,1020 +1,558 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sin Fronteras - Empanadas & Sabor Casero Chileno</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- React and ReactDOM CDNs -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  
-  <!-- Babel Standalone for parsing JSX -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  
-  <!-- Google Fonts for professional high-contrast typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-900">
-
-  <div id="root"></div>
-
-  <!-- Inline SVG Icon Components for maximum reliability -->
-  <script type="text/babel">
-    const { useState, useEffect, useRef } = React;
-
-    const ShoppingCartIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <circle cx="8" cy="21" r="1" /><circle cx="19" cy="21" r="1" />
-        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-      </svg>
-    );
-
-    const XIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
-      </svg>
-    );
-
-    const PlusIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
-      </svg>
-    );
-
-    const SendIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" />
-      </svg>
-    );
-
-    const SearchIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-    );
-
-    const ShieldCheckIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 11 11 13 15 9" />
-      </svg>
-    );
-
-    const ExternalLinkIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
-      </svg>
-    );
-
-    const HeartIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2a5.5 5.5 0 0 0-5 5.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-      </svg>
-    );
-
-    const FlameIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3.25a6.974 6.974 0 0 0 1.5 3.25z" />
-      </svg>
-    );
-
-    const StarIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-      </svg>
-    );
-
-    const MapPinIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
-      </svg>
-    );
-
-    const CalendarIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
-      </svg>
-    );
-
-    const PRODUCTS = [
-      {
-        id: 1,
-        name: { es: "Empanada Tradicional de Pino", en: "Traditional Beef 'Pino' Empanada" },
-        description: {
-          es: "Rellena de jugosa carne picada seleccionada, cebolla suave, huevo duro, aceituna y especias tradicionales horneadas a la perfección.",
-          en: "Filled with juicy selected minced beef, tender onions, hard-boiled egg, olive, and traditional spices baked to perfection."
-        },
-        sizes: ["Unidad"],
-        prices: {
-          "Unidad": 4.50
-        },
-        image: "https://i.ibb.co/0RkMxKrR/pino-1.jpg"
-      },
-      {
-        id: 2,
-        name: { es: "Empanada de Queso", en: "Cheese Empanada" },
-        description: {
-          es: "Queso mantecoso estirado y fundido dentro de una masa dorada, crujiente por fuera y suave por dentro.",
-          en: "Stretched and melted buttery cheese inside a golden crust, crispy on the outside and soft on the inside."
-        },
-        sizes: ["Unidad"],
-        prices: {
-          "Unidad": 4.00
-        },
-        image: "https://i.ibb.co/qL7dBRHC/queso-1.jpg"
-      },
-      {
-        id: 3,
-        name: { es: "Empanada Queso Champiñón", en: "Cheese & Mushroom Empanada" },
-        description: {
-          es: "Exquisita combinación de queso mantecoso fundido con champiñones frescos salteados.",
-          en: "Exquisite combination of melted buttery cheese with freshly sautéed mushrooms."
-        },
-        sizes: ["Unidad"],
-        prices: {
-          "Unidad": 5.00
-        },
-        image: "https://i.ibb.co/VYR92jKp/queso-champinones.jpg"
-      },
-      {
-        id: 4,
-        name: { es: "Empanada Napolitana", en: "Neapolitan Empanada" },
-        description: {
-          es: "Deliciosa combinación de jamón ahumado, queso fundido, tomates maduros y un toque de orégano fresco.",
-          en: "Delicious combination of smoked ham, melted cheese, ripe tomatoes, and a touch of fresh oregano."
-        },
-        sizes: ["Unidad"],
-        prices: {
-          "Unidad": 4.75
-        },
-        image: "https://i.ibb.co/27DmxVfg/Empanadas-Napolitana.png"
-      },
-      {
-        id: 5,
-        name: { es: "Empanada Queso Jamón", en: "Ham & Cheese Empanada" },
-        description: {
-          es: "Clásica y favorita empanada rellena de generoso queso fundido y jamón de primera calidad.",
-          en: "Classic and favorite empanada filled with generous melted cheese and top quality ham."
-        },
-        sizes: ["Unidad"],
-        prices: {
-          "Unidad": 4.50
-        },
-        image: "https://i.ibb.co/WWWQ1Zzw/quesojamon.jpg"
-      },
-      {
-        id: 6,
-        name: { es: "Empanada Queso Espinaca", en: "Spinach & Cheese Empanada" },
-        description: {
-          es: "Frescas hojas de espinaca salteadas mezcladas con una suave y cremosa selección de quesos.",
-          en: "Fresh sautéed spinach leaves mixed with a smooth and creamy selection of cheeses."
-        },
-        sizes: ["Unidad"],
-        prices: {
-          "Unidad": 4.75
-        },
-        image: "https://i.ibb.co/BVgRn3s2/queso-espinaca.jpg"
-      },
-      {
-        id: 7,
-        name: { es: "Empanada de Atún", en: "Tuna Empanada" },
-        description: {
-          es: "Rellena de tierno atún selecto con sofrito casero de cebolla, tomate y especias.",
-          en: "Filled with tender select tuna with homemade sofrito of onions, tomatoes, and spices."
-        },
-        sizes: ["Unidad"],
-        prices: {
-          "Unidad": 5.25
-        },
-        image: "https://i.ibb.co/zhDFWkkW/empanada-atun.png"
-      }
-    ];
-
-    const TRANSLATIONS = {
-      es: {
-        navTitle: "Sin Fronteras",
-        navSubtitle: "Empanadas Chilenas",
-        facebookBtn: "Facebook Oficial",
-        cartBtn: "Mi Pedido",
-        heroTag: "Preparadas por Susana y Willie con auténtico sabor chileno",
-        heroTitleLine1: "Empanadas tradicionales",
-        heroTitleLine2: "hechas con el corazón.",
-        heroDesc: "Disfruta de nuestras exquisitas empanadas caseras. Añade lo que necesites al carro y envía tu pedido directamente por WhatsApp.",
-        heroFb: "Visítanos en Facebook",
-        pillar1Title: "100% Artesanales",
-        pillar1Desc: "Masa estirada a mano e ingredientes frescos seleccionados cada día para garantizar el auténtico sabor tradicional.",
-        pillar2Title: "Sazón de Susana y Willie",
-        pillar2Desc: "Recetas chilenas preparadas con dedicación familiar y cariño incondicional en cada preparación.",
-        pillar3Title: "Pedidos por WhatsApp",
-        pillar3Desc: "Arma tu carrito y envíanos tu pedido al número 647-865-1507 de forma rápida y sencilla.",
-        marketTitle: "Encuéntranos en el Mercado",
-        marketTag: "Highway 27, Toronto",
-        marketHeader: "¡Visítanos cada Sábado y Domingo en Dr. Flea's!",
-        marketDesc: "Susana y Willie te esperan todos los fines de semana con el mejor sabor chileno en Dr. Flea's Flea Market, ubicado en la zona de Highway 27. Disfruta de nuestras empanadas recién horneadas y comparte un momento agradable en persona.",
-        satSun: "Sábados y Domingos",
-        satSunDesc: "Abierto durante horario regular de mercado.",
-        marketName: "Dr. Flea's Market",
-        marketLoc: "Highway 27 & Finch Ave area.",
-        marketFb: "Ver actualizaciones en Facebook",
-        howTitle: "¿Cómo hacer tu pedido?",
-        howTag: "Fácil y Rápido",
-        howDesc: "Sigue estos simples pasos para encargar tus empanadas favoritas directamente con nosotros por WhatsApp.",
-        step1Title: "Elige tus Empanadas",
-        step1Desc: "Navega por nuestro menú, selecciona las variedades que más te gusten y añádelas a tu carrito de compras con sus respectivas cantidades.",
-        step2Title: "Completa tus Datos",
-        step2Desc: "Abre tu carro de compras, ingresa tu nombre, número de contacto y detalles de retiro o entrega para personalizar tu pedido.",
-        step3Title: "Envía por WhatsApp",
-        step3Desc: "Haz clic en el botón de enviar para transmitir tu pedido directamente a nuestro WhatsApp oficial: 647-865-1507.",
-        menuTitle: "Nuestro Menú",
-        viewOptions: "Ver Opciones y Precios",
-        modalUnit: "Unidad",
-        modalQty: "Cantidad de Porciones:",
-        subtotal: "Subtotal:",
-        addCart: "Agregar al Pedido",
-        cartTitle: "Tu Pedido",
-        cartEmptyTitle: "Tu carro está vacío",
-        cartEmptyDesc: "Selecciona tus empanadas favoritas del menú",
-        nameLabel: "Tu Nombre",
-        namePlaceholder: "Ej: Carlos Pérez",
-        phoneLabel: "WhatsApp de Contacto",
-        phonePlaceholder: "Ej: +1 647 865 1507",
-        addressLabel: "Dirección de Entrega / Notas",
-        addressPlaceholder: "Ej: Retiro en Dr. Flea's / Dirección",
-        estimatedTotal: "Total Estimado",
-        sendWa: "Enviar Pedido por WhatsApp (647-865-1507)",
-        footerDesc: "Empanadas chilenas artesanales preparadas con dedicación por Susana y Willie. Encuéntranos cada fin de semana en Dr. Flea's Flea Market.",
-        footerSocial: "Redes Sociales",
-        footerContact: "Contacto & Pedidos",
-        footerRights: "© 2026 SIN FRONTERAS EMPANADAS • SUSANA Y WILLIE 🇨🇱"
-      },
-      en: {
-        navTitle: "Sin Fronteras",
-        navSubtitle: "Chilean Empanadas",
-        facebookBtn: "Official Facebook",
-        cartBtn: "My Order",
-        heroTag: "Prepared by Susana and Willie with authentic Chilean flavor",
-        heroTitleLine1: "Traditional empanadas",
-        heroTitleLine2: "made with heart.",
-        heroDesc: "Enjoy our exquisite homemade empanadas. Add what you need to your cart and send your order directly via WhatsApp.",
-        heroFb: "Visit us on Facebook",
-        pillar1Title: "100% Artisanal",
-        pillar1Desc: "Hand-stretched dough and fresh ingredients selected daily to guarantee authentic traditional flavor.",
-        pillar2Title: "Susana & Willie's Seasoning",
-        pillar2Desc: "Chilean recipes prepared with family dedication and unconditional love in every batch.",
-        pillar3Title: "Orders via WhatsApp",
-        pillar3Desc: "Build your cart and send us your order at 647-865-1507 quickly and easily.",
-        marketTitle: "Find Us at the Market",
-        marketTag: "Highway 27, Toronto",
-        marketHeader: "Visit us every Saturday & Sunday at Dr. Flea's!",
-        marketDesc: "Susana and Willie await you every weekend with the best Chilean flavor at Dr. Flea's Flea Market, located in the Highway 27 area. Enjoy our freshly baked empanadas and share a pleasant moment in person.",
-        satSun: "Saturdays & Sundays",
-        satSunDesc: "Open during regular market hours.",
-        marketName: "Dr. Flea's Market",
-        marketLoc: "Highway 27 & Finch Ave area.",
-        marketFb: "View updates on Facebook",
-        howTitle: "How to Place Your Order?",
-        howTag: "Fast & Easy",
-        howDesc: "Follow these simple steps to order your favorite empanadas directly with us via WhatsApp.",
-        step1Title: "Choose Your Empanadas",
-        step1Desc: "Browse our menu, select the varieties you love and add them to your shopping cart with your desired quantities.",
-        step2Title: "Complete Your Info",
-        step2Desc: "Open your shopping cart, enter your name, contact number and pickup or delivery details to customize your order.",
-        step3Title: "Send via WhatsApp",
-        step3Desc: "Click the send button to transmit your order directly to our official WhatsApp: 647-865-1507.",
-        menuTitle: "Our Menu",
-        viewOptions: "View Options & Prices",
-        modalUnit: "Unit",
-        modalQty: "Number of Portions:",
-        subtotal: "Subtotal:",
-        addCart: "Add to Order",
-        cartTitle: "Your Order",
-        cartEmptyTitle: "Your cart is empty",
-        cartEmptyDesc: "Select your favorite empanadas from the menu",
-        nameLabel: "Your Name",
-        namePlaceholder: "E.g. Carlos Pérez",
-        phoneLabel: "Contact WhatsApp",
-        phonePlaceholder: "E.g. +1 647 865 1507",
-        addressLabel: "Delivery Address / Notes",
-        addressPlaceholder: "E.g. Pickup at Dr. Flea's / Address",
-        estimatedTotal: "Estimated Total",
-        sendWa: "Send Order via WhatsApp (647-865-1507)",
-        footerDesc: "Artisanal Chilean empanadas prepared with dedication by Susana and Willie. Find us every weekend at Dr. Flea's Flea Market.",
-        footerSocial: "Social Media",
-        footerContact: "Contact & Orders",
-        footerRights: "© 2026 SIN FRONTERAS EMPANADAS • SUSANA Y WILLIE 🇨🇱"
-      }
-    };
-    const ZoomImage = ({ src, alt }) => {
-      const [zoomStyle, setZoomStyle] = useState({ display: 'none' });
-      const [isZooming, setIsZooming] = useState(false);
-      const containerRef = useRef(null);
-
-      const handleMouseMove = (e) => {
-        const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-        const x = ((e.pageX - left - window.scrollX) / width) * 100;
-        const y = ((e.pageY - top - window.scrollY) / height) * 100;
-        
-        setZoomStyle({
-          display: 'block',
-          backgroundImage: `url(${src})`,
-          backgroundPosition: `${x}% ${y}%`,
-          backgroundSize: '250%'
-        });
-      };
-
-      return (
-        <div 
-          ref={containerRef}
-          className="relative overflow-hidden rounded-2xl bg-slate-100 aspect-[4/3] cursor-crosshair touch-none shadow-md border border-slate-200"
-          onMouseEnter={() => setIsZooming(true)}
-          onMouseLeave={() => setIsZooming(false)}
-          onMouseMove={handleMouseMove}
-        >
-          <img 
-            src={src} 
-            alt={alt} 
-            className={`w-full h-full object-cover transition-opacity duration-300 ${isZooming ? 'opacity-0' : 'opacity-100'}`} 
-          />
-          {isZooming && (
-            <div 
-              className="absolute inset-0 pointer-events-none transition-opacity duration-300 border-4 border-[#ce1126]/20"
-              style={zoomStyle}
-            />
-          )}
-          <div className="absolute bottom-3 right-3 bg-[#003366]/85 backdrop-blur-sm p-1.5 rounded-lg text-white">
-            <SearchIcon className="w-4 h-4" />
-          </div>
-        </div>
-      );
-    };
-
-    const ProductCard = ({ product, lang, onSelect }) => {
-      const name = product.name[lang];
-      const description = product.description[lang];
-      const trimmedDescription = description.length > 80 
-        ? description.substring(0, 80) + '...' 
-        : description;
-
-      return (
-        <div 
-          onClick={() => onSelect(product)}
-          className="group flex flex-col h-full bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl border-2 border-slate-200 hover:border-[#ce1126] transition-all duration-300 cursor-pointer"
-        >
-          <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100">
-            <img 
-              src={product.image} 
-              alt={name} 
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
-          
-          <div className="mt-4 flex-1 flex flex-col justify-between">
-            <div>
-              <h3 className="font-extrabold text-base text-slate-900 leading-tight tracking-tight mb-1">
-                {name}
-              </h3>
-              <p className="text-[11px] text-slate-600 font-medium leading-relaxed mb-3">
-                {trimmedDescription}
-              </p>
-            </div>
-            
-            <button 
-              className="w-full bg-slate-100 text-slate-900 group-hover:bg-[#ce1126] group-hover:text-white py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-sm"
-            >
-              {TRANSLATIONS[lang].viewOptions}
-            </button>
-          </div>
-        </div>
-      );
-    };
-
-    const ProductDetailModal = ({ product, lang, onClose, onAdd }) => {
-      const [quantity, setQuantity] = useState(1);
-
-      if (!product) return null;
-
-      const currentPrice = product.prices["Unidad"];
-      const t = TRANSLATIONS[lang];
-      const name = product.name[lang];
-      const description = product.description[lang];
-
-      const handleAddToCart = () => {
-        onAdd(product, "Unidad", quantity);
-        onClose();
-      };
-
-      return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          <div 
-            className="fixed inset-0 bg-[#003366]/60 backdrop-blur-sm transition-opacity duration-300" 
-            onClick={onClose} 
-          />
-          
-          <div className="relative bg-white w-full max-w-4xl rounded-[2rem] shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-200 z-10 flex flex-col md:flex-row gap-8 overflow-hidden max-h-[90vh]">
-            <button 
-              onClick={onClose} 
-              className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full transition-colors z-20"
-            >
-              <XIcon className="w-5 h-5" />
-            </button>
-            
-            <div className="w-full md:w-1/2 flex-shrink-0">
-              <ZoomImage src={product.image} alt={name} />
-            </div>
-            
-            <div className="flex-1 flex flex-col justify-between overflow-y-auto pr-1">
-              <div>
-                <h3 className="font-black text-2xl md:text-3xl text-slate-900 leading-tight mb-2 mt-2">
-                  {name}
-                </h3>
-                
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="text-3xl font-black text-[#ce1126]">${currentPrice.toFixed(2)} CAD</span>
-                  <span className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">
-                    {t.modalUnit}
-                  </span>
-                </div>
-                
-                <p className="text-xs text-slate-700 font-medium leading-relaxed mb-6">
-                  {description}
-                </p>
-
-                <div className="space-y-3 mb-6">
-                  <label className="text-xs uppercase font-black text-slate-900 tracking-widest block border-b border-slate-100 pb-1">
-                    {t.modalQty}
-                  </label>
-                  <div className="flex items-center gap-2">
-                    <button 
-                      onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
-                      className="w-9 h-9 flex items-center justify-center bg-slate-100 hover:bg-[#003366] hover:text-white rounded-lg transition-all font-bold text-base"
-                    >
-                      -
-                    </button>
-                    <span className="text-base font-black w-10 text-center text-slate-900">{quantity}</span>
-                    <button 
-                      onClick={() => setQuantity(prev => prev + 1)}
-                      className="w-9 h-9 flex items-center justify-center bg-slate-100 hover:bg-[#003366] hover:text-white rounded-lg transition-all font-bold text-base"
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-4 border-t border-slate-100 pt-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-slate-500 font-bold uppercase">{t.subtotal}</span>
-                  <span className="text-xl font-black text-slate-900">${(currentPrice * quantity).toFixed(2)} CAD</span>
-                </div>
-                
-                <button 
-                  onClick={handleAddToCart}
-                  className="w-full bg-[#ce1126] hover:bg-[#b00f20] text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all active:scale-95 shadow-lg uppercase tracking-widest text-xs"
-                >
-                  <PlusIcon className="w-5 h-5 mr-1" /> {t.addCart}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    };
-
-    function App() {
-      const [lang, setLang] = useState("es");
-      const [cart, setCart] = useState([]);
-      const [isCartOpen, setIsCartOpen] = useState(false);
-      const [selectedProduct, setSelectedProduct] = useState(null);
-      const [formData, setFormData] = useState({
-        name: '',
-        phone: '',
-        address: '',
-        notes: ''
-      });
-
-      const BUSINESS_PHONE = "6478651507";
-      const t = TRANSLATIONS[lang];
-
-      const addToCart = (product, size, qtyToAdd = 1) => {
-        const priceForSize = product.prices[size];
-        const cartId = `${product.id}-${size}`;
-        const existing = cart.find(item => item.cartId === cartId);
-        
-        if (existing) {
-          setCart(cart.map(item => 
-            item.cartId === cartId ? { ...item, quantity: item.quantity + qtyToAdd } : item
-          ));
-        } else {
-          setCart([...cart, { 
-            ...product, 
-            cartId, 
-            selectedSize: size, 
-            price: priceForSize, 
-            quantity: qtyToAdd 
-          }]);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sin Fronteras - Authentic Empanadas in Toronto</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            900: '#7c2d12',
+                        },
+                        whatsapp: {
+                            500: '#25D366',
+                            600: '#20ba5a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
         }
-        setIsCartOpen(true);
-      };
+    </script>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased font-sans selection:bg-brand-500 selection:text-white pb-24 md:pb-12">
 
-      const removeFromCart = (cartId) => {
-        setCart(cart.filter(item => item.cartId !== cartId));
-      };
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="https://i.ibb.co/9PQx2SK/logo.jpg" alt="Sin Fronteras Logo" class="w-12 h-12 rounded-full object-cover border-2 border-brand-500 shadow-sm" onerror="this.src='https://placehold.co/100x100/f97316/ffffff?text=SF'">
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-stone-900 block leading-none">Sin Fronteras</span>
+                    <span class="text-xs font-medium text-brand-600 tracking-widest uppercase mt-1 block">Toronto Empanadas</span>
+                </div>
+            </div>
 
-      const updateQuantity = (cartId, delta) => {
-        setCart(cart.map(item => {
-          if (item.cartId === cartId) {
-            const newQty = Math.max(1, item.quantity + delta);
-            return { ...item, quantity: newQty };
-          }
-          return item;
-        }));
-      };
+            <!-- Desktop & Language Navigation -->
+            <div class="flex items-center space-x-4">
+                <div class="bg-stone-100 p-1 rounded-xl flex items-center text-xs font-semibold">
+                    <button id="lang-en" onclick="setLanguage('en')" class="px-3 py-1.5 rounded-lg bg-white text-stone-900 shadow-sm transition-all">EN</button>
+                    <button id="lang-fr" onclick="setLanguage('fr')" class="px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all">FR</button>
+                </div>
+                <button onclick="toggleCartModal()" class="relative bg-brand-500 hover:bg-brand-600 text-white p-2.5 rounded-2xl shadow-md transition-all flex items-center justify-center">
+                    <i class="fa-solid fa-cart-shopping text-lg"></i>
+                    <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-red-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-      const total = cart.reduce((sum, item) => {
-        const numericPrice = typeof item.price === 'number' ? item.price : 0;
-        return sum + (numericPrice * item.quantity);
-      }, 0);
+    <section class="relative bg-gradient-to-br from-stone-900 via-stone-800 to-brand-900 text-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="inline-flex items-center gap-1.5 bg-brand-500/20 border border-brand-500/30 text-brand-300 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
+                <i class="fa-solid fa-location-dot"></i> Proudly Serving Toronto & GTA
+            </span>
+            <h1 id="hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+                Authentic Handcrafted Empanadas
+            </h1>
+            <p id="hero-subtitle" class="text-lg sm:text-xl text-stone-300 max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                Freshly baked or frozen ready-to-bake empanadas made with love. Order directly via WhatsApp for pickup or delivery!
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu-section" class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-white font-bold px-8 py-4 rounded-2xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-utensils"></i> <span id="btn-browse">Browse Menu</span>
+                </a>
+                <a href="https://wa.me/14165550199?text=Hello%20Sin%20Fronteras!%20I%20would%20like%20to%20place%20an%20order." target="_blank" class="w-full sm:w-auto bg-whatsapp-500 hover:bg-whatsapp-600 text-white font-bold px-8 py-4 rounded-2xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> <span id="btn-whatsapp-direct">Chat on WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-      const handleSendWhatsApp = (e) => {
-        e.preventDefault();
-        if (!formData.name || !formData.phone) return;
+    <main id="menu-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+                <h2 id="menu-heading" class="text-2xl sm:text-3xl font-extrabold text-stone-900">Our Menu / Notre Menu</h2>
+                <p id="menu-subheading" class="text-stone-500 text-sm mt-1">Select your favorite empanadas and customize quantities.</p>
+            </div>
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap gap-2" id="category-filters">
+                <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-500 text-white shadow-sm transition-all" data-category="all">All / Tous</button>
+                <button onclick="filterCategory('Savory')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all" data-category="Savory">Savory / Salées</button>
+                <button onclick="filterCategory('Sweet')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all" data-category="Sweet">Sweet / Sucrées</button>
+                <button onclick="filterCategory('Frozen')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all" data-category="Frozen">Frozen / Congelées</button>
+            </div>
+        </div>
 
-        let message = `*🇨🇱 ¡NUEVO PEDIDO - SIN FRONTERAS EMPANADAS!*\n`;
-        message += `👤 *Cliente:* ${formData.name}\n`;
-        message += `📞 *WhatsApp:* ${formData.phone}\n`;
-        if(formData.address) message += `📍 *Dirección / Entrega:* ${formData.address}\n`;
-        if(formData.notes) message += `📝 *Notas:* ${formData.notes}\n`;
-        message += `\n--- *DETALLE DEL PEDIDO* ---\n`;
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamically populated via JavaScript -->
+        </div>
+    </main>
 
-        cart.forEach(item => {
-          const formattedPrice = `$${(item.price * item.quantity).toFixed(2)} CAD`;
-          message += `• ${item.quantity}x ${item.name[lang]} (${item.selectedSize}) - ${formattedPrice}\n`;
-        });
+    <div id="floating-cart" class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-stone-200 shadow-2xl p-4 transition-transform duration-300 transform translate-y-full">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-start">
+                <div class="flex items-center gap-2">
+                    <span class="bg-brand-500 text-white font-bold text-xs px-2.5 py-1 rounded-lg" id="cart-item-count">0 items</span>
+                    <span class="font-bold text-stone-900 text-lg" id="cart-total">$0.00 CAD</span>
+                </div>
+                <button onclick="toggleCartModal()" class="text-xs font-semibold text-brand-600 hover:underline">View Details</button>
+            </div>
+            <button onclick="openCheckoutModal()" class="w-full sm:w-auto bg-whatsapp-500 hover:bg-whatsapp-600 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i> <span id="checkout-btn-text">Order via WhatsApp</span>
+            </button>
+        </div>
+    </div>
 
-        message += `\n💰 *TOTAL ESTIMADO:* $${total.toFixed(2)} CAD`;
-        message += `\n\n_Hola Susana y Willie, les escribo desde su página web para hacerles este pedido. ¡Quedo atento(a)!_`;
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="bg-white w-full max-w-lg rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col animate-in fade-in zoom-in-95 duration-200">
+            <div class="p-6 border-b border-stone-100 flex items-center justify-between">
+                <h3 class="text-xl font-extrabold text-stone-900" id="modal-title">Your Order Summary</h3>
+                <button onclick="toggleCartModal()" class="text-stone-400 hover:text-stone-700 p-2 rounded-full hover:bg-stone-100 transition-all">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div id="cart-items-container" class="p-6 overflow-y-auto flex-1 divide-y divide-stone-100 space-y-4">
+                <!-- Cart items populated here -->
+            </div>
+            <div class="p-6 bg-stone-50 border-t border-stone-100 space-y-4">
+                <div class="flex justify-between text-base font-bold text-stone-900">
+                    <span id="modal-total-label">Total Amount:</span>
+                    <span id="modal-total-price">$0.00 CAD</span>
+                </div>
+                <button onclick="openCheckoutModal()" class="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white font-bold py-4 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> <span id="modal-checkout-text">Proceed to WhatsApp Order</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
-        window.open(`https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
-      };
-
-      return (
-        <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
-          
-          {/* Top National Ribbon Accent */}
-          <div className="h-2 w-full bg-gradient-to-r from-[#003366] via-white to-[#ce1126]"></div>
-
-          {/* Navigation Bar */}
-          <nav className="sticky top-0 z-40 bg-white border-b-2 border-slate-200 shadow-md" aria-label="Navegación principal">
-            <div className="max-w-7xl mx-auto px-6 h-28 flex items-center justify-between">
-              
-              <a href="#" className="flex items-center gap-4 group" aria-label="Sin Fronteras Empanadas">
-                <div className="w-20 h-20 rounded-2xl flex items-center justify-center overflow-hidden shadow-md border-2 border-slate-200 bg-white shrink-0 group-hover:border-[#ce1126] transition-colors">
-                  <img 
-                    src="https://i.ibb.co/9PQx2SK/logo.jpg" 
-                    alt="Sin Fronteras Logo" 
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://placehold.co/120x120/ce1126/ffffff?text=SF";
-                    }}
-                  />
+    <div id="checkout-modal" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden p-6 animate-in fade-in zoom-in-95 duration-200">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-extrabold text-stone-900" id="checkout-modal-title">Complete Your Order</h3>
+                <button onclick="closeCheckoutModal()" class="text-stone-400 hover:text-stone-700 p-2 rounded-full hover:bg-stone-100 transition-all">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <form id="order-form" onsubmit="submitWhatsAppOrder(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-name">Full Name / Nom complet</label>
+                    <input type="text" id="cust-name" required placeholder="e.g., Maria Garcia" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all">
                 </div>
                 <div>
-                  <h1 className="text-[#003366] font-black text-2xl tracking-tight uppercase group-hover:text-[#ce1126] transition-colors">{t.navTitle}</h1>
-                  <p className="text-[#ce1126] text-xs font-black uppercase tracking-widest flex items-center gap-1 mt-0.5">
-                    {t.navSubtitle} <StarIcon className="w-3.5 h-3.5 text-[#ce1126] fill-current inline" />
-                  </p>
+                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-phone">Phone Number / Téléphone</label>
+                    <input type="tel" id="cust-phone" required placeholder="e.g., 416-555-0199" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all">
                 </div>
-              </a>
-              
-              <div className="flex items-center gap-3 md:gap-4">
-                {/* Language Toggle */}
-                <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200">
-                  <button 
-                    onClick={() => setLang("es")}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all ${lang === 'es' ? 'bg-[#003366] text-white shadow' : 'text-slate-600 hover:text-slate-900'}`}
-                  >
-                    ES
-                  </button>
-                  <button 
-                    onClick={() => setLang("en")}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all ${lang === 'en' ? 'bg-[#003366] text-white shadow' : 'text-slate-600 hover:text-slate-900'}`}
-                  >
-                    EN
-                  </button>
+                <div>
+                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-fulfillment">Fulfillment / Mode de livraison</label>
+                    <select id="cust-fulfillment" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none bg-white transition-all">
+                        <option value="Pickup">Pickup / Cueillette (Toronto)</option>
+                        <option value="Delivery">Delivery / Livraison (GTA)</option>
+                    </select>
                 </div>
-
-                <a 
-                  href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hidden sm:inline-flex items-center gap-2 px-5 py-3 bg-[#003366] hover:bg-[#002244] text-white rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-md"
-                >
-                  {t.facebookBtn} <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
-                </a>
-
-                <button 
-                  onClick={() => setIsCartOpen(true)}
-                  className="relative p-3.5 bg-[#ce1126] hover:bg-[#b00f20] rounded-2xl text-white transition-all shadow-lg active:scale-90 flex items-center gap-2"
-                  aria-label="Ver carrito de compras"
-                >
-                  <ShoppingCartIcon className="w-6 h-6" />
-                  <span className="hidden md:inline font-black text-xs uppercase tracking-wider">{t.cartBtn}</span>
-                  {cart.length > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-[#003366] text-white text-xs font-black w-7 h-7 flex items-center justify-center rounded-full ring-2 ring-white shadow-md animate-pulse">
-                      {cart.reduce((acc, curr) => acc + curr.quantity, 0)}
-                    </span>
-                  )}
+                <div>
+                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-address">Delivery Address / Notes (If applicable)</label>
+                    <textarea id="cust-address" rows="2" placeholder="Street address or delivery instructions..." class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-whatsapp-500 hover:bg-whatsapp-600 text-white font-bold py-4 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 mt-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> <span id="send-order-text">Send Order to WhatsApp</span>
                 </button>
-              </div>
-            </div>
-          </nav>
-
-          {/* Hero Section */}
-          <header className="relative py-24 px-4 bg-[#003366] text-white overflow-hidden bg-cover bg-center" style={{ backgroundImage: "linear-gradient(rgba(0, 51, 102, 0.94), rgba(0, 51, 102, 0.90)), url('https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=1600&q=80')" }}>
-            <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none hidden lg:block">
-              <span className="text-[12rem] font-black">🇨🇱</span>
-            </div>
-
-            <div className="relative z-10 max-w-4xl mx-auto text-center">
-              <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#ce1126]/30 text-white rounded-xl text-xs font-black uppercase tracking-[0.2em] mb-6 border border-[#ce1126]/50 shadow-md">
-                <StarIcon className="w-4 h-4 text-[#ce1126] fill-current" /> {t.heroTag}
-              </span>
-              
-              <h2 className="text-4xl md:text-7xl font-black mb-6 tracking-tight leading-none text-white">
-                {t.heroTitleLine1} <br/>
-                <span className="text-[#ce1126]">{t.heroTitleLine2}</span>
-              </h2>
-              
-              <p className="text-slate-200 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed mb-8">
-                {t.heroDesc}
-              </p>
-
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                <a 
-                  href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="px-6 py-4 bg-[#ce1126] hover:bg-[#b00f20] text-white font-black rounded-xl uppercase tracking-wider text-xs transition-all shadow-lg inline-flex items-center gap-2 border border-red-500"
-                >
-                  {t.heroFb} <ExternalLinkIcon className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-          </header>
-
-          {/* Trust Pillars */}
-          <section className="bg-white border-b border-slate-200 py-16 px-4">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              
-              <div className="flex flex-col items-center text-center p-6 bg-slate-50/80 rounded-3xl border-2 border-slate-200 shadow-sm">
-                <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center text-[#ce1126] mb-4 shadow-sm">
-                  <FlameIcon className="w-7 h-7" />
-                </div>
-                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">{t.pillar1Title}</h3>
-                <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                  {t.pillar1Desc}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center text-center p-6 bg-slate-50/80 rounded-3xl border-2 border-slate-200 shadow-sm">
-                <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center text-[#003366] mb-4 shadow-sm">
-                  <HeartIcon className="w-7 h-7" />
-                </div>
-                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">{t.pillar2Title}</h3>
-                <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                  {t.pillar2Desc}
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center text-center p-6 bg-slate-50/80 rounded-3xl border-2 border-slate-200 shadow-sm sm:col-span-2 lg:col-span-1">
-                <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center text-[#ce1126] mb-4 shadow-sm">
-                  <ShieldCheckIcon className="w-7 h-7" />
-                </div>
-                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">{t.pillar3Title}</h3>
-                <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                  {t.pillar3Desc}
-                </p>
-              </div>
-
-            </div>
-          </section>
-
-          {/* Dr. Flea's Flea Market Section */}
-          <section className="py-20 px-4 bg-slate-100 border-b border-slate-200">
-            <div className="max-w-7xl mx-auto">
-              <div className="flex items-center gap-6 mb-12">
-                <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight shrink-0">{t.marketTitle}</h2>
-                <div className="h-2 bg-[#ce1126] w-24 rounded-full"></div>
-                <div className="h-px bg-slate-300 flex-1"></div>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border-2 border-slate-200">
-                <div className="space-y-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-[#ce1126] rounded-xl text-xs font-black uppercase tracking-wider">
-                    <MapPinIcon className="w-4 h-4" /> {t.marketTag}
-                  </div>
-                  
-                  <h3 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight">
-                    {t.marketHeader}
-                  </h3>
-
-                  <p className="text-slate-700 text-base font-medium leading-relaxed">
-                    {t.marketDesc}
-                  </p>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                    <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                      <CalendarIcon className="w-6 h-6 text-[#003366] shrink-0 mt-0.5" />
-                      <div>
-                        <h4 className="font-black text-sm text-slate-900 uppercase">{t.satSun}</h4>
-                        <p className="text-xs text-slate-600 mt-0.5">{t.satSunDesc}</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                      <MapPinIcon className="w-6 h-6 text-[#ce1126] shrink-0 mt-0.5" />
-                      <div>
-                        <h4 className="font-black text-sm text-slate-900 uppercase">{t.marketName}</h4>
-                        <p className="text-xs text-slate-600 mt-0.5">{t.marketLoc}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="pt-2">
-                    <a 
-                      href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#003366] hover:bg-[#002244] text-white rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-md"
-                    >
-                      {t.marketFb} <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
-                    </a>
-                  </div>
-                </div>
-
-                <div className="relative overflow-hidden rounded-3xl shadow-lg border-2 border-slate-200 aspect-[4/3] bg-slate-200">
-                  <img 
-                    src="https://i.ibb.co/C5vLZscs/fleamarket.png" 
-                    alt="Dr. Flea's Flea Market Stand" 
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://placehold.co/800x600/003366/ffffff?text=Dr.+Flea's+Market";
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Ordering Process Section */}
-          <section className="py-20 px-4 bg-white border-b border-slate-200">
-            <div className="max-w-7xl mx-auto">
-              <div className="text-center max-w-3xl mx-auto mb-16">
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-[#003366] rounded-xl text-xs font-black uppercase tracking-widest mb-4">
-                  {t.howTag}
-                </span>
-                <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tight">{t.howTitle}</h2>
-                <p className="text-slate-600 text-base mt-3 font-medium">
-                  {t.howDesc}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="flex flex-col p-8 bg-slate-50 rounded-3xl border-2 border-slate-200 relative">
-                  <div className="w-12 h-12 bg-[#003366] text-white font-black text-lg rounded-2xl flex items-center justify-center mb-6 shadow-md">
-                    1
-                  </div>
-                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">{t.step1Title}</h3>
-                  <p className="text-slate-600 text-sm font-medium leading-relaxed">
-                    {t.step1Desc}
-                  </p>
-                </div>
-
-                <div className="flex flex-col p-8 bg-slate-50 rounded-3xl border-2 border-slate-200 relative">
-                  <div className="w-12 h-12 bg-[#ce1126] text-white font-black text-lg rounded-2xl flex items-center justify-center mb-6 shadow-md">
-                    2
-                  </div>
-                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">{t.step2Title}</h3>
-                  <p className="text-slate-600 text-sm font-medium leading-relaxed">
-                    {t.step2Desc}
-                  </p>
-                </div>
-
-                <div className="flex flex-col p-8 bg-slate-50 rounded-3xl border-2 border-slate-200 relative">
-                  <div className="w-12 h-12 bg-[#25D366] text-white font-black text-lg rounded-2xl flex items-center justify-center mb-6 shadow-md">
-                    3
-                  </div>
-                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">{t.step3Title}</h3>
-                  <p className="text-slate-600 text-sm font-medium leading-relaxed">
-                    {t.step3Desc}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Catalog Grid */}
-          <main className="max-w-7xl mx-auto px-4 py-20">
-            <div className="flex items-center gap-6 mb-16">
-              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight shrink-0">{t.menuTitle}</h2>
-              <div className="h-2 bg-[#ce1126] w-24 rounded-full"></div>
-              <div className="h-px bg-slate-300 flex-1"></div>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {PRODUCTS.map(product => (
-                <ProductCard 
-                  key={product.id} 
-                  product={product}
-                  lang={lang}
-                  onSelect={(prod) => setSelectedProduct(prod)} 
-                />
-              ))}
-            </div>
-          </main>
-
-          {/* Product Detail Modal */}
-          {selectedProduct && (
-            <ProductDetailModal 
-              product={selectedProduct} 
-              lang={lang}
-              onClose={() => setSelectedProduct(null)} 
-              onAdd={addToCart} 
-            />
-          )}
-
-          {/* Slide-out Cart Panel */}
-          {isCartOpen && (
-            <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true">
-              <div className="absolute inset-0 bg-[#003366]/60 backdrop-blur-sm" onClick={() => setIsCartOpen(false)} />
-              
-              <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-500">
-                <div className="p-6 border-b-4 border-[#ce1126] flex items-center justify-between bg-[#003366] text-white">
-                  <div>
-                    <h3 className="font-black text-2xl uppercase tracking-tight">{t.cartTitle}</h3>
-                    <p className="text-xs text-red-300 font-bold uppercase tracking-widest mt-1">WhatsApp: 647-865-1507</p>
-                  </div>
-                  <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-[#002244] rounded-full transition-colors text-white">
-                    <XIcon className="w-6 h-6" />
-                  </button>
-                </div>
-
-                <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50">
-                  {cart.length === 0 ? (
-                    <div className="text-center py-32">
-                      <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border-2 border-dashed border-slate-300 text-slate-400 font-black text-2xl">
-                        SF
-                      </div>
-                      <p className="text-slate-900 font-black text-xl">{t.cartEmptyTitle}</p>
-                      <p className="text-slate-500 mt-1 text-sm">{t.cartEmptyDesc}</p>
-                    </div>
-                  ) : (
-                    cart.map(item => (
-                      <div key={item.cartId} className="flex gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                        <img src={item.image} className="w-20 h-20 object-cover rounded-xl shrink-0" alt={item.name[lang]} />
-                        <div className="flex-1">
-                          <h4 className="font-black text-slate-900 text-sm uppercase leading-tight">{item.name[lang]}</h4>
-                          <p className="text-[11px] font-bold text-[#ce1126] uppercase mt-1">Unidad</p>
-                          <div className="flex items-center justify-between mt-3">
-                            <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 border border-slate-200">
-                              <button onClick={() => updateQuantity(item.cartId, -1)} className="w-7 h-7 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-md transition-all font-bold">-</button>
-                              <span className="text-xs font-black w-6 text-center text-slate-900">{item.quantity}</span>
-                              <button onClick={() => updateQuantity(item.cartId, 1)} className="w-7 h-7 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-md transition-all font-bold">+</button>
-                            </div>
-                            <span className="font-black text-sm text-slate-900">
-                              ${(item.price * item.quantity).toFixed(2)} CAD
-                            </span>
-                          </div>
-                        </div>
-                        <button onClick={() => removeFromCart(item.cartId)} className="text-slate-400 hover:text-[#ce1126] transition-colors p-1">
-                          <XIcon className="w-5 h-5" />
-                        </button>
-                      </div>
-                    ))
-                  )}
-                </div>
-
-                {cart.length > 0 && (
-                  <div className="p-6 border-t border-slate-200 bg-white shadow-2xl">
-                    <div className="space-y-3 mb-4">
-                      <div>
-                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">{t.nameLabel}</label>
-                        <input 
-                          type="text" 
-                          placeholder={t.namePlaceholder} 
-                          className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
-                          value={formData.name}
-                          onChange={e => setFormData({...formData, name: e.target.value})}
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">{t.phoneLabel}</label>
-                        <input 
-                          type="tel" 
-                          placeholder={t.phonePlaceholder} 
-                          className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
-                          value={formData.phone}
-                          onChange={e => setFormData({...formData, phone: e.target.value})}
-                        />
-                      </div>
-
-                      <div>
-                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">{t.addressLabel}</label>
-                        <input 
-                          type="text" 
-                          placeholder={t.addressPlaceholder} 
-                          className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
-                          value={formData.address}
-                          onChange={e => setFormData({...formData, address: e.target.value})}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between py-4 border-t border-dashed border-slate-200 mb-4">
-                      <span className="text-slate-600 font-bold uppercase text-xs">{t.estimatedTotal}</span>
-                      <span className="text-2xl font-black text-slate-900">${total.toFixed(2)} CAD</span>
-                    </div>
-
-                    <button 
-                      onClick={handleSendWhatsApp}
-                      disabled={!formData.name || !formData.phone}
-                      className="w-full bg-[#25D366] hover:bg-[#1da851] disabled:opacity-40 text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all shadow-lg uppercase tracking-wider text-xs"
-                    >
-                      <SendIcon className="w-5 h-5 fill-current" /> {t.sendWa}
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* Footer Component */}
-          <footer className="bg-[#003366] text-white py-16 px-4 border-t-4 border-[#ce1126]">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden border-2 border-white/20 bg-white">
-                    <img 
-                      src="https://i.ibb.co/9PQx2SK/logo.jpg" 
-                      alt="Sin Fronteras Logo" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h4 className="text-lg font-black uppercase tracking-tight">{t.navTitle}</h4>
-                </div>
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  {t.footerDesc}
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm font-black uppercase tracking-widest text-[#ce1126] mb-4">{t.footerSocial}</h4>
-                <a 
-                  href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-slate-200 hover:text-white font-bold text-sm bg-[#002244] px-4 py-2.5 rounded-xl border border-blue-900 shadow-sm"
-                >
-                  {t.facebookBtn} <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
-                </a>
-              </div>
-
-              <div>
-                <h4 className="text-sm font-black uppercase tracking-widest text-[#ce1126] mb-4">{t.footerContact}</h4>
-                <p className="text-slate-300 text-sm font-medium mb-2">
-                  WhatsApp: <strong className="text-white">647-865-1507</strong>
-                </p>
-                <p className="text-slate-300 text-xs">
-                  {t.satSun} ({t.marketName}).
-                </p>
-              </div>
-            </div>
-            
-            <div className="max-w-7xl mx-auto border-t border-blue-900 mt-12 pt-8 text-center">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">{t.footerRights}</p>
-            </div>
-          </footer>
+            </form>
         </div>
-      );
-    }
+    </div>
 
-    const rootElement = document.getElementById('root');
-    const root = ReactDOM.createRoot(rootElement);
-    root.render(<App />);
-  </script>
+    <footer class="bg-stone-900 text-stone-400 py-12 px-4 sm:px-6 lg:px-8 mt-20 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="flex items-center space-x-3">
+                <img src="https://i.ibb.co/9PQx2SK/logo.jpg" alt="Sin Fronteras Logo" class="w-10 h-10 rounded-full object-cover border border-stone-700">
+                <span class="text-white font-bold text-lg">Sin Fronteras</span>
+            </div>
+            <p class="text-sm">Authentic Empanadas crafted in Toronto, Ontario. Orders fulfilled via WhatsApp.</p>
+            <div class="flex items-center space-x-4 text-stone-300 text-lg">
+                <a href="https://wa.me/14165550199" target="_blank" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com" target="_blank" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:info@sinfronterasto.com" class="hover:text-brand-500 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Bilingual Product Catalog based on Sin Fronteras price list
+        const products = [
+            {
+                id: 1,
+                name: { en: "Beef Empanada", fr: "Empanada au Bœuf" },
+                desc: { en: "Traditional seasoned ground beef, onions, peppers, and spices.", fr: "Bœuf haché traditionnel assaisonné, oignons, poivrons et épices." },
+                price: 4.50,
+                category: "Savory",
+                image: "https://placehold.co/600x400/7c2d12/ffffff?text=Beef+Empanada"
+            },
+            {
+                id: 2,
+                name: { en: "Chicken Empanada", fr: "Empanada au Poulet" },
+                desc: { en: "Juicy shredded chicken breast with herbs and vegetables.", fr: "Poitrine de poulet effilochée juteuse avec herbes et légumes." },
+                price: 4.50,
+                category: "Savory",
+                image: "https://placehold.co/600x400/c2410c/ffffff?text=Chicken+Empanada"
+            },
+            {
+                id: 3,
+                name: { en: "Ham & Cheese Empanada", fr: "Empanada Jambon & Fromage" },
+                desc: { en: "Savory ham and melted mozzarella cheese filling.", fr: "Garniture savoureuse de jambon et de fromage mozzarella fondu." },
+                price: 4.50,
+                category: "Savory",
+                image: "https://placehold.co/600x400/ea580c/ffffff?text=Ham+%26+Cheese"
+            },
+            {
+                id: 4,
+                name: { en: "Spinach & Cheese Empanada", fr: "Empanada Épinards & Fromage" },
+                desc: { en: "Fresh spinach mixed with creamy ricotta and mozzarella.", fr: "Épinards frais mélangés à de la ricotta crémeuse et de la mozzarella." },
+                price: 4.50,
+                category: "Savory",
+                image: "https://placehold.co/600x400/15803d/ffffff?text=Spinach+%26+Cheese"
+            },
+            {
+                id: 5,
+                name: { en: "Sweet Corn & Cheese (Humita)", fr: "Maïs Doux & Fromage (Humita)" },
+                desc: { en: "Sweet corn cream filling with gooey melted cheese.", fr: "Garniture à la crème de maïs doux avec fromage fondant." },
+                price: 4.75,
+                category: "Savory",
+                image: "https://placehold.co/600x400/ca8a04/ffffff?text=Sweet+Corn+%26+Cheese"
+            },
+            {
+                id: 6,
+                name: { en: "Guava & Cheese Empanada (Sweet)", fr: "Empanada Goyave & Fromage (Sucrée)" },
+                desc: { en: "Sweet tropical guava paste paired with creamy cheese.", fr: "Pâte de goyave tropicale sucrée associée à du fromage crémeux." },
+                price: 4.25,
+                category: "Sweet",
+                image: "https://placehold.co/600x400/be185d/ffffff?text=Guava+%26+Cheese"
+            },
+            {
+                id: 7,
+                name: { en: "Dulce de Leche Empanada", fr: "Empanada au Dulce de Leche" },
+                desc: { en: "Filled with rich artisanal dulce de leche and dusted with sugar.", fr: "Rempli de dulce de leche artisanal riche et saupoudré de sucre." },
+                price: 4.25,
+                category: "Sweet",
+                image: "https://placehold.co/600x400/854d0e/ffffff?text=Dulce+de+Leche"
+            },
+            {
+                id: 8,
+                name: { en: "Frozen Pack - Beef (6 pcs)", fr: "Paquet Congelé - Bœuf (6 mcx)" },
+                desc: { en: "Take-home raw frozen beef empanadas ready to bake at home.", fr: "Empanadas de bœuf crues congelées à emporter, prêtes à cuire." },
+                price: 24.00,
+                category: "Frozen",
+                image: "https://placehold.co/600x400/3f3f46/ffffff?text=Frozen+Beef+Pack"
+            },
+            {
+                id: 9,
+                name: { en: "Frozen Pack - Assorted Mix (6 pcs)", fr: "Paquet Congelé - Assortiment (6 mcx)" },
+                desc: { en: "Mix and match your favorite flavors in a frozen ready-to-bake pack.", fr: "Mélangez vos saveurs préférées dans un paquet congelé prêt à cuire." },
+                price: 25.00,
+                category: "Frozen",
+                image: "https://placehold.co/600x400/52525b/ffffff?text=Frozen+Assorted+Pack"
+            }
+        ];
+
+        let currentLang = 'en';
+        let currentCategory = 'all';
+        let cart = {}; // productId -> quantity
+
+        const uiStrings = {
+            en: {
+                heroTitle: "Authentic Handcrafted Empanadas",
+                heroSubtitle: "Freshly baked or frozen ready-to-bake empanadas made with love. Order directly via WhatsApp for pickup or delivery!",
+                browse: "Browse Menu",
+                whatsappDirect: "Chat on WhatsApp",
+                menuHeading: "Our Menu",
+                menuSubheading: "Select your favorite empanadas and customize quantities.",
+                allCat: "All",
+                savoryCat: "Savory",
+                sweetCat: "Sweet",
+                frozenCat: "Frozen",
+                addToCart: "Add to Order",
+                modalTitle: "Your Order Summary",
+                totalLabel: "Total Amount:",
+                checkoutText: "Proceed to WhatsApp Order",
+                checkoutModalTitle: "Complete Your Order",
+                labelName: "Full Name",
+                labelPhone: "Phone Number",
+                labelFulfillment: "Fulfillment Method",
+                labelAddress: "Delivery Address / Notes",
+                sendOrder: "Send Order to WhatsApp",
+                pickup: "Pickup (Toronto)",
+                delivery: "Delivery (GTA)"
+            },
+            fr: {
+                heroTitle: "Empanadas Artisanales Authentiques",
+                heroSubtitle: "Fraîchement cuites ou congelées prêtes à cuire. Commandez directement via WhatsApp pour cueillette ou livraison!",
+                browse: "Voir le Menu",
+                whatsappDirect: "Discuter sur WhatsApp",
+                menuHeading: "Notre Menu",
+                menuSubheading: "Sélectionnez vos empanadas préférées et ajustez les quantités.",
+                allCat: "Tous",
+                savoryCat: "Salées",
+                sweetCat: "Sucrées",
+                frozenCat: "Congelées",
+                addToCart: "Ajouter à la commande",
+                modalTitle: "Résumé de votre commande",
+                totalLabel: "Montant Total:",
+                checkoutText: "Passer la commande WhatsApp",
+                checkoutModalTitle: "Complétez votre commande",
+                labelName: "Nom complet",
+                labelPhone: "Numéro de téléphone",
+                labelFulfillment: "Mode de livraison",
+                labelAddress: "Adresse de livraison / Notes",
+                sendOrder: "Envoyer la commande sur WhatsApp",
+                pickup: "Cueillette (Toronto)",
+                delivery: "Livraison (GTA)"
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('lang-en').className = lang === 'en' ? 'px-3 py-1.5 rounded-lg bg-white text-stone-900 shadow-sm transition-all' : 'px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all';
+            document.getElementById('lang-fr').className = lang === 'fr' ? 'px-3 py-1.5 rounded-lg bg-white text-stone-900 shadow-sm transition-all' : 'px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all';
+            
+            // Update static strings
+            const t = uiStrings[lang];
+            document.getElementById('hero-title').innerText = t.heroTitle;
+            document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
+            document.getElementById('btn-browse').innerText = t.browse;
+            document.getElementById('btn-whatsapp-direct').innerText = t.whatsappDirect;
+            document.getElementById('menu-heading').innerText = t.menuHeading;
+            document.getElementById('menu-subheading').innerText = t.menuSubheading;
+            document.getElementById('modal-title').innerText = t.modalTitle;
+            document.getElementById('modal-total-label').innerText = t.totalLabel;
+            document.getElementById('modal-checkout-text').innerText = t.checkoutText;
+            document.getElementById('checkout-modal-title').innerText = t.checkoutModalTitle;
+            document.getElementById('label-name').innerText = t.labelName;
+            document.getElementById('label-phone').innerText = t.labelPhone;
+            document.getElementById('label-fulfillment').innerText = t.labelFulfillment;
+            document.getElementById('label-address').innerText = t.labelAddress;
+            document.getElementById('send-order-text').innerText = t.sendOrder;
+
+            // Fulfillment options text
+            const fulfillmentSelect = document.getElementById('cust-fulfillment');
+            fulfillmentSelect.options[0].text = t.pickup;
+            fulfillmentSelect.options[1].text = t.delivery;
+
+            renderProducts();
+            renderCartModal();
+        }
+
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if(btn.dataset.category === cat) {
+                    btn.className = "cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-500 text-white shadow-sm transition-all";
+                } else {
+                    btn.className = "cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all";
+                }
+            });
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            const filtered = currentCategory === 'all' 
+                ? products 
+                : products.filter(p => p.category === currentCategory);
+
+            filtered.forEach(p => {
+                const qty = cart[p.id] || 0;
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl border border-stone-200 shadow-sm hover:shadow-md transition-all flex flex-col overflow-hidden";
+                card.innerHTML = `
+                    <div class="relative h-48 overflow-hidden bg-stone-100">
+                        <img src="${p.image}" alt="${p.name[currentLang]}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/f97316/ffffff?text=Empanada'">
+                        <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-stone-900 font-bold px-3 py-1 rounded-xl text-xs shadow-sm">
+                            $${p.price.toFixed(2)} CAD
+                        </span>
+                        <span class="absolute top-3 left-3 bg-brand-500 text-white font-semibold px-2.5 py-1 rounded-xl text-[10px] tracking-wider uppercase">
+                            ${p.category}
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-900 mb-1">${p.name[currentLang]}</h3>
+                            <p class="text-stone-500 text-xs leading-relaxed mb-4">${p.desc[currentLang]}</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                            <div class="flex items-center space-x-2 bg-stone-100 rounded-xl p-1">
+                                <button onclick="updateQty(${p.id}, -1)" class="w-8 h-8 rounded-lg bg-white text-stone-700 font-bold shadow-sm flex items-center justify-center hover:bg-stone-50 transition-all">-</button>
+                                <span class="w-8 text-center font-bold text-sm text-stone-900" id="qty-${p.id}">${qty}</span>
+                                <button onclick="updateQty(${p.id}, 1)" class="w-8 h-8 rounded-lg bg-brand-500 text-white font-bold shadow-sm flex items-center justify-center hover:bg-brand-600 transition-all">+</button>
+                            </div>
+                            <span class="text-xs font-semibold text-stone-400" id="subtotal-${p.id}">$${(qty * p.price).toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function updateQty(productId, delta) {
+            if (!cart[productId]) cart[productId] = 0;
+            cart[productId] += delta;
+            if (cart[productId] <= 0) delete cart[productId];
+
+            // Update UI elements for this product if rendered
+            const qtyElem = document.getElementById(`qty-${productId}`);
+            if (qtyElem) qtyElem.innerText = cart[productId] || 0;
+            const subElem = document.getElementById(`subtotal-${productId}`);
+            if (subElem) {
+                const p = products.find(prod => prod.id === productId);
+                subElem.innerText = `$${((cart[productId] || 0) * p.price).toFixed(2)}`;
+            }
+
+            updateCartSummary();
+        }
+
+        function updateCartSummary() {
+            let totalItems = 0;
+            let totalPrice = 0;
+
+            for (const [id, qty] of Object.entries(cart)) {
+                const p = products.find(prod => prod.id == id);
+                if (p) {
+                    totalItems += qty;
+                    totalPrice += qty * p.price;
+                }
+            }
+
+            const badge = document.getElementById('cart-badge');
+            const floatingCart = document.getElementById('floating-cart');
+            const itemCountElem = document.getElementById('cart-item-count');
+            const totalElem = document.getElementById('cart-total');
+
+            if (totalItems > 0) {
+                badge.innerText = totalItems;
+                badge.classList.remove('hidden');
+                itemCountElem.innerText = `${totalItems} ${totalItems === 1 ? 'item' : 'items'}`;
+                totalElem.innerText = `$${totalPrice.toFixed(2)} CAD`;
+                floatingCart.classList.remove('translate-y-full');
+            } else {
+                badge.classList.add('hidden');
+                floatingCart.classList.add('translate-y-full');
+                closeCartModal();
+            }
+
+            renderCartModal();
+        }
+
+        function renderCartModal() {
+            const container = document.getElementById('cart-items-container');
+            const modalTotalPrice = document.getElementById('modal-total-price');
+            container.innerHTML = '';
+
+            let totalPrice = 0;
+            const entries = Object.entries(cart);
+
+            if (entries.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-stone-400 text-sm">Your cart is empty. / Votre panier est vide.</div>`;
+                modalTotalPrice.innerText = `$0.00 CAD`;
+                return;
+            }
+
+            entries.forEach(([id, qty]) => {
+                const p = products.find(prod => prod.id == id);
+                if (!p) return;
+                const sub = qty * p.price;
+                totalPrice += sub;
+
+                const itemRow = document.createElement('div');
+                itemRow.className = "flex items-center justify-between py-3";
+                itemRow.innerHTML = `
+                    <div class="flex-1 pr-4">
+                        <h4 class="font-bold text-stone-900 text-sm">${p.name[currentLang]}</h4>
+                        <span class="text-xs text-stone-500">$${p.price.toFixed(2)} each</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="flex items-center space-x-1 bg-stone-100 rounded-lg p-0.5">
+                            <button onclick="updateQty(${p.id}, -1)" class="w-6 h-6 rounded bg-white text-stone-700 text-xs font-bold shadow-sm">-</button>
+                            <span class="w-6 text-center text-xs font-bold text-stone-900">${qty}</span>
+                            <button onclick="updateQty(${p.id}, 1)" class="w-6 h-6 rounded bg-brand-500 text-white text-xs font-bold shadow-sm">+</button>
+                        </div>
+                        <span class="text-xs font-bold text-stone-900 w-16 text-right">$${sub.toFixed(2)}</span>
+                    </div>
+                `;
+                container.appendChild(itemRow);
+            });
+
+            modalTotalPrice.innerText = `$${totalPrice.toFixed(2)} CAD`;
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function openCheckoutModal() {
+            toggleCartModal();
+            const modal = document.getElementById('checkout-modal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            const modal = document.getElementById('checkout-modal');
+            modal.classList.add('hidden');
+        }
+
+        function submitWhatsAppOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const fulfillment = document.getElementById('cust-fulfillment').value;
+            const address = document.getElementById('cust-address').value;
+
+            let orderText = `Hello Sin Fronteras! I would like to place an order:%0A%0A`;
+            orderText += `*Customer:* ${name}%0A`;
+            orderText += `*Phone:* ${phone}%0A`;
+            orderText += `*Fulfillment:* ${fulfillment}%0A`;
+            if(address) orderText += `*Address/Notes:* ${address}%0A%0A`;
+            orderText += `*Items:*%0A`;
+
+            let totalPrice = 0;
+            for (const [id, qty] of Object.entries(cart)) {
+                const p = products.find(prod => prod.id == id);
+                if (p) {
+                    const sub = qty * p.price;
+                    totalPrice += sub;
+                    orderText += `- ${qty}x ${p.name.en} ($${sub.toFixed(2)})%0A`;
+                }
+            }
+
+            orderText += `%0A*Total Amount:* $${totalPrice.toFixed(2)} CAD`;
+
+            const whatsappNumber = "14165550199"; // Sin Fronteras WhatsApp number placeholder
+            const url = `https://wa.me/${whatsappNumber}?text=${orderText}`;
+            window.open(url, '_blank');
+        }
+
+        // Initialize page on load
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
 </body>
 </html>
