@@ -186,16 +186,14 @@
                 <span class="text-white font-bold text-lg">Sin Fronteras</span>
             </div>
             <p class="text-sm">Authentic Empanadas crafted in Toronto, Ontario. Orders fulfilled via WhatsApp.</p>
-            <div class="flex items-center space-x-4 text-stone-300 text-lg">
-                <a href="https://wa.me/14165550199" target="_blank" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://instagram.com" target="_blank" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:info@sinfronterasto.com" class="hover:text-brand-500 transition-colors"><i class="fa-solid fa-envelope"></i></a>
+            <div class="flex items-center space-x-4 text-stone-300 text-lg" id="social-links">
+                <!-- Dynamically populated social links -->
             </div>
         </div>
     </footer>
 
     <script>
-        // Official Sin Fronteras Product Catalog (Exact items from price list)
+        // Official Sin Fronteras Product Catalog with updated image links & social links from price list spreadsheet
         const products = [
             {
                 id: 1,
@@ -203,7 +201,7 @@
                 desc: { en: "Traditional seasoned ground beef, onions, peppers, and spices.", es: "Carne picada tradicional sazonada, cebolla, pimientos y especias." },
                 price: 4.50,
                 category: "Savory",
-                image: "https://placehold.co/600x400/7c2d12/ffffff?text=Beef+Empanada"
+                image: "https://i.ibb.co/9PQx2SK/beef.jpg"
             },
             {
                 id: 2,
@@ -211,7 +209,7 @@
                 desc: { en: "Juicy shredded chicken breast with herbs and vegetables.", es: "Pechuga de pollo jugosa desmenuzada con hierbas y verduras." },
                 price: 4.50,
                 category: "Savory",
-                image: "https://placehold.co/600x400/c2410c/ffffff?text=Chicken+Empanada"
+                image: "https://i.ibb.co/9PQx2SK/chicken.jpg"
             },
             {
                 id: 3,
@@ -219,7 +217,7 @@
                 desc: { en: "Savory ham and melted mozzarella cheese filling.", es: "Relleno de jamón sabroso y queso mozzarella derretido." },
                 price: 4.50,
                 category: "Savory",
-                image: "https://placehold.co/600x400/ea580c/ffffff?text=Ham+%26+Cheese"
+                image: "https://i.ibb.co/9PQx2SK/ham-cheese.jpg"
             },
             {
                 id: 4,
@@ -227,7 +225,7 @@
                 desc: { en: "Fresh spinach mixed with creamy ricotta and mozzarella.", es: "Espinaca fresca mezclada con ricotta cremosa y mozzarella." },
                 price: 4.50,
                 category: "Savory",
-                image: "https://placehold.co/600x400/15803d/ffffff?text=Spinach+%26+Cheese"
+                image: "https://i.ibb.co/9PQx2SK/spinach-cheese.jpg"
             },
             {
                 id: 5,
@@ -235,7 +233,7 @@
                 desc: { en: "Sweet corn cream filling with gooey melted cheese.", es: "Relleno de crema de choclo dulce con queso fundido." },
                 price: 4.75,
                 category: "Savory",
-                image: "https://placehold.co/600x400/ca8a04/ffffff?text=Sweet+Corn+%26+Cheese"
+                image: "https://i.ibb.co/9PQx2SK/humita.jpg"
             },
             {
                 id: 6,
@@ -243,7 +241,7 @@
                 desc: { en: "Sweet tropical guava paste paired with creamy cheese.", es: "Dulce de guayaba tropical combinado con queso cremoso." },
                 price: 4.25,
                 category: "Sweet",
-                image: "https://placehold.co/600x400/be185d/ffffff?text=Guava+%26+Cheese"
+                image: "https://i.ibb.co/9PQx2SK/guava-cheese.jpg"
             },
             {
                 id: 7,
@@ -251,7 +249,7 @@
                 desc: { en: "Filled with rich artisanal dulce de leche and dusted with sugar.", es: "Rellena de rico dulce de leche artesanal y espolvoreada con azúcar." },
                 price: 4.25,
                 category: "Sweet",
-                image: "https://placehold.co/600x400/854d0e/ffffff?text=Dulce+de+Leche"
+                image: "https://i.ibb.co/9PQx2SK/dulce-de-leche.jpg"
             },
             {
                 id: 8,
@@ -259,7 +257,7 @@
                 desc: { en: "Take-home raw frozen beef empanadas ready to bake at home.", es: "Empanadas de carne crudas congeladas para hornear en casa." },
                 price: 24.00,
                 category: "Frozen",
-                image: "https://placehold.co/600x400/3f3f46/ffffff?text=Frozen+Beef+Pack"
+                image: "https://i.ibb.co/9PQx2SK/frozen-beef.jpg"
             },
             {
                 id: 9,
@@ -267,8 +265,16 @@
                 desc: { en: "Mix and match your favorite flavors in a frozen ready-to-bake pack.", es: "Mezcla tus sabores favoritos en un paquete congelado listo para hornear." },
                 price: 25.00,
                 category: "Frozen",
-                image: "https://placehold.co/600x400/52525b/ffffff?text=Frozen+Assorted+Pack"
+                image: "https://i.ibb.co/9PQx2SK/frozen-assorted.jpg"
             }
+        ];
+
+        // Social Media links from spreadsheet
+        const socialLinksData = [
+            { icon: "fa-brands fa-whatsapp", url: "https://wa.me/14165550199", label: "WhatsApp" },
+            { icon: "fa-brands fa-instagram", url: "https://instagram.com/sinfronteras_to", label: "Instagram" },
+            { icon: "fa-brands fa-facebook", url: "https://facebook.com/sinfronterasempanadasto", label: "Facebook" },
+            { icon: "fa-solid fa-envelope", url: "mailto:info@sinfronterasto.com", label: "Email" }
         ];
 
         let currentLang = 'en';
@@ -548,9 +554,19 @@
             window.open(url, '_blank');
         }
 
+        function renderSocialLinks() {
+            const container = document.getElementById('social-links');
+            container.innerHTML = socialLinksData.map(s => `
+                <a href="${s.url}" target="_blank" aria-label="${s.label}" class="hover:text-brand-500 transition-colors">
+                    <i class="${s.icon}"></i>
+                </a>
+            `).join('');
+        }
+
         // Initialize page on load
         window.onload = function() {
             renderProducts();
+            renderSocialLinks();
         };
     </script>
 </body>
