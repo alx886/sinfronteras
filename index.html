@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confecciones Mary - Uniformes Escolares</title>
+  <title>Sin Fronteras - Empanadas & Sabor Casero Chileno</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +26,7 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-950">
+<body class="bg-slate-50 text-slate-900">
 
   <div id="root"></div>
 
@@ -54,12 +54,6 @@
       </svg>
     );
 
-    const MinusIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <line x1="5" y1="12" x2="19" y2="12" />
-      </svg>
-    );
-
     const SendIcon = ({ className }) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
         <line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" />
@@ -69,18 +63,6 @@
     const SearchIcon = ({ className }) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
         <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-    );
-
-    const PhoneIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-      </svg>
-    );
-
-    const AwardIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <circle cx="12" cy="8" r="7" /><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
       </svg>
     );
 
@@ -96,192 +78,98 @@
       </svg>
     );
 
-    const MapPinIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
-      </svg>
-    );
-
-    const NavigationIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <polygon points="3 11 22 2 13 21 11 13 3 11" />
-      </svg>
-    );
-
-    const ShirtIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l1.54 13.9a2 2 0 0 0 2 1.77h12.36a2 2 0 0 0 2-1.77l1.54-13.9a2 2 0 0 0-1.34-2.23z" />
-      </svg>
-    );
-
-    // Optimized Trust Badge Icons
-    const PinkMeasureHeartIcon = ({ className }) => (
+    const HeartIcon = ({ className }) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
         <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2a5.5 5.5 0 0 0-5 5.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-        {/* Sewing tape markings inside the heart */}
-        <line x1="12" y1="8" stroke="currentColor" x2="14" y2="8" />
-        <line x1="12" y1="11" stroke="currentColor" x2="15" y2="11" />
-        <line x1="12" y1="14" stroke="currentColor" x2="14" y2="14" />
-        <line x1="12" y1="17" stroke="currentColor" x2="16" y2="17" />
-        <path d="M12 5v15" strokeDasharray="1.5 1.5" />
       </svg>
     );
 
-    const ChileFlagIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className}>
-        {/* White top right half */}
-        <rect x="2" y="4" width="20" height="16" rx="2" fill="#FFFFFF" />
-        {/* Blue canton top left quarter */}
-        <path d="M2 4h10v8H2V4z" fill="#0039A6" />
-        {/* Red bottom bar half */}
-        <path d="M2 12h20v8H2v-8z" fill="#D52B1E" />
-        {/* Rounded border corner guard */}
-        <rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
-        {/* Single White Star (La Estrella Solitaria) */}
-        <polygon points="7,6.5 7.5,8 9,8 7.8,9 8.2,10.5 7,9.6 5.8,10.5 6.2,9 5,8 6.5,8" fill="#FFFFFF" />
-      </svg>
-    );
-
-    const GoldenLaurelTrustIcon = ({ className }) => (
+    const FlameIcon = ({ className }) => (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        {/* Laurel Wreath */}
-        <path d="M4 10a8 8 0 0 1 8-8 8 8 0 0 1 8 8c0 4.5-4 8-8 11.5C8 18 4 14.5 4 10Z" />
-        <path d="M12 2v10" strokeDasharray="2 2" />
-        {/* Inner Checked Safe Shield */}
-        <path d="M12 6a3 3 0 0 0-3 3v2c0 2 3 3.5 3 3.5s3-1.5 3-3.5V9a3 3 0 0 0-3-3Z" fill="#FBBF24" className="stroke-indigo-950" />
+        <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3.25a6.974 6.974 0 0 0 1.5 3.25z" />
       </svg>
     );
 
-    const YearRoundIcon = ({ className }) => (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <circle cx="12" cy="12" r="10" />
-        {/* Circular loop/cycle */}
-        <path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
-        {/* Four seasonality indicators */}
-        <line x1="12" y1="2" x2="12" y2="6" />
-        <line x1="12" y1="18" x2="12" y2="22" />
-        <line x1="2" y1="12" x2="6" y2="12" />
-        <line x1="18" y1="12" x2="22" y2="12" />
+    const StarIcon = ({ className }) => (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
     );
 
-    const ALL_SIZES = ["3", "4", "6", "8", "10", "12", "14", "16", "S", "M", "L", "XL", "2XL", "3XL"];
-
-    // Product Catalog Matrix with newly updated photos (Optimized based on selection)
+    // Products Data
     const PRODUCTS = [
       {
         id: 1,
-        name: "Polera de Piqué",
-        description: "Polera de diario oficial con cuello tejido, botones ultra resistentes e insignia bordada en alta definición de la Escuela El Carmen 270.",
-        sizes: ALL_SIZES,
+        name: "Empanada Tradicional de Pino",
+        description: "Rellena de jugosa carne picada seleccionada, cebolla suave, huevo duro, aceituna y especias tradicionales horneadas a la perfección.",
+        sizes: ["Unidad", "Media Docena", "Docena"],
         prices: {
-          "3": 8000, "4": 8900, "6": 8900, "8": 9000, "10": 10900, "12": 10900, "14": 11900, "16": 11900,
-          "S": 12900, "M": 12900, "L": 12900, "XL": 13900, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+          "Unidad": 2500, "Media Docena": 14000, "Docena": 26000
         },
-        image: "https://i.ibb.co/F4thKvpF/polerapique.png"
+        image: "https://i.ibb.co/0RkMxKrR/pino-1.jpg"
       },
       {
         id: 2,
-        name: "Polera De Deporte",
-        description: "Polera deportiva oficial de tela respirable y de secado rápido. Ideal para las clases de educación física y talleres del colegio.",
-        sizes: ALL_SIZES,
+        name: "Empanada de Queso Fundido",
+        description: "Queso mantecoso estirado y fundido dentro de una masa dorada, crujiente por fuera y suave por dentro.",
+        sizes: ["Unidad", "Media Docena", "Docena"],
         prices: {
-          "3": 7000, "4": 7900, "6": 7900, "8": 8000, "10": 9900, "12": 9900, "14": 10900, "16": 10900,
-          "S": 11900, "M": 11900, "L": 11900, "XL": 12900, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+          "Unidad": 2200, "Media Docena": 12500, "Docena": 23000
         },
-        image: "https://i.ibb.co/tMMwFLbT/polerasport.png"
+        image: "https://i.ibb.co/qL7dBRHC/queso-1.jpg"
       },
       {
         id: 3,
-        name: "Buzo Completo",
-        description: "Conjunto deportivo escolar que incluye tanto la chaqueta de buzo como el pantalón. Diseñado con los colores institucionales oficiales.",
-        sizes: ALL_SIZES,
+        name: "Empanada Queso Champiñón",
+        description: "Exquisita combinación de queso mantecoso fundido con champiñones frescos salteados.",
+        sizes: ["Unidad", "Media Docena", "Docena"],
         prices: {
-          "3": 17900, "4": 18900, "6": 18900, "8": 19000, "10": 20900, "12": 20900, "14": 22900, "16": 22900,
-          "S": 24900, "M": 24900, "L": 24900, "XL": 26900, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+          "Unidad": 2800, "Media Docena": 15500, "Docena": 29000
         },
-        image: "https://i.ibb.co/gZMn38hD/buzo.png"
+        image: "https://i.ibb.co/VYR92jKp/queso-champinones.jpg"
       },
       {
         id: 4,
-        name: "Chaqueta de Buzo",
-        description: "Chaqueta deportiva oficial con cierre completo, bolsillos a los lados y cuello alto para proteger del frío. No se deforma con los lavados.",
-        sizes: ALL_SIZES,
+        name: "Empanada Napolitana",
+        description: "Deliciosa combinación de jamón ahumado, queso fundido, tomates maduros y un toque de orégano fresco.",
+        sizes: ["Unidad", "Media Docena", "Docena"],
         prices: {
-          "3": 10000, "4": 12000, "6": 12000, "8": 13000, "10": 14000, "12": 14000, "14": 15000, "16": 15000,
-          "S": 16000, "M": 16000, "L": 16000, "XL": 17000, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+          "Unidad": 2600, "Media Docena": 14500, "Docena": 27000
         },
-        image: "https://i.ibb.co/qLXgB5z3/chaquetabuzo.png"
+        image: "https://i.ibb.co/27DmxVfg/Empanadas-Napolitana.png"
       },
       {
         id: 5,
-        name: "Pantalón De Buzo",
-        description: "Pantalón de buzo suelto y cómodo con pretina elástica reforzada. Costuras interiores de alta resistencia para aguantar los juegos en el patio.",
-        sizes: ALL_SIZES,
+        name: "Empanada Queso Jamón",
+        description: "Clásica y favorita empanada rellena de generoso queso fundido y jamón de primera calidad.",
+        sizes: ["Unidad", "Media Docena", "Docena"],
         prices: {
-          "3": 8000, "4": 9000, "6": 9000, "8": 10000, "10": 11000, "12": 11000, "14": 13000, "16": 13000,
-          "S": 14000, "M": 14000, "L": 14000, "XL": 15000, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+          "Unidad": 2500, "Media Docena": 14000, "Docena": 26000
         },
-        image: "https://i.ibb.co/LX32hyZb/pantalonbuzo.png"
+        image: "https://i.ibb.co/WWWQ1Zzw/quesojamon.jpg"
       },
       {
         id: 6,
-        name: "Polerón de Polar",
-        description: "Polerón térmico súper abrigador con tecnología antipilling (no se le hacen motas). Ideal para pasar el invierno en la sala de clases.",
-        sizes: ALL_SIZES,
+        name: "Empanada Queso Espinaca",
+        description: "Frescas hojas de espinaca salteadas mezcladas con una suave y cremosa selección de quesos.",
+        sizes: ["Unidad", "Media Docena", "Docena"],
         prices: {
-          "3": 16000, "4": 16000, "6": 16000, "8": 17000, "10": 18900, "12": 18900, "14": 20000, "16": 20000,
-          "S": 22000, "M": 22000, "L": 22000, "XL": 24000, "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+          "Unidad": 2600, "Media Docena": 14500, "Docena": 27000
         },
-        image: "https://i.ibb.co/N2RGz2Ht/polar.png"
+        image: "https://i.ibb.co/BVgRn3s2/queso-espinaca.jpg"
       },
       {
         id: 7,
-        name: "Polerón Generacional A",
-        description: "Edición especial diseñada para cada generación de la Escuela El Carmen. El diseño de esta prenda cambia anualmente y se confecciona a la medida exacta de cada estudiante para un calce perfecto, razón por la cual requiere coordinarse directamente en el taller físico de costura.",
-        sizes: ALL_SIZES,
+        name: "Empanada de Atún",
+        description: "Rellena de tierno atún selecto con sofrito casero de cebolla, tomate y especias.",
+        sizes: ["Unidad", "Media Docena", "Docena"],
         prices: {
-          "3": "CONSULTENOS", "4": "CONSULTENOS", "6": "CONSULTENOS", "8": "CONSULTENOS", "10": "CONSULTENOS", "12": "CONSULTENOS", "14": "CONSULTENOS", "16": "CONSULTENOS",
-          "S": "CONSULTENOS", "M": "CONSULTENOS", "L": "CONSULTENOS", "XL": "CONSULTENOS", "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
+          "Unidad": 2900, "Media Docena": 16000, "Docena": 30000
         },
-        image: "https://i.ibb.co/VWf3MpDg/Generacional-A.jpg"
-      },
-      {
-        id: 8,
-        name: "Polerón Generacional B",
-        description: "Edición especial diseñada para cada generación de la Escuela El Carmen. El diseño de esta prenda cambia anualmente y se confecciona a la medida exacta de cada estudiante para un calce perfecto, razón por la cual requiere coordinarse directamente en el taller físico de costura.",
-        sizes: ALL_SIZES,
-        prices: {
-          "3": "CONSULTENOS", "4": "CONSULTENOS", "6": "CONSULTENOS", "8": "CONSULTENOS", "10": "CONSULTENOS", "12": "CONSULTENOS", "14": "CONSULTENOS", "16": "CONSULTENOS",
-          "S": "CONSULTENOS", "M": "CONSULTENOS", "L": "CONSULTENOS", "XL": "CONSULTENOS", "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
-        },
-        image: "https://i.ibb.co/LF172Jx/Generacional-B.jpg"
-      },
-      {
-        id: 9,
-        name: "Polerón Generacional C",
-        description: "Edición especial diseñada para cada generación de la Escuela El Carmen. El diseño de esta prenda cambia anualmente y se confecciona a la medida exacta de cada estudiante para un calce perfecto, razón por la cual requiere coordinarse directamente en el taller físico de costura.",
-        sizes: ALL_SIZES,
-        prices: {
-          "3": "CONSULTENOS", "4": "CONSULTENOS", "6": "CONSULTENOS", "8": "CONSULTENOS", "10": "CONSULTENOS", "12": "CONSULTENOS", "14": "CONSULTENOS", "16": "CONSULTENOS",
-          "S": "CONSULTENOS", "M": "CONSULTENOS", "L": "CONSULTENOS", "XL": "CONSULTENOS", "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
-        },
-        image: "https://i.ibb.co/CsSyvXjX/Generacional-C.jpg"
-      },
-      {
-        id: 10,
-        name: "Polerón Generacional D",
-        description: "Edición especial diseñada para cada generación de la Escuela El Carmen. El diseño de esta prenda cambia anualmente y se confecciona a la medida exacta de cada estudiante para un calce perfecto, razón por la cual requiere coordinarse directamente en el taller físico de costura.",
-        sizes: ALL_SIZES,
-        prices: {
-          "3": "CONSULTENOS", "4": "CONSULTENOS", "6": "CONSULTENOS", "8": "CONSULTENOS", "10": "CONSULTENOS", "12": "CONSULTENOS", "14": "CONSULTENOS", "16": "CONSULTENOS",
-          "S": "CONSULTENOS", "M": "CONSULTENOS", "L": "CONSULTENOS", "XL": "CONSULTENOS", "2XL": "CONSULTENOS", "3XL": "CONSULTENOS"
-        },
-        image: "https://i.ibb.co/2ps5QW0/Generacional-D.png"
+        image: "https://i.ibb.co/zhDFWkkW/empanada-atun.png"
       }
     ];
 
-    // Image Magnification Component (Desk & Interactive Touch Devices)
     const ZoomImage = ({ src, alt }) => {
       const [zoomStyle, setZoomStyle] = useState({ display: 'none' });
       const [isZooming, setIsZooming] = useState(false);
@@ -303,7 +191,7 @@
       return (
         <div 
           ref={containerRef}
-          className="relative overflow-hidden rounded-2xl bg-slate-200 aspect-[3/4] cursor-crosshair touch-none shadow-md border border-slate-300"
+          className="relative overflow-hidden rounded-2xl bg-slate-100 aspect-[4/3] cursor-crosshair touch-none shadow-md border border-slate-200"
           onMouseEnter={() => setIsZooming(true)}
           onMouseLeave={() => setIsZooming(false)}
           onMouseMove={handleMouseMove}
@@ -315,18 +203,17 @@
           />
           {isZooming && (
             <div 
-              className="absolute inset-0 pointer-events-none transition-opacity duration-300 border-4 border-indigo-600/20"
+              className="absolute inset-0 pointer-events-none transition-opacity duration-300 border-4 border-[#ce1126]/20"
               style={zoomStyle}
             />
           )}
-          <div className="absolute bottom-3 right-3 bg-indigo-950/80 backdrop-blur-sm p-1.5 rounded-lg">
-            <SearchIcon className="w-4 h-4 text-white" />
+          <div className="absolute bottom-3 right-3 bg-[#003366]/85 backdrop-blur-sm p-1.5 rounded-lg text-white">
+            <SearchIcon className="w-4 h-4" />
           </div>
         </div>
       );
     };
 
-    // Compact Product Tile layout for high quality desktop/mobile grid view
     const ProductCard = ({ product, onSelect }) => {
       const trimmedDescription = product.description.length > 80 
         ? product.description.substring(0, 80) + '...' 
@@ -335,9 +222,9 @@
       return (
         <div 
           onClick={() => onSelect(product)}
-          className="group flex flex-col h-full bg-white rounded-2xl p-4 shadow-md hover:shadow-xl border-2 border-slate-200 hover:border-indigo-600 transition-all duration-300 cursor-pointer"
+          className="group flex flex-col h-full bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl border-2 border-slate-200 hover:border-[#ce1126] transition-all duration-300 cursor-pointer"
         >
-          <div className="relative overflow-hidden rounded-xl aspect-[3/4] bg-slate-100">
+          <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100">
             <img 
               src={product.image} 
               alt={product.name} 
@@ -347,27 +234,26 @@
           
           <div className="mt-4 flex-1 flex flex-col justify-between">
             <div>
-              <h3 className="font-extrabold text-base text-indigo-950 leading-tight uppercase tracking-tight mb-1">
+              <h3 className="font-extrabold text-base text-slate-900 leading-tight tracking-tight mb-1">
                 {product.name}
               </h3>
-              <p className="text-[11px] text-slate-600 font-semibold leading-relaxed mb-3">
+              <p className="text-[11px] text-slate-600 font-medium leading-relaxed mb-3">
                 {trimmedDescription}
               </p>
             </div>
             
             <button 
-              className="w-full bg-slate-100 text-indigo-950 hover:bg-indigo-950 hover:text-white py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300"
+              className="w-full bg-slate-100 text-slate-900 group-hover:bg-[#ce1126] group-hover:text-white py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-sm"
             >
-              Ver Opciones
+              Ver Opciones y Precios
             </button>
           </div>
         </div>
       );
     };
 
-    // Detailed Modal with Configuration selectors for specific sizing & custom prices
     const ProductDetailModal = ({ product, onClose, onAdd }) => {
-      const [selectedSize, setSelectedSize] = useState("10");
+      const [selectedSize, setSelectedSize] = useState(product ? product.sizes[0] : "");
       const [quantity, setQuantity] = useState(1);
 
       if (!product) return null;
@@ -382,15 +268,12 @@
 
       return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-          {/* Glassmorphism background blur overlay */}
           <div 
-            className="fixed inset-0 bg-indigo-950/40 backdrop-blur-md transition-opacity duration-300" 
+            className="fixed inset-0 bg-[#003366]/60 backdrop-blur-sm transition-opacity duration-300" 
             onClick={onClose} 
           />
           
           <div className="relative bg-white w-full max-w-4xl rounded-[2rem] shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-200 z-10 flex flex-col md:flex-row gap-8 overflow-hidden max-h-[90vh]">
-            
-            {/* Close Modal Button */}
             <button 
               onClick={onClose} 
               className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full transition-colors z-20"
@@ -398,48 +281,44 @@
               <XIcon className="w-5 h-5" />
             </button>
             
-            {/* Image Column */}
             <div className="w-full md:w-1/2 flex-shrink-0">
               <ZoomImage src={product.image} alt={product.name} />
             </div>
             
-            {/* Configuration Column */}
             <div className="flex-1 flex flex-col justify-between overflow-y-auto pr-1">
               <div>
-                <h3 className="font-black text-3xl text-indigo-950 leading-tight uppercase mb-2 mt-2">
+                <h3 className="font-black text-2xl md:text-3xl text-slate-900 leading-tight mb-2 mt-2">
                   {product.name}
                 </h3>
                 
-                {/* Responsive dynamic price display */}
                 <div className="flex items-center gap-2 mb-4">
                   {isCustomPrice ? (
-                    <span className="text-xl font-black text-indigo-700 uppercase tracking-tight">Consultar Valor</span>
+                    <span className="text-xl font-black text-[#ce1126] uppercase">Consultar Valor</span>
                   ) : (
-                    <span className="text-3xl font-black text-indigo-700">${currentPrice.toLocaleString('es-CL')}</span>
+                    <span className="text-3xl font-black text-[#ce1126]">${currentPrice.toLocaleString('es-CL')}</span>
                   )}
                   <span className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">
-                    {isCustomPrice ? "Hecho a medida" : "Valor según talla"}
+                    {isCustomPrice ? "Preparación especial" : `Precio por ${selectedSize.toLowerCase()}`}
                   </span>
                 </div>
                 
-                <p className="text-xs text-slate-700 font-semibold leading-relaxed mb-6">
+                <p className="text-xs text-slate-700 font-medium leading-relaxed mb-6">
                   {product.description}
                 </p>
 
-                {/* Size Grid options */}
                 <div className="space-y-3 mb-6">
-                  <label className="text-xs uppercase font-black text-indigo-950 tracking-widest block border-b border-slate-100 pb-1">
-                    Selecciona la Talla:
+                  <label className="text-xs uppercase font-black text-slate-900 tracking-widest block border-b border-slate-100 pb-1">
+                    Presentación / Cantidad:
                   </label>
-                  <div className="grid grid-cols-5 gap-2 max-h-[110px] overflow-y-auto pr-1">
+                  <div className="flex flex-wrap gap-2">
                     {product.sizes.map(size => (
                       <button 
                         key={size}
                         onClick={() => setSelectedSize(size)}
-                        className={`h-9 text-[11px] font-black rounded-lg transition-all border-2 ${
+                        className={`px-4 py-2.5 text-xs font-extrabold rounded-xl transition-all border-2 ${
                           selectedSize === size 
-                          ? 'bg-indigo-950 border-indigo-950 text-white shadow-md' 
-                          : 'bg-white border-slate-300 text-slate-950 hover:border-indigo-600 hover:bg-slate-50'
+                          ? 'bg-[#003366] border-[#003366] text-white shadow-md' 
+                          : 'bg-white border-slate-300 text-slate-900 hover:border-[#ce1126] hover:bg-slate-50'
                         }`}
                       >
                         {size}
@@ -448,22 +327,21 @@
                   </div>
                 </div>
 
-                {/* Amount options */}
                 <div className="space-y-3 mb-6">
-                  <label className="text-xs uppercase font-black text-indigo-950 tracking-widest block border-b border-slate-100 pb-1">
-                    Cantidad:
+                  <label className="text-xs uppercase font-black text-slate-900 tracking-widest block border-b border-slate-100 pb-1">
+                    Cantidad de Porciones:
                   </label>
                   <div className="flex items-center gap-2">
                     <button 
                       onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
-                      className="w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-indigo-950 hover:text-white rounded-lg transition-all font-bold text-base"
+                      className="w-9 h-9 flex items-center justify-center bg-slate-100 hover:bg-[#003366] hover:text-white rounded-lg transition-all font-bold text-base"
                     >
                       -
                     </button>
-                    <span className="text-base font-black w-10 text-center text-slate-950">{quantity}</span>
+                    <span className="text-base font-black w-10 text-center text-slate-900">{quantity}</span>
                     <button 
                       onClick={() => setQuantity(prev => prev + 1)}
-                      className="w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-indigo-950 hover:text-white rounded-lg transition-all font-bold text-base"
+                      className="w-9 h-9 flex items-center justify-center bg-slate-100 hover:bg-[#003366] hover:text-white rounded-lg transition-all font-bold text-base"
                     >
                       +
                     </button>
@@ -471,25 +349,22 @@
                 </div>
               </div>
 
-              {/* Action Button */}
               <div className="space-y-4 border-t border-slate-100 pt-4">
                 {!isCustomPrice && (
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500 font-bold uppercase">Subtotal del item:</span>
-                    <span className="text-xl font-black text-slate-950">${(currentPrice * quantity).toLocaleString('es-CL')} CLP</span>
+                    <span className="text-xs text-slate-500 font-bold uppercase">Subtotal:</span>
+                    <span className="text-xl font-black text-slate-900">${(currentPrice * quantity).toLocaleString('es-CL')} CLP</span>
                   </div>
                 )}
                 
                 <button 
                   onClick={handleAddToCart}
-                  className="w-full bg-indigo-950 hover:bg-indigo-800 text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all active:scale-95 shadow-lg uppercase tracking-widest text-xs"
+                  className="w-full bg-[#ce1126] hover:bg-[#b00f20] text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all active:scale-95 shadow-lg uppercase tracking-widest text-xs"
                 >
-                  <PlusIcon className="w-5 h-5 mr-1" /> Agregar al Carro
+                  <PlusIcon className="w-5 h-5 mr-1" /> Agregar al Pedido
                 </button>
               </div>
-              
             </div>
-            
           </div>
         </div>
       );
@@ -502,16 +377,11 @@
       const [formData, setFormData] = useState({
         name: '',
         phone: '',
-        commune: '',
-        grade: '',
+        address: '',
         notes: ''
       });
 
-      const BUSINESS_PHONE = "56994754523"; 
-      const PICKUP_ADDRESS = "Avenida Principal Capitán Ignacio Carrera Pinto 805, Recoleta";
-      
-      const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(PICKUP_ADDRESS)}`;
-      const APPLE_MAPS_URL = `https://maps.apple.com/?q=${encodeURIComponent(PICKUP_ADDRESS)}`;
+      const BUSINESS_PHONE = "56943854919"; // Susana & Willie's WhatsApp
 
       const addToCart = (product, size, qtyToAdd = 1) => {
         const priceForSize = product.prices[size];
@@ -557,286 +427,167 @@
 
       const handleSendWhatsApp = (e) => {
         e.preventDefault();
-        if (!formData.name || !formData.phone || !formData.commune) return;
+        if (!formData.name || !formData.phone) return;
 
-        let message = `*NUEVO PEDIDO (RETIRO) - CONFECCIONES MARY*\n`;
-        message += `_Escuela El Carmen 270_\n\n`;
-        message += `👤 *Nombre Apoderado:* ${formData.name}\n`;
+        let message = `*🇨🇱 ¡NUEVO PEDIDO - SIN FRONTERAS EMPANADAS!*\n`;
+        message += `👤 *Cliente:* ${formData.name}\n`;
         message += `📞 *WhatsApp:* ${formData.phone}\n`;
-        message += `📍 *Comuna de Procedencia:* ${formData.commune}\n`;
-        if(formData.grade) message += `🏫 *Curso Estudiante:* ${formData.grade}\n`;
-        if(formData.notes) message += `📝 *Indicaciones/Notas:* ${formData.notes}\n`;
-        message += `\n📦 *MODALIDAD:* RETIRO Y PAGO PRESENCIAL\n`;
-        message += `📍 *Dirección de Retiro:* ${PICKUP_ADDRESS}\n`;
+        if(formData.address) message += `📍 *Dirección / Entrega:* ${formData.address}\n`;
+        if(formData.notes) message += `📝 *Notas:* ${formData.notes}\n`;
         message += `\n--- *DETALLE DEL PEDIDO* ---\n`;
 
         cart.forEach(item => {
           const formattedPrice = typeof item.price === 'number' 
             ? `$${(item.price * item.quantity).toLocaleString('es-CL')} CLP` 
-            : 'Por convenir (confección a medida)';
-          message += `• ${item.quantity}x ${item.name}\n  └ Talla: ${item.selectedSize} - ${formattedPrice}\n`;
+            : 'A convenir';
+          message += `• ${item.quantity}x ${item.name} (${item.selectedSize}) - ${formattedPrice}\n`;
         });
 
-        message += `\n💰 *TOTAL ESTIMADO DE PRENDAS ESTÁNDAR:* $${total.toLocaleString('es-CL')} CLP`;
+        message += `\n💰 *TOTAL ESTIMADO:* $${total.toLocaleString('es-CL')} CLP`;
         if (hasCustomItems) {
-          message += `\n⚠️ *Nota:* El pedido incluye prendas personalizadas (Polerón Generacional o tallas especiales 2XL/3XL) cuyo valor final a medida se acuerda en el taller.`;
+          message += `\n⚠️ Incluye preparaciones especiales a consultar.`;
         }
-        message += `\n\n_Hola Mary, vi tu página web y te escribo para encargarte los uniformes de la Escuela El Carmen. Me gustaría coordinar el retiro y pago presencial en tu taller de Av. Principal Cap. Ignacio Carrera Pinto 805, Recoleta._`;
+        message += `\n\n_Hola Susana y Willie, les escribo desde su página web para hacerles este pedido. ¡Quedo atento(a)!_`;
 
         window.open(`https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
       };
 
       return (
-        <div className="min-h-screen bg-slate-50 font-sans text-slate-950">
+        <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
           
-          {/* Main Navigation (Standard-compliant layout structure) */}
-          <nav className="relative z-40 bg-indigo-950 border-b-4 border-amber-400 shadow-xl" aria-label="Navegación principal">
-            <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between relative">
+          {/* Top National Ribbon Accent */}
+          <div className="h-2 w-full bg-gradient-to-r from-[#003366] via-white to-[#ce1126]"></div>
+
+          {/* Navigation Bar - White, Taller, Large Logo */}
+          <nav className="sticky top-0 z-40 bg-white border-b-2 border-slate-200 shadow-md" aria-label="Navegación principal">
+            <div className="max-w-7xl mx-auto px-6 h-28 flex items-center justify-between">
               
-              {/* Absolute logo wrapper */}
-              <a href="#" className="absolute left-4 top-1 z-50 flex items-center" aria-label="Inicio Confecciones Mary">
-                <img 
-                  src="https://i.ibb.co/k6yL62mW/conflogo2.png" 
-                  alt="Confecciones Mary Logo" 
-                  className="h-28 md:h-36 w-auto object-contain drop-shadow-xl origin-top-left"
-                />
+              <a href="#" className="flex items-center gap-4 group" aria-label="Sin Fronteras Empanadas">
+                <div className="w-20 h-20 rounded-2xl flex items-center justify-center overflow-hidden shadow-md border-2 border-slate-200 bg-white shrink-0 group-hover:border-[#ce1126] transition-colors">
+                  <img 
+                    src="https://i.ibb.co/9PQx2SK/logo.jpg" 
+                    alt="Sin Fronteras Logo" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "https://placehold.co/120x120/ce1126/ffffff?text=SF";
+                    }}
+                  />
+                </div>
+                <div>
+                  <h1 className="text-[#003366] font-black text-2xl tracking-tight uppercase group-hover:text-[#ce1126] transition-colors">Sin Fronteras</h1>
+                  <p className="text-[#ce1126] text-xs font-black uppercase tracking-widest flex items-center gap-1 mt-0.5">
+                    Empanadas Chilenas <StarIcon className="w-3.5 h-3.5 text-[#ce1126] fill-current inline" />
+                  </p>
+                </div>
               </a>
               
-              <div className="flex-1"></div>
-              
-              <button 
-                onClick={() => setIsCartOpen(true)}
-                className="group relative p-3 bg-amber-400 hover:bg-white rounded-full transition-all shadow-lg active:scale-90 z-50"
-                aria-label="Ver carrito de compras"
-              >
-                <ShoppingCartIcon className="w-6 h-6 text-indigo-950" />
-                {cart.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-white text-indigo-950 text-[11px] font-black w-6 h-6 flex items-center justify-center rounded-full ring-2 ring-indigo-950 animate-pulse">
-                    {cart.reduce((acc, curr) => acc + curr.quantity, 0)}
-                  </span>
-                )}
-              </button>
+              <div className="flex items-center gap-4">
+                <a 
+                  href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-flex items-center gap-2 px-5 py-3 bg-[#003366] hover:bg-[#002244] text-white rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-md"
+                >
+                  Facebook Oficial <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
+                </a>
+
+                <button 
+                  onClick={() => setIsCartOpen(true)}
+                  className="relative p-3.5 bg-[#ce1126] hover:bg-[#b00f20] rounded-2xl text-white transition-all shadow-lg active:scale-90 flex items-center gap-2"
+                  aria-label="Ver carrito de compras"
+                >
+                  <ShoppingCartIcon className="w-6 h-6" />
+                  <span className="hidden md:inline font-black text-xs uppercase tracking-wider">Mi Pedido</span>
+                  {cart.length > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-[#003366] text-white text-xs font-black w-7 h-7 flex items-center justify-center rounded-full ring-2 ring-white shadow-md animate-pulse">
+                      {cart.reduce((acc, curr) => acc + curr.quantity, 0)}
+                    </span>
+                  )}
+                </button>
+              </div>
             </div>
           </nav>
 
-          {/* Hero Area */}
-          <header 
-            className="relative py-24 px-4 bg-white bg-cover bg-center overflow-hidden"
-            style={{ backgroundImage: "url('https://i.ibb.co/zW40Wg1p/sewing.jpg')" }}
-          >
-            <div className="absolute inset-0 bg-white/60 z-0" />
+          {/* Hero Section */}
+          <header className="relative py-24 px-4 bg-[#003366] text-white overflow-hidden bg-cover bg-center" style={{ backgroundImage: "linear-gradient(rgba(0, 51, 102, 0.94), rgba(0, 51, 102, 0.90)), url('https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=1600&q=80')" }}>
+            <div className="absolute top-0 right-0 p-12 opacity-10 pointer-events-none hidden lg:block">
+              <span className="text-[12rem] font-black">🇨🇱</span>
+            </div>
 
             <div className="relative z-10 max-w-4xl mx-auto text-center">
-              <span className="inline-block px-5 py-2 bg-amber-200 text-amber-950 rounded-lg text-xs font-black uppercase tracking-[0.2em] mb-8 border-2 border-amber-400 shadow-md">
-                📍 Retiro y pago exclusivo en taller (Recoleta) • Previa coordinación
+              <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#ce1126]/30 text-white rounded-xl text-xs font-black uppercase tracking-[0.2em] mb-6 border border-[#ce1126]/50 shadow-md">
+                <StarIcon className="w-4 h-4 text-[#ce1126] fill-current" /> Preparadas por Susana y Willie con auténtico sabor chileno
               </span>
               
-              <h2 className="text-5xl md:text-7xl font-black text-indigo-950 mb-8 leading-[0.9] tracking-tighter drop-shadow-[0_2px_8px_rgba(255,255,255,1)]">
-                Uniformes hechos para <br/>
-                <span className="text-indigo-600">durar todo el año escolar.</span>
+              <h2 className="text-4xl md:text-7xl font-black mb-6 tracking-tight leading-none text-white">
+                Empanadas tradicionales <br/>
+                <span className="text-[#ce1126]">hechas con el corazón.</span>
               </h2>
               
-              <p className="text-slate-900 max-w-2xl mx-auto text-xl font-bold leading-relaxed drop-shadow-[0_2px_6px_rgba(255,255,255,1)]">
-                Confección nacional de alta calidad pensada para el día a día de los escolares. Elige las tallas oficiales, ingresa tus datos y coordina el retiro presencial de forma directa por WhatsApp.
+              <p className="text-slate-200 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed mb-8">
+                Disfruta de nuestras exquisitas empanadas caseras. Elige tus favoritas, arma tu pedido y haz tu encargo directo por WhatsApp con nosotros.
               </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <a 
+                  href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-6 py-4 bg-[#ce1126] hover:bg-[#b00f20] text-white font-black rounded-xl uppercase tracking-wider text-xs transition-all shadow-lg inline-flex items-center gap-2 border border-red-500"
+                >
+                  Visítanos en Facebook <ExternalLinkIcon className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </header>
 
           {/* Trust Pillars */}
-          <section className="bg-white border-t border-slate-100 pb-16 px-4" aria-label="Pilares de confianza de confección">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <section className="bg-white border-b border-slate-200 py-16 px-4">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               
-              {/* Pillar 1: Personalized Service */}
-              <div className="flex flex-col items-center text-center p-6 bg-slate-50/50 rounded-3xl border-2 border-slate-100 hover:border-pink-600/30 hover:bg-slate-50 transition-all duration-300">
-                <div className="w-14 h-14 rounded-2xl bg-pink-50 flex items-center justify-center text-pink-500 mb-5 shadow-sm">
-                  <PinkMeasureHeartIcon className="w-7 h-7" />
+              <div className="flex flex-col items-center text-center p-6 bg-slate-50/80 rounded-3xl border-2 border-slate-200 shadow-sm">
+                <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center text-[#ce1126] mb-4 shadow-sm">
+                  <FlameIcon className="w-7 h-7" />
                 </div>
-                <h3 className="font-black text-base text-indigo-950 uppercase tracking-tight mb-2">Servicio a tu Medida</h3>
-                <p className="text-xs text-slate-700 font-semibold leading-relaxed">
-                  Atención exclusiva y personalizada. Mary atiende individualmente a cada apoderado para asesorar y asegurar el calce perfecto.
+                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">100% Artesanales</h3>
+                <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                  Masa estirada a mano e ingredientes frescos seleccionados cada día para garantizar el auténtico sabor tradicional.
                 </p>
               </div>
 
-              {/* Pillar 2: Made in Chile */}
-              <div className="flex flex-col items-center text-center p-6 bg-slate-50/50 rounded-3xl border-2 border-slate-100 hover:border-blue-600/30 hover:bg-slate-50 transition-all duration-300">
-                <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-5 shadow-sm border border-blue-100">
-                  <ChileFlagIcon className="w-9 h-7 text-indigo-950" />
+              <div className="flex flex-col items-center text-center p-6 bg-slate-50/80 rounded-3xl border-2 border-slate-200 shadow-sm">
+                <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center text-[#003366] mb-4 shadow-sm">
+                  <HeartIcon className="w-7 h-7" />
                 </div>
-                <h3 className="font-black text-base text-indigo-950 uppercase tracking-tight mb-2">Confección Nacional</h3>
-                <p className="text-xs text-slate-700 font-semibold leading-relaxed">
-                  100% Hecho en Chile. Confección artesanal y telas nacionales de alto tráfico para garantizar máxima durabilidad.
+                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">Sazón de Susana y Willie</h3>
+                <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                  Recetas chilenas preparadas con dedicación familiar y cariño incondicional en cada preparación.
                 </p>
               </div>
 
-              {/* Pillar 3: Since 1998 */}
-              <div className="flex flex-col items-center text-center p-6 bg-slate-50/50 rounded-3xl border-2 border-slate-100 hover:border-amber-500/30 hover:bg-slate-50 transition-all duration-300">
-                <div className="w-14 h-14 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-500 mb-5 shadow-sm">
-                  <GoldenLaurelTrustIcon className="w-7 h-7" />
+              <div className="flex flex-col items-center text-center p-6 bg-slate-50/80 rounded-3xl border-2 border-slate-200 shadow-sm sm:col-span-2 lg:col-span-1">
+                <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center text-[#ce1126] mb-4 shadow-sm">
+                  <ShieldCheckIcon className="w-7 h-7" />
                 </div>
-                <h3 className="font-black text-base text-indigo-950 uppercase tracking-tight mb-2">Garantía de Confianza</h3>
-                <p className="text-xs text-slate-700 font-semibold leading-relaxed">
-                  Desde 1998. Casi 30 años vistiendo con prestigio e impecable costura oficial a generaciones del colegio El Carmen.
+                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">Pedidos Directos</h3>
+                <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                  Coordinación rápida y personalizada por WhatsApp para asegurar tus empanadas calentitas en la mesa.
                 </p>
               </div>
 
-              {/* Pillar 4: Year-Round Availability */}
-              <div className="flex flex-col items-center text-center p-6 bg-slate-50/50 rounded-3xl border-2 border-slate-100 hover:border-emerald-600/30 hover:bg-slate-50 transition-all duration-300">
-                <div className="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-5 shadow-sm">
-                  <YearRoundIcon className="w-7 h-7" />
-                </div>
-                <h3 className="font-black text-base text-indigo-950 uppercase tracking-tight mb-2">Venta Todo el Año</h3>
-                <p className="text-xs text-slate-700 font-semibold leading-relaxed">
-                  Sin apuro escolar. Mantenemos stock y confección activa los 12 meses para reposiciónes o emergencias.
-                </p>
-              </div>
-
-            </div>
-          </section>
-
-          {/* Section: Escuela El Carmen 270 Alignment */}
-          <section 
-            className="relative text-white py-20 px-4 border-y-4 border-amber-400 bg-cover bg-center overflow-hidden"
-            style={{ backgroundImage: "url('https://i.ibb.co/tpVSjPtw/DSC-1262.jpg')" }}
-          >
-            <div className="absolute inset-0 bg-indigo-950/65" />
-
-            <div className="relative z-10 max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-              
-              {/* Institution Badge Card */}
-              <div className="w-full lg:w-1/3 flex flex-col items-center text-center bg-indigo-950/80 backdrop-blur-md rounded-3xl p-8 border-2 border-white/20 shadow-2xl relative overflow-hidden group">
-                <a 
-                  href="https://escuelaelcarmen.cl/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-40 h-40 rounded-2xl bg-slate-950/60 p-4 flex items-center justify-center shadow-inner mb-4 border border-white/15 transition-all duration-300 hover:border-amber-400/60 hover:bg-slate-900 group/logo relative cursor-pointer"
-                  title="Visitar sitio oficial de la Escuela El Carmen"
-                >
-                  <img 
-                    src="https://i.ibb.co/Q70MkfS1/esc270logo.png" 
-                    alt="Escuela El Carmen 270 Conchalí" 
-                    className="max-w-full max-h-full object-contain filter drop-shadow-[0_4px_8px_rgba(255,255,255,0.1)] transition-transform duration-300 group-hover/logo:scale-110"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=150";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-indigo-950/20 opacity-0 group-hover/logo:opacity-100 transition-opacity rounded-2xl flex items-center justify-center">
-                    <ExternalLinkIcon className="w-6 h-6 text-amber-400 drop-shadow-md" />
-                  </div>
-                </a>
-                
-                <h3 className="font-black text-lg text-amber-400 uppercase tracking-tight">Escuela El Carmen 270</h3>
-                <p className="text-xs text-indigo-200 font-bold uppercase tracking-widest mt-1">Conchalí</p>
-                
-                <a 
-                  href="https://escuelaelcarmen.cl/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-indigo-300 hover:text-amber-400 transition-colors"
-                >
-                  Visitar Sitio Web <ExternalLinkIcon className="w-3 h-3" />
-                </a>
-              </div>
-
-              {/* High Quality Legacy Review */}
-              <div className="w-full lg:w-2/3 space-y-6 drop-shadow-lg">
-                <div className="flex flex-wrap items-center gap-3">
-                  <span className="bg-amber-400 text-indigo-950 px-4 py-1.5 rounded-xl text-xs font-black uppercase tracking-wider flex items-center gap-2 shadow-md">
-                    <AwardIcon className="w-4 h-4" /> Tradición Escolar
-                  </span>
-                  <span className="border-2 border-white/30 text-white px-4 py-1 rounded-xl text-xs font-black uppercase tracking-wider bg-indigo-950/30">
-                    Desde 1998
-                  </span>
-                </div>
-
-                <h3 className="text-3xl md:text-5xl font-black tracking-tight leading-none text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                  Vistiendo con Orgullo a <br className="hidden md:inline"/> Generaciones de Estudiantes
-                </h3>
-
-                <div className="space-y-4 text-white text-base md:text-lg font-bold leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
-                  <p>
-                    Por <strong>más de 28 años</strong>, <span className="text-amber-400 font-black">Confecciones Mary</span> ha tenido el orgullo de confeccionar y entregar uniformes de alta calidad para la comunidad de la <strong>Escuela El Carmen 270 de Conchalí</strong>.
-                  </p>
-                  <p>
-                    Nuestra larga trayectoria es reflejo de un compromiso inquebrantable con las familias del sector. Elaboramos cada prenda siguiendo con total fidelidad el patrón de diseño, los colores institucionales exactos y un bordado de alta definición resistente al desgaste del uso constante y los lavados frecuentes.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                  <div className="flex items-start gap-3 bg-indigo-955/80 p-4 rounded-2xl border border-white/10 shadow-lg">
-                    <div className="p-2 bg-amber-400 rounded-lg text-indigo-950 shrink-0">
-                      <ShieldCheckIcon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-black text-sm uppercase text-white tracking-wide">Fidelidad de Diseño</h4>
-                      <p className="text-xs text-indigo-150 font-semibold">Bordados de alta precisión y colores institucionales exactos.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3 bg-indigo-955/80 p-4 rounded-2xl border border-white/10 shadow-lg">
-                    <div className="p-2 bg-amber-400 rounded-lg text-indigo-950 shrink-0">
-                      <MapPinIcon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="font-black text-sm uppercase text-white tracking-wide">Retiro en Taller</h4>
-                      <p className="text-xs text-indigo-150 font-semibold">Ubicado estratégicamente para un retiro expedito.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Map Section */}
-          <section className="bg-slate-100 py-16 px-4 border-b-2 border-slate-200" aria-label="Ubicación física y retiro">
-            <div className="max-w-5xl mx-auto bg-white rounded-[2.5rem] p-8 md:p-12 shadow-xl border-2 border-slate-200">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-                <div className="space-y-4 flex-1">
-                  <div className="inline-flex items-center gap-2 bg-indigo-550/10 text-indigo-950 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider">
-                    <MapPinIcon className="w-4 h-4 text-indigo-700 animate-bounce" /> Dirección del Taller
-                  </div>
-                  <h3 className="text-2xl md:text-4xl font-black text-slate-950 uppercase tracking-tighter">
-                    ¿Dónde se retira el pedido?
-                  </h3>
-                  <p className="text-slate-800 font-semibold text-lg leading-relaxed">
-                    Taller de costura ubicado en:<br/>
-                    <span className="text-indigo-900 font-black">{PICKUP_ADDRESS}</span>
-                  </p>
-                  <p className="text-sm text-slate-500 font-medium">
-                    * El retiro y pago presencial se coordinan directamente por WhatsApp.
-                  </p>
-                </div>
-                
-                <div className="w-full md:w-auto shrink-0 flex flex-col sm:flex-row md:flex-col gap-3">
-                  <a 
-                    href={GOOGLE_MAPS_URL} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 px-6 py-4 bg-indigo-950 hover:bg-indigo-800 text-white rounded-xl font-black text-sm uppercase tracking-wider transition-all shadow-md hover:shadow-lg active:scale-95"
-                  >
-                    <NavigationIcon className="w-5 h-5 text-amber-400" /> Abrir en Google Maps
-                  </a>
-                  <a 
-                    href={APPLE_MAPS_URL} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 px-6 py-4 bg-white hover:bg-slate-50 text-indigo-950 border-2 border-indigo-950 rounded-xl font-black text-sm uppercase tracking-wider transition-all shadow-sm active:scale-95"
-                  >
-                    <ExternalLinkIcon className="w-5 h-5 text-indigo-950" /> Abrir en Apple Maps
-                  </a>
-                </div>
-              </div>
             </div>
           </section>
 
           {/* Catalog Grid */}
           <main className="max-w-7xl mx-auto px-4 py-20">
             <div className="flex items-center gap-6 mb-16">
-              <h2 className="text-3xl font-black text-indigo-950 uppercase tracking-tighter shrink-0">Catálogo Oficial</h2>
-              <div className="h-2 bg-amber-400 w-24 rounded-full"></div>
+              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight shrink-0">Nuestro Menú</h2>
+              <div className="h-2 bg-[#ce1126] w-24 rounded-full"></div>
               <div className="h-px bg-slate-300 flex-1"></div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {PRODUCTS.map(product => (
                 <ProductCard 
                   key={product.id} 
@@ -847,7 +598,7 @@
             </div>
           </main>
 
-          {/* Product Detail Modal Renderer */}
+          {/* Product Detail Modal */}
           {selectedProduct && (
             <ProductDetailModal 
               product={selectedProduct} 
@@ -856,53 +607,52 @@
             />
           )}
 
-          {/* Interactive Slide-out Cart Panel */}
+          {/* Slide-out Cart Panel */}
           {isCartOpen && (
-            <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true" aria-label="Carrito de compras">
-              <div className="absolute inset-0 bg-indigo-950/70 backdrop-blur-md" onClick={() => setIsCartOpen(false)} />
+            <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true">
+              <div className="absolute inset-0 bg-[#003366]/60 backdrop-blur-sm" onClick={() => setIsCartOpen(false)} />
               
               <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-500">
-                <div className="p-8 border-b-4 border-amber-400 flex items-center justify-between bg-indigo-950 text-white">
+                <div className="p-6 border-b-4 border-[#ce1126] flex items-center justify-between bg-[#003366] text-white">
                   <div>
-                    <h3 className="font-black text-2xl uppercase tracking-tighter">Mi Compra</h3>
-                    <p className="text-xs text-amber-400 font-bold uppercase tracking-widest mt-1">Confecciones Mary</p>
+                    <h3 className="font-black text-2xl uppercase tracking-tight">Tu Pedido</h3>
+                    <p className="text-xs text-red-300 font-bold uppercase tracking-widest mt-1">Sin Fronteras • Chile</p>
                   </div>
-                  <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-white/10 rounded-full transition-colors" aria-label="Cerrar carro">
-                    <XIcon className="w-8 h-8 text-white" />
+                  <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-[#002244] rounded-full transition-colors text-white">
+                    <XIcon className="w-6 h-6" />
                   </button>
                 </div>
 
-                {/* Scrollable list of items */}
-                <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50">
+                <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50">
                   {cart.length === 0 ? (
                     <div className="text-center py-32">
-                      <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border-2 border-dashed border-slate-300">
-                        <ShirtIcon className="w-12 h-12 text-slate-300" />
+                      <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border-2 border-dashed border-slate-300 text-slate-400 font-black text-2xl">
+                        SF
                       </div>
-                      <p className="text-slate-950 font-black text-xl">Tu carro está vacío</p>
-                      <p className="text-slate-500 mt-2 font-medium">Agrega prendas para iniciar tu encargo</p>
+                      <p className="text-slate-900 font-black text-xl">Tu carro está vacío</p>
+                      <p className="text-slate-500 mt-1 text-sm">Selecciona tus empanadas favoritas del menú</p>
                     </div>
                   ) : (
                     cart.map(item => {
                       const isCustom = item.price === "CONSULTENOS";
                       return (
-                        <div key={item.cartId} className="flex gap-4 p-4 bg-white rounded-2xl border-2 border-slate-200 shadow-sm animate-in fade-in slide-in-from-bottom-2">
-                          <img src={item.image} className="w-20 h-24 object-cover rounded-xl shrink-0" alt={item.name} />
+                        <div key={item.cartId} className="flex gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                          <img src={item.image} className="w-20 h-20 object-cover rounded-xl shrink-0" alt={item.name} />
                           <div className="flex-1">
-                            <h4 className="font-black text-slate-950 text-base leading-tight uppercase">{item.name}</h4>
-                            <p className="text-[11px] font-black text-indigo-700 uppercase mt-1">Talla: {item.selectedSize}</p>
+                            <h4 className="font-black text-slate-900 text-sm uppercase leading-tight">{item.name}</h4>
+                            <p className="text-[11px] font-bold text-[#ce1126] uppercase mt-1">Presentación: {item.selectedSize}</p>
                             <div className="flex items-center justify-between mt-3">
                               <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 border border-slate-200">
-                                <button onClick={() => updateQuantity(item.cartId, -1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg" aria-label="Disminuir cantidad">-</button>
-                                <span className="text-sm font-black w-8 text-center text-slate-950">{item.quantity}</span>
-                                <button onClick={() => updateQuantity(item.cartId, 1)} className="w-8 h-8 flex items-center justify-center bg-white hover:bg-indigo-600 hover:text-white rounded-md transition-all shadow-sm font-bold text-lg" aria-label="Aumentar cantidad">+</button>
+                                <button onClick={() => updateQuantity(item.cartId, -1)} className="w-7 h-7 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-md transition-all font-bold">-</button>
+                                <span className="text-xs font-black w-6 text-center text-slate-900">{item.quantity}</span>
+                                <button onClick={() => updateQuantity(item.cartId, 1)} className="w-7 h-7 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-md transition-all font-bold">+</button>
                               </div>
-                              <span className="font-black text-lg text-slate-950">
+                              <span className="font-black text-sm text-slate-900">
                                 {isCustom ? "A convenir" : `$${(item.price * item.quantity).toLocaleString('es-CL')}`}
                               </span>
                             </div>
                           </div>
-                          <button onClick={() => removeFromCart(item.cartId)} className="text-slate-400 hover:text-red-600 transition-colors p-1" aria-label="Quitar producto de la compra">
+                          <button onClick={() => removeFromCart(item.cartId)} className="text-slate-400 hover:text-[#ce1126] transition-colors p-1">
                             <XIcon className="w-5 h-5" />
                           </button>
                         </div>
@@ -911,97 +661,54 @@
                   )}
                 </div>
 
-                {/* Embedded Information form to submit directly on WhatsApp */}
                 {cart.length > 0 && (
-                  <div className="p-8 border-t-2 border-slate-200 bg-white shadow-2xl overflow-y-auto max-h-[60vh]">
-                    <div className="mb-6 p-4 bg-amber-50 border-2 border-amber-400 rounded-2xl text-amber-950 text-xs font-semibold space-y-2">
-                      <div className="flex items-center gap-2">
-                        <MapPinIcon className="w-5 h-5 text-amber-600 shrink-0" />
-                        <strong>Retiro y Pago en Taller:</strong>
-                      </div>
-                      <p className="text-slate-800">
-                        No hacemos envíos. Debes retirar y pagar tu pedido directamente en el taller ubicado en:<br/>
-                        <span className="font-black text-indigo-950">{PICKUP_ADDRESS}</span>
-                      </p>
-                    </div>
-
-                    <div className="space-y-4 mb-6">
+                  <div className="p-6 border-t border-slate-200 bg-white shadow-2xl">
+                    <div className="space-y-3 mb-4">
                       <div>
-                        <label className="text-[11px] font-black uppercase text-indigo-950 mb-2 block tracking-widest">Nombre del Apoderado</label>
+                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">Tu Nombre</label>
                         <input 
                           type="text" 
-                          placeholder="Ej: María José Fuentes" 
-                          className="w-full p-4 bg-slate-50 border-2 border-slate-300 rounded-xl text-base font-bold text-slate-950 focus:border-indigo-600 outline-none transition-all"
+                          placeholder="Ej: Carlos Pérez" 
+                          className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
                           value={formData.name}
                           onChange={e => setFormData({...formData, name: e.target.value})}
                         />
                       </div>
                       
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="text-[11px] font-black uppercase text-indigo-950 mb-2 block tracking-widest">WhatsApp de Contacto</label>
-                          <input 
-                            type="tel" 
-                            placeholder="Ej: +56 9 1234 5678" 
-                            className="w-full p-4 bg-slate-50 border-2 border-slate-300 rounded-xl text-sm font-bold text-slate-950 focus:border-indigo-600 outline-none transition-all"
-                            value={formData.phone}
-                            onChange={e => setFormData({...formData, phone: e.target.value})}
-                          />
-                        </div>
-                        <div>
-                          <label className="text-[11px] font-black uppercase text-indigo-950 mb-2 block tracking-widest">Comuna de Residencia</label>
-                          <input 
-                            type="text" 
-                            placeholder="Ej: Recoleta, Conchalí, etc." 
-                            className="w-full p-4 bg-slate-50 border-2 border-slate-300 rounded-xl text-sm font-bold text-slate-950 focus:border-indigo-600 outline-none transition-all"
-                            value={formData.commune}
-                            onChange={e => setFormData({...formData, commune: e.target.value})}
-                          />
-                        </div>
+                      <div>
+                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">WhatsApp de Contacto</label>
+                        <input 
+                          type="tel" 
+                          placeholder="Ej: +56 9 1234 5678" 
+                          className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
+                          value={formData.phone}
+                          onChange={e => setFormData({...formData, phone: e.target.value})}
+                        />
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="text-[11px] font-black uppercase text-indigo-950 mb-2 block tracking-widest">Curso Estudiante (Opcional)</label>
-                          <input 
-                            type="text" 
-                            placeholder="Ej: 4to Básico A" 
-                            className="w-full p-4 bg-slate-50 border-2 border-slate-300 rounded-xl text-sm font-bold text-slate-950 focus:border-indigo-600 outline-none transition-all"
-                            value={formData.grade}
-                            onChange={e => setFormData({...formData, grade: e.target.value})}
-                          />
-                        </div>
-                        <div>
-                          <label className="text-[11px] font-black uppercase text-indigo-950 mb-2 block tracking-widest">Indicaciones de Retiro</label>
-                          <input 
-                            type="text" 
-                            placeholder="Ej: Retira el sábado por la mañana" 
-                            className="w-full p-4 bg-slate-50 border-2 border-slate-300 rounded-xl text-sm font-bold text-slate-950 focus:border-indigo-600 outline-none transition-all"
-                            value={formData.notes}
-                            onChange={e => setFormData({...formData, notes: e.target.value})}
-                          />
-                        </div>
+                      <div>
+                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">Dirección de Entrega / Notas</label>
+                        <input 
+                          type="text" 
+                          placeholder="Ej: Retiro en local / Dirección" 
+                          className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
+                          value={formData.address}
+                          onChange={e => setFormData({...formData, address: e.target.value})}
+                        />
                       </div>
                     </div>
 
-                    <div className="flex flex-col py-6 border-t-2 border-dashed border-slate-200 space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-slate-600 font-bold uppercase text-xs tracking-[0.2em]">Total Estimado Prendas Estándar</span>
-                        <span className="text-4xl font-black text-indigo-950">${total.toLocaleString('es-CL')}</span>
-                      </div>
-                      {hasCustomItems && (
-                        <p className="text-xs text-indigo-600 font-extrabold text-right uppercase tracking-wider">
-                          + valor de Polerón Generacional o tallas especiales 2XL/3XL (confeccionados a medida en taller)
-                        </p>
-                      )}
+                    <div className="flex items-center justify-between py-4 border-t border-dashed border-slate-200 mb-4">
+                      <span className="text-slate-600 font-bold uppercase text-xs">Total Estimado</span>
+                      <span className="text-2xl font-black text-slate-900">${total.toLocaleString('es-CL')}</span>
                     </div>
 
                     <button 
                       onClick={handleSendWhatsApp}
-                      disabled={!formData.name || !formData.phone || !formData.commune}
-                      className="w-full bg-[#25D366] hover:bg-[#1da851] disabled:opacity-30 disabled:grayscale text-white py-5 rounded-2xl font-black flex items-center justify-center gap-4 transition-all shadow-xl active:scale-[0.98] uppercase tracking-widest text-sm"
+                      disabled={!formData.name || !formData.phone}
+                      className="w-full bg-[#25D366] hover:bg-[#1da851] disabled:opacity-40 text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all shadow-lg uppercase tracking-wider text-xs"
                     >
-                      <SendIcon className="w-6 h-6 fill-current mr-1" /> Enviar Encargo por WhatsApp
+                      <SendIcon className="w-5 h-5 fill-current" /> Enviar Pedido por WhatsApp
                     </button>
                   </div>
                 )}
@@ -1010,65 +717,46 @@
           )}
 
           {/* Footer Component */}
-          <footer className="bg-indigo-950 text-white py-24 px-4 border-t-8 border-amber-400">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
-              <div className="lg:col-span-1">
-                <div className="flex items-center mb-8">
-                  <img 
-                    src="https://i.ibb.co/k6yL62mW/conflogo2.png" 
-                    alt="Confecciones Mary Logo" 
-                    className="h-20 md:h-24 w-auto object-contain transition-transform hover:scale-105 duration-300"
-                  />
+          <footer className="bg-[#003366] text-white py-16 px-4 border-t-4 border-[#ce1126]">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden border-2 border-white/20 bg-white">
+                    <img 
+                      src="https://i.ibb.co/9PQx2SK/logo.jpg" 
+                      alt="Sin Fronteras Logo" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h4 className="text-lg font-black uppercase tracking-tight">Sin Fronteras</h4>
                 </div>
-                
-                <p className="text-lg font-medium text-indigo-100 leading-relaxed opacity-80">
-                  Dedicados a vestir a las futuras generaciones con uniformes de alta durabilidad y elegancia. Tradición familiar en cada puntada.
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Empanadas chilenas artesanales preparadas con dedicación por Susana y Willie. Sabor casero sin límites.
                 </p>
               </div>
               
-              <div className="space-y-6">
-                <h4 className="text-xl font-black uppercase tracking-widest text-amber-400">Dirección & Taller</h4>
-                <div className="space-y-4">
-                  <div className="bg-white/5 p-4 rounded-2xl border-2 border-white/10 flex items-start gap-4">
-                    <MapPinIcon className="w-8 h-8 text-amber-400 shrink-0 mt-1" />
-                    <div>
-                      <p className="text-[10px] font-black uppercase text-indigo-300 tracking-tighter">Taller de Confección</p>
-                      <p className="text-base font-bold text-white leading-tight">{PICKUP_ADDRESS}</p>
-                      <div className="flex gap-2 mt-3">
-                        <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="text-xs text-amber-400 hover:text-white font-black uppercase tracking-widest flex items-center gap-1">
-                          Google Maps <ExternalLinkIcon className="w-3 h-3" />
-                        </a>
-                        <span className="text-white/20">|</span>
-                        <a href={APPLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="text-xs text-amber-400 hover:text-white font-black uppercase tracking-widest flex items-center gap-1">
-                          Apple Maps <ExternalLinkIcon className="w-3 h-3" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 p-4 rounded-2xl border-2 border-white/10 flex items-center gap-4">
-                    <img 
-                      src="https://i.ibb.co/bjY9vPqQ/whatsapplogo.png" 
-                      alt="WhatsApp Logo" 
-                      className="w-10 h-10 object-contain shrink-0" 
-                    />
-                    <div>
-                      <p className="text-[10px] font-black uppercase text-indigo-300 tracking-tighter">WhatsApp Contacto</p>
-                      <p className="text-lg md:text-xl font-black whitespace-nowrap text-white leading-tight">+56 9 9475 4523</p>
-                    </div>
-                  </div>
-                </div>
+              <div>
+                <h4 className="text-sm font-black uppercase tracking-widest text-[#ce1126] mb-4">Redes Sociales</h4>
+                <a 
+                  href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-slate-200 hover:text-white font-bold text-sm bg-[#002244] px-4 py-2.5 rounded-xl border border-blue-900 shadow-sm"
+                >
+                  Visita nuestra página de Facebook <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
+                </a>
               </div>
 
-              <div className="space-y-6">
-                <h4 className="text-xl font-black uppercase tracking-widest text-amber-400">Horario y Entregas</h4>
-                <p className="text-indigo-100 font-semibold opacity-80 leading-relaxed">
-                  <b>Disponibilidad total de lunes a domingo</b> con horarios completamente flexibles pensados para adaptarse a la rutina de los apoderados.<br/><br/>
-                  Los retiros y la hora de entrega en nuestro taller en Recoleta se coordinan de forma personalizada y directa por WhatsApp, pudiendo ser en el momento que más te acomode.
+              <div>
+                <h4 className="text-sm font-black uppercase tracking-widest text-[#ce1126] mb-4">Contacto & Pedidos</h4>
+                <p className="text-slate-300 text-sm font-medium">
+                  Comunícate directamente con nosotros a través de nuestro WhatsApp de pedidos para coordinar entregas y disponibilidad.
                 </p>
               </div>
             </div>
-            <div className="max-w-7xl mx-auto border-t border-white/10 mt-20 pt-10 text-center">
-              <p className="text-xs font-black uppercase tracking-[0.4em] text-indigo-400">© 2026 CONFECCIONES MARY • SANTIAGO DE CHILE</p>
+            
+            <div className="max-w-7xl mx-auto border-t border-blue-900 mt-12 pt-8 text-center">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">© 2026 SIN FRONTERAS EMPANADAS • SUSANA Y WILLIE 🇨🇱</p>
             </div>
           </footer>
         </div>
