@@ -110,76 +110,211 @@
     const PRODUCTS = [
       {
         id: 1,
-        name: "Empanada Tradicional de Pino",
-        description: "Rellena de jugosa carne picada seleccionada, cebolla suave, huevo duro, aceituna y especias tradicionales horneadas a la perfección.",
-        sizes: ["Unidad", "Media Docena", "Docena"],
+        name: { es: "Empanada Tradicional de Pino", en: "Traditional Beef 'Pino' Empanada" },
+        description: {
+          es: "Rellena de jugosa carne picada seleccionada, cebolla suave, huevo duro, aceituna y especias tradicionales horneadas a la perfección.",
+          en: "Filled with juicy selected minced beef, tender onions, hard-boiled egg, olive, and traditional spices baked to perfection."
+        },
+        sizes: ["Unidad"],
         prices: {
-          "Unidad": 2500, "Media Docena": 14000, "Docena": 26000
+          "Unidad": 4.50
         },
         image: "https://i.ibb.co/0RkMxKrR/pino-1.jpg"
       },
       {
         id: 2,
-        name: "Empanada de Queso Fundido",
-        description: "Queso mantecoso estirado y fundido dentro de una masa dorada, crujiente por fuera y suave por dentro.",
-        sizes: ["Unidad", "Media Docena", "Docena"],
+        name: { es: "Empanada de Queso", en: "Cheese Empanada" },
+        description: {
+          es: "Queso mantecoso estirado y fundido dentro de una masa dorada, crujiente por fuera y suave por dentro.",
+          en: "Stretched and melted buttery cheese inside a golden crust, crispy on the outside and soft on the inside."
+        },
+        sizes: ["Unidad"],
         prices: {
-          "Unidad": 2200, "Media Docena": 12500, "Docena": 23000
+          "Unidad": 4.00
         },
         image: "https://i.ibb.co/qL7dBRHC/queso-1.jpg"
       },
       {
         id: 3,
-        name: "Empanada Queso Champiñón",
-        description: "Exquisita combinación de queso mantecoso fundido con champiñones frescos salteados.",
-        sizes: ["Unidad", "Media Docena", "Docena"],
+        name: { es: "Empanada Queso Champiñón", en: "Cheese & Mushroom Empanada" },
+        description: {
+          es: "Exquisita combinación de queso mantecoso fundido con champiñones frescos salteados.",
+          en: "Exquisite combination of melted buttery cheese with freshly sautéed mushrooms."
+        },
+        sizes: ["Unidad"],
         prices: {
-          "Unidad": 2800, "Media Docena": 15500, "Docena": 29000
+          "Unidad": 5.00
         },
         image: "https://i.ibb.co/VYR92jKp/queso-champinones.jpg"
       },
       {
         id: 4,
-        name: "Empanada Napolitana",
-        description: "Deliciosa combinación de jamón ahumado, queso fundido, tomates maduros y un toque de orégano fresco.",
-        sizes: ["Unidad", "Media Docena", "Docena"],
+        name: { es: "Empanada Napolitana", en: "Neapolitan Empanada" },
+        description: {
+          es: "Deliciosa combinación de jamón ahumado, queso fundido, tomates maduros y un toque de orégano fresco.",
+          en: "Delicious combination of smoked ham, melted cheese, ripe tomatoes, and a touch of fresh oregano."
+        },
+        sizes: ["Unidad"],
         prices: {
-          "Unidad": 2600, "Media Docena": 14500, "Docena": 27000
+          "Unidad": 4.75
         },
         image: "https://i.ibb.co/27DmxVfg/Empanadas-Napolitana.png"
       },
       {
         id: 5,
-        name: "Empanada Queso Jamón",
-        description: "Clásica y favorita empanada rellena de generoso queso fundido y jamón de primera calidad.",
-        sizes: ["Unidad", "Media Docena", "Docena"],
+        name: { es: "Empanada Queso Jamón", en: "Ham & Cheese Empanada" },
+        description: {
+          es: "Clásica y favorita empanada rellena de generoso queso fundido y jamón de primera calidad.",
+          en: "Classic and favorite empanada filled with generous melted cheese and top quality ham."
+        },
+        sizes: ["Unidad"],
         prices: {
-          "Unidad": 2500, "Media Docena": 14000, "Docena": 26000
+          "Unidad": 4.50
         },
         image: "https://i.ibb.co/WWWQ1Zzw/quesojamon.jpg"
       },
       {
         id: 6,
-        name: "Empanada Queso Espinaca",
-        description: "Frescas hojas de espinaca salteadas mezcladas con una suave y cremosa selección de quesos.",
-        sizes: ["Unidad", "Media Docena", "Docena"],
+        name: { es: "Empanada Queso Espinaca", en: "Spinach & Cheese Empanada" },
+        description: {
+          es: "Frescas hojas de espinaca salteadas mezcladas con una suave y cremosa selección de quesos.",
+          en: "Fresh sautéed spinach leaves mixed with a smooth and creamy selection of cheeses."
+        },
+        sizes: ["Unidad"],
         prices: {
-          "Unidad": 2600, "Media Docena": 14500, "Docena": 27000
+          "Unidad": 4.75
         },
         image: "https://i.ibb.co/BVgRn3s2/queso-espinaca.jpg"
       },
       {
         id: 7,
-        name: "Empanada de Atún",
-        description: "Rellena de tierno atún selecto con sofrito casero de cebolla, tomate y especias.",
-        sizes: ["Unidad", "Media Docena", "Docena"],
+        name: { es: "Empanada de Atún", en: "Tuna Empanada" },
+        description: {
+          es: "Rellena de tierno atún selecto con sofrito casero de cebolla, tomate y especias.",
+          en: "Filled with tender select tuna with homemade sofrito of onions, tomatoes, and spices."
+        },
+        sizes: ["Unidad"],
         prices: {
-          "Unidad": 2900, "Media Docena": 16000, "Docena": 30000
+          "Unidad": 5.25
         },
         image: "https://i.ibb.co/zhDFWkkW/empanada-atun.png"
       }
     ];
 
+    const TRANSLATIONS = {
+      es: {
+        navTitle: "Sin Fronteras",
+        navSubtitle: "Empanadas Chilenas",
+        facebookBtn: "Facebook Oficial",
+        cartBtn: "Mi Pedido",
+        heroTag: "Preparadas por Susana y Willie con auténtico sabor chileno",
+        heroTitleLine1: "Empanadas tradicionales",
+        heroTitleLine2: "hechas con el corazón.",
+        heroDesc: "Disfruta de nuestras exquisitas empanadas caseras. Añade lo que necesites al carro y envía tu pedido directamente por WhatsApp.",
+        heroFb: "Visítanos en Facebook",
+        pillar1Title: "100% Artesanales",
+        pillar1Desc: "Masa estirada a mano e ingredientes frescos seleccionados cada día para garantizar el auténtico sabor tradicional.",
+        pillar2Title: "Sazón de Susana y Willie",
+        pillar2Desc: "Recetas chilenas preparadas con dedicación familiar y cariño incondicional en cada preparación.",
+        pillar3Title: "Pedidos por WhatsApp",
+        pillar3Desc: "Arma tu carrito y envíanos tu pedido al número 647-865-1507 de forma rápida y sencilla.",
+        marketTitle: "Encuéntranos en el Mercado",
+        marketTag: "Highway 27, Toronto",
+        marketHeader: "¡Visítanos cada Sábado y Domingo en Dr. Flea's!",
+        marketDesc: "Susana y Willie te esperan todos los fines de semana con el mejor sabor chileno en Dr. Flea's Flea Market, ubicado en la zona de Highway 27. Disfruta de nuestras empanadas recién horneadas y comparte un momento agradable en persona.",
+        satSun: "Sábados y Domingos",
+        satSunDesc: "Abierto durante horario regular de mercado.",
+        marketName: "Dr. Flea's Market",
+        marketLoc: "Highway 27 & Finch Ave area.",
+        marketFb: "Ver actualizaciones en Facebook",
+        howTitle: "¿Cómo hacer tu pedido?",
+        howTag: "Fácil y Rápido",
+        howDesc: "Sigue estos simples pasos para encargar tus empanadas favoritas directamente con nosotros por WhatsApp.",
+        step1Title: "Elige tus Empanadas",
+        step1Desc: "Navega por nuestro menú, selecciona las variedades que más te gusten y añádelas a tu carrito de compras con sus respectivas cantidades.",
+        step2Title: "Completa tus Datos",
+        step2Desc: "Abre tu carro de compras, ingresa tu nombre, número de contacto y detalles de retiro o entrega para personalizar tu pedido.",
+        step3Title: "Envía por WhatsApp",
+        step3Desc: "Haz clic en el botón de enviar para transmitir tu pedido directamente a nuestro WhatsApp oficial: 647-865-1507.",
+        menuTitle: "Nuestro Menú",
+        viewOptions: "Ver Opciones y Precios",
+        modalUnit: "Unidad",
+        modalQty: "Cantidad de Porciones:",
+        subtotal: "Subtotal:",
+        addCart: "Agregar al Pedido",
+        cartTitle: "Tu Pedido",
+        cartEmptyTitle: "Tu carro está vacío",
+        cartEmptyDesc: "Selecciona tus empanadas favoritas del menú",
+        nameLabel: "Tu Nombre",
+        namePlaceholder: "Ej: Carlos Pérez",
+        phoneLabel: "WhatsApp de Contacto",
+        phonePlaceholder: "Ej: +1 647 865 1507",
+        addressLabel: "Dirección de Entrega / Notas",
+        addressPlaceholder: "Ej: Retiro en Dr. Flea's / Dirección",
+        estimatedTotal: "Total Estimado",
+        sendWa: "Enviar Pedido por WhatsApp (647-865-1507)",
+        footerDesc: "Empanadas chilenas artesanales preparadas con dedicación por Susana y Willie. Encuéntranos cada fin de semana en Dr. Flea's Flea Market.",
+        footerSocial: "Redes Sociales",
+        footerContact: "Contacto & Pedidos",
+        footerRights: "© 2026 SIN FRONTERAS EMPANADAS • SUSANA Y WILLIE 🇨🇱"
+      },
+      en: {
+        navTitle: "Sin Fronteras",
+        navSubtitle: "Chilean Empanadas",
+        facebookBtn: "Official Facebook",
+        cartBtn: "My Order",
+        heroTag: "Prepared by Susana and Willie with authentic Chilean flavor",
+        heroTitleLine1: "Traditional empanadas",
+        heroTitleLine2: "made with heart.",
+        heroDesc: "Enjoy our exquisite homemade empanadas. Add what you need to your cart and send your order directly via WhatsApp.",
+        heroFb: "Visit us on Facebook",
+        pillar1Title: "100% Artisanal",
+        pillar1Desc: "Hand-stretched dough and fresh ingredients selected daily to guarantee authentic traditional flavor.",
+        pillar2Title: "Susana & Willie's Seasoning",
+        pillar2Desc: "Chilean recipes prepared with family dedication and unconditional love in every batch.",
+        pillar3Title: "Orders via WhatsApp",
+        pillar3Desc: "Build your cart and send us your order at 647-865-1507 quickly and easily.",
+        marketTitle: "Find Us at the Market",
+        marketTag: "Highway 27, Toronto",
+        marketHeader: "Visit us every Saturday & Sunday at Dr. Flea's!",
+        marketDesc: "Susana and Willie await you every weekend with the best Chilean flavor at Dr. Flea's Flea Market, located in the Highway 27 area. Enjoy our freshly baked empanadas and share a pleasant moment in person.",
+        satSun: "Saturdays & Sundays",
+        satSunDesc: "Open during regular market hours.",
+        marketName: "Dr. Flea's Market",
+        marketLoc: "Highway 27 & Finch Ave area.",
+        marketFb: "View updates on Facebook",
+        howTitle: "How to Place Your Order?",
+        howTag: "Fast & Easy",
+        howDesc: "Follow these simple steps to order your favorite empanadas directly with us via WhatsApp.",
+        step1Title: "Choose Your Empanadas",
+        step1Desc: "Browse our menu, select the varieties you love and add them to your shopping cart with your desired quantities.",
+        step2Title: "Complete Your Info",
+        step2Desc: "Open your shopping cart, enter your name, contact number and pickup or delivery details to customize your order.",
+        step3Title: "Send via WhatsApp",
+        step3Desc: "Click the send button to transmit your order directly to our official WhatsApp: 647-865-1507.",
+        menuTitle: "Our Menu",
+        viewOptions: "View Options & Prices",
+        modalUnit: "Unit",
+        modalQty: "Number of Portions:",
+        subtotal: "Subtotal:",
+        addCart: "Add to Order",
+        cartTitle: "Your Order",
+        cartEmptyTitle: "Your cart is empty",
+        cartEmptyDesc: "Select your favorite empanadas from the menu",
+        nameLabel: "Your Name",
+        namePlaceholder: "E.g. Carlos Pérez",
+        phoneLabel: "Contact WhatsApp",
+        phonePlaceholder: "E.g. +1 647 865 1507",
+        addressLabel: "Delivery Address / Notes",
+        addressPlaceholder: "E.g. Pickup at Dr. Flea's / Address",
+        estimatedTotal: "Estimated Total",
+        sendWa: "Send Order via WhatsApp (647-865-1507)",
+        footerDesc: "Artisanal Chilean empanadas prepared with dedication by Susana and Willie. Find us every weekend at Dr. Flea's Flea Market.",
+        footerSocial: "Social Media",
+        footerContact: "Contact & Orders",
+        footerRights: "© 2026 SIN FRONTERAS EMPANADAS • SUSANA Y WILLIE 🇨🇱"
+      }
+    };
     const ZoomImage = ({ src, alt }) => {
       const [zoomStyle, setZoomStyle] = useState({ display: 'none' });
       const [isZooming, setIsZooming] = useState(false);
@@ -224,10 +359,12 @@
       );
     };
 
-    const ProductCard = ({ product, onSelect }) => {
-      const trimmedDescription = product.description.length > 80 
-        ? product.description.substring(0, 80) + '...' 
-        : product.description;
+    const ProductCard = ({ product, lang, onSelect }) => {
+      const name = product.name[lang];
+      const description = product.description[lang];
+      const trimmedDescription = description.length > 80 
+        ? description.substring(0, 80) + '...' 
+        : description;
 
       return (
         <div 
@@ -237,7 +374,7 @@
           <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-100">
             <img 
               src={product.image} 
-              alt={product.name} 
+              alt={name} 
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
@@ -245,7 +382,7 @@
           <div className="mt-4 flex-1 flex flex-col justify-between">
             <div>
               <h3 className="font-extrabold text-base text-slate-900 leading-tight tracking-tight mb-1">
-                {product.name}
+                {name}
               </h3>
               <p className="text-[11px] text-slate-600 font-medium leading-relaxed mb-3">
                 {trimmedDescription}
@@ -255,24 +392,25 @@
             <button 
               className="w-full bg-slate-100 text-slate-900 group-hover:bg-[#ce1126] group-hover:text-white py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-sm"
             >
-              Ver Opciones y Precios
+              {TRANSLATIONS[lang].viewOptions}
             </button>
           </div>
         </div>
       );
     };
 
-    const ProductDetailModal = ({ product, onClose, onAdd }) => {
-      const [selectedSize, setSelectedSize] = useState(product ? product.sizes[0] : "");
+    const ProductDetailModal = ({ product, lang, onClose, onAdd }) => {
       const [quantity, setQuantity] = useState(1);
 
       if (!product) return null;
 
-      const currentPrice = product.prices[selectedSize];
-      const isCustomPrice = currentPrice === "CONSULTENOS";
+      const currentPrice = product.prices["Unidad"];
+      const t = TRANSLATIONS[lang];
+      const name = product.name[lang];
+      const description = product.description[lang];
 
       const handleAddToCart = () => {
-        onAdd(product, selectedSize, quantity);
+        onAdd(product, "Unidad", quantity);
         onClose();
       };
 
@@ -292,54 +430,29 @@
             </button>
             
             <div className="w-full md:w-1/2 flex-shrink-0">
-              <ZoomImage src={product.image} alt={product.name} />
+              <ZoomImage src={product.image} alt={name} />
             </div>
             
             <div className="flex-1 flex flex-col justify-between overflow-y-auto pr-1">
               <div>
                 <h3 className="font-black text-2xl md:text-3xl text-slate-900 leading-tight mb-2 mt-2">
-                  {product.name}
+                  {name}
                 </h3>
                 
                 <div className="flex items-center gap-2 mb-4">
-                  {isCustomPrice ? (
-                    <span className="text-xl font-black text-[#ce1126] uppercase">Consultar Valor</span>
-                  ) : (
-                    <span className="text-3xl font-black text-[#ce1126]">${currentPrice.toLocaleString('es-CL')}</span>
-                  )}
+                  <span className="text-3xl font-black text-[#ce1126]">${currentPrice.toFixed(2)} CAD</span>
                   <span className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">
-                    {isCustomPrice ? "Preparación especial" : `Precio por ${selectedSize.toLowerCase()}`}
+                    {t.modalUnit}
                   </span>
                 </div>
                 
                 <p className="text-xs text-slate-700 font-medium leading-relaxed mb-6">
-                  {product.description}
+                  {description}
                 </p>
 
                 <div className="space-y-3 mb-6">
                   <label className="text-xs uppercase font-black text-slate-900 tracking-widest block border-b border-slate-100 pb-1">
-                    Presentación / Cantidad:
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {product.sizes.map(size => (
-                      <button 
-                        key={size}
-                        onClick={() => setSelectedSize(size)}
-                        className={`px-4 py-2.5 text-xs font-extrabold rounded-xl transition-all border-2 ${
-                          selectedSize === size 
-                          ? 'bg-[#003366] border-[#003366] text-white shadow-md' 
-                          : 'bg-white border-slate-300 text-slate-900 hover:border-[#ce1126] hover:bg-slate-50'
-                        }`}
-                      >
-                        {size}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="space-y-3 mb-6">
-                  <label className="text-xs uppercase font-black text-slate-900 tracking-widest block border-b border-slate-100 pb-1">
-                    Cantidad de Porciones:
+                    {t.modalQty}
                   </label>
                   <div className="flex items-center gap-2">
                     <button 
@@ -360,18 +473,16 @@
               </div>
 
               <div className="space-y-4 border-t border-slate-100 pt-4">
-                {!isCustomPrice && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500 font-bold uppercase">Subtotal:</span>
-                    <span className="text-xl font-black text-slate-900">${(currentPrice * quantity).toLocaleString('es-CL')} CLP</span>
-                  </div>
-                )}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-slate-500 font-bold uppercase">{t.subtotal}</span>
+                  <span className="text-xl font-black text-slate-900">${(currentPrice * quantity).toFixed(2)} CAD</span>
+                </div>
                 
                 <button 
                   onClick={handleAddToCart}
                   className="w-full bg-[#ce1126] hover:bg-[#b00f20] text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all active:scale-95 shadow-lg uppercase tracking-widest text-xs"
                 >
-                  <PlusIcon className="w-5 h-5 mr-1" /> Agregar al Pedido
+                  <PlusIcon className="w-5 h-5 mr-1" /> {t.addCart}
                 </button>
               </div>
             </div>
@@ -381,6 +492,7 @@
     };
 
     function App() {
+      const [lang, setLang] = useState("es");
       const [cart, setCart] = useState([]);
       const [isCartOpen, setIsCartOpen] = useState(false);
       const [selectedProduct, setSelectedProduct] = useState(null);
@@ -391,7 +503,8 @@
         notes: ''
       });
 
-      const BUSINESS_PHONE = "6478651507"; // Updated WhatsApp number
+      const BUSINESS_PHONE = "6478651507";
+      const t = TRANSLATIONS[lang];
 
       const addToCart = (product, size, qtyToAdd = 1) => {
         const priceForSize = product.prices[size];
@@ -433,8 +546,6 @@
         return sum + (numericPrice * item.quantity);
       }, 0);
 
-      const hasCustomItems = cart.some(item => item.price === "CONSULTENOS");
-
       const handleSendWhatsApp = (e) => {
         e.preventDefault();
         if (!formData.name || !formData.phone) return;
@@ -447,16 +558,11 @@
         message += `\n--- *DETALLE DEL PEDIDO* ---\n`;
 
         cart.forEach(item => {
-          const formattedPrice = typeof item.price === 'number' 
-            ? `$${(item.price * item.quantity).toLocaleString('es-CL')} CLP` 
-            : 'A convenir';
-          message += `• ${item.quantity}x ${item.name} (${item.selectedSize}) - ${formattedPrice}\n`;
+          const formattedPrice = `$${(item.price * item.quantity).toFixed(2)} CAD`;
+          message += `• ${item.quantity}x ${item.name[lang]} (${item.selectedSize}) - ${formattedPrice}\n`;
         });
 
-        message += `\n💰 *TOTAL ESTIMADO:* $${total.toLocaleString('es-CL')} CLP`;
-        if (hasCustomItems) {
-          message += `\n⚠️ Incluye preparaciones especiales a consultar.`;
-        }
+        message += `\n💰 *TOTAL ESTIMADO:* $${total.toFixed(2)} CAD`;
         message += `\n\n_Hola Susana y Willie, les escribo desde su página web para hacerles este pedido. ¡Quedo atento(a)!_`;
 
         window.open(`https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(message)}`, '_blank');
@@ -468,7 +574,7 @@
           {/* Top National Ribbon Accent */}
           <div className="h-2 w-full bg-gradient-to-r from-[#003366] via-white to-[#ce1126]"></div>
 
-          {/* Navigation Bar - White, Taller, Large Logo */}
+          {/* Navigation Bar */}
           <nav className="sticky top-0 z-40 bg-white border-b-2 border-slate-200 shadow-md" aria-label="Navegación principal">
             <div className="max-w-7xl mx-auto px-6 h-28 flex items-center justify-between">
               
@@ -485,21 +591,37 @@
                   />
                 </div>
                 <div>
-                  <h1 className="text-[#003366] font-black text-2xl tracking-tight uppercase group-hover:text-[#ce1126] transition-colors">Sin Fronteras</h1>
+                  <h1 className="text-[#003366] font-black text-2xl tracking-tight uppercase group-hover:text-[#ce1126] transition-colors">{t.navTitle}</h1>
                   <p className="text-[#ce1126] text-xs font-black uppercase tracking-widest flex items-center gap-1 mt-0.5">
-                    Empanadas Chilenas <StarIcon className="w-3.5 h-3.5 text-[#ce1126] fill-current inline" />
+                    {t.navSubtitle} <StarIcon className="w-3.5 h-3.5 text-[#ce1126] fill-current inline" />
                   </p>
                 </div>
               </a>
               
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 md:gap-4">
+                {/* Language Toggle */}
+                <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200">
+                  <button 
+                    onClick={() => setLang("es")}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all ${lang === 'es' ? 'bg-[#003366] text-white shadow' : 'text-slate-600 hover:text-slate-900'}`}
+                  >
+                    ES
+                  </button>
+                  <button 
+                    onClick={() => setLang("en")}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all ${lang === 'en' ? 'bg-[#003366] text-white shadow' : 'text-slate-600 hover:text-slate-900'}`}
+                  >
+                    EN
+                  </button>
+                </div>
+
                 <a 
                   href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hidden sm:inline-flex items-center gap-2 px-5 py-3 bg-[#003366] hover:bg-[#002244] text-white rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-md"
                 >
-                  Facebook Oficial <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
+                  {t.facebookBtn} <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
                 </a>
 
                 <button 
@@ -508,7 +630,7 @@
                   aria-label="Ver carrito de compras"
                 >
                   <ShoppingCartIcon className="w-6 h-6" />
-                  <span className="hidden md:inline font-black text-xs uppercase tracking-wider">Mi Pedido</span>
+                  <span className="hidden md:inline font-black text-xs uppercase tracking-wider">{t.cartBtn}</span>
                   {cart.length > 0 && (
                     <span className="absolute -top-2 -right-2 bg-[#003366] text-white text-xs font-black w-7 h-7 flex items-center justify-center rounded-full ring-2 ring-white shadow-md animate-pulse">
                       {cart.reduce((acc, curr) => acc + curr.quantity, 0)}
@@ -527,16 +649,16 @@
 
             <div className="relative z-10 max-w-4xl mx-auto text-center">
               <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#ce1126]/30 text-white rounded-xl text-xs font-black uppercase tracking-[0.2em] mb-6 border border-[#ce1126]/50 shadow-md">
-                <StarIcon className="w-4 h-4 text-[#ce1126] fill-current" /> Preparadas por Susana y Willie con auténtico sabor chileno
+                <StarIcon className="w-4 h-4 text-[#ce1126] fill-current" /> {t.heroTag}
               </span>
               
               <h2 className="text-4xl md:text-7xl font-black mb-6 tracking-tight leading-none text-white">
-                Empanadas tradicionales <br/>
-                <span className="text-[#ce1126]">hechas con el corazón.</span>
+                {t.heroTitleLine1} <br/>
+                <span className="text-[#ce1126]">{t.heroTitleLine2}</span>
               </h2>
               
               <p className="text-slate-200 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed mb-8">
-                Disfruta de nuestras exquisitas empanadas caseras. Añade lo que necesites al carro y envía tu pedido directamente por WhatsApp.
+                {t.heroDesc}
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-4">
@@ -546,7 +668,7 @@
                   rel="noopener noreferrer"
                   className="px-6 py-4 bg-[#ce1126] hover:bg-[#b00f20] text-white font-black rounded-xl uppercase tracking-wider text-xs transition-all shadow-lg inline-flex items-center gap-2 border border-red-500"
                 >
-                  Visítanos en Facebook <ExternalLinkIcon className="w-4 h-4" />
+                  {t.heroFb} <ExternalLinkIcon className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -560,9 +682,9 @@
                 <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center text-[#ce1126] mb-4 shadow-sm">
                   <FlameIcon className="w-7 h-7" />
                 </div>
-                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">100% Artesanales</h3>
+                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">{t.pillar1Title}</h3>
                 <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                  Masa estirada a mano e ingredientes frescos seleccionados cada día para garantizar el auténtico sabor tradicional.
+                  {t.pillar1Desc}
                 </p>
               </div>
 
@@ -570,9 +692,9 @@
                 <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center text-[#003366] mb-4 shadow-sm">
                   <HeartIcon className="w-7 h-7" />
                 </div>
-                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">Sazón de Susana y Willie</h3>
+                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">{t.pillar2Title}</h3>
                 <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                  Recetas chilenas preparadas con dedicación familiar y cariño incondicional en cada preparación.
+                  {t.pillar2Desc}
                 </p>
               </div>
 
@@ -580,9 +702,9 @@
                 <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center text-[#ce1126] mb-4 shadow-sm">
                   <ShieldCheckIcon className="w-7 h-7" />
                 </div>
-                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">Pedidos por WhatsApp</h3>
+                <h3 className="font-black text-base text-slate-900 uppercase tracking-tight mb-2">{t.pillar3Title}</h3>
                 <p className="text-xs text-slate-600 font-medium leading-relaxed">
-                  Arma tu carrito y envíanos tu pedido al número <span className="font-bold text-slate-900">647-865-1507</span> de forma rápida y sencilla.
+                  {t.pillar3Desc}
                 </p>
               </div>
 
@@ -593,7 +715,7 @@
           <section className="py-20 px-4 bg-slate-100 border-b border-slate-200">
             <div className="max-w-7xl mx-auto">
               <div className="flex items-center gap-6 mb-12">
-                <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight shrink-0">Encuéntranos en el Mercado</h2>
+                <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight shrink-0">{t.marketTitle}</h2>
                 <div className="h-2 bg-[#ce1126] w-24 rounded-full"></div>
                 <div className="h-px bg-slate-300 flex-1"></div>
               </div>
@@ -601,31 +723,31 @@
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border-2 border-slate-200">
                 <div className="space-y-6">
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-[#ce1126] rounded-xl text-xs font-black uppercase tracking-wider">
-                    <MapPinIcon className="w-4 h-4" /> Highway 27, Toronto
+                    <MapPinIcon className="w-4 h-4" /> {t.marketTag}
                   </div>
                   
                   <h3 className="text-3xl md:text-4xl font-black text-slate-900 leading-tight">
-                    ¡Visítanos cada <span className="text-[#ce1126]">Sábado y Domingo</span> en Dr. Flea's!
+                    {t.marketHeader}
                   </h3>
 
                   <p className="text-slate-700 text-base font-medium leading-relaxed">
-                    Susana y Willie te esperan todos los fines de semana con el mejor sabor chileno en <strong className="text-slate-900">Dr. Flea's Flea Market</strong>, ubicado en la zona de Highway 27. Disfruta de nuestras empanadas recién horneadas y comparte un momento agradable en persona.
+                    {t.marketDesc}
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
                       <CalendarIcon className="w-6 h-6 text-[#003366] shrink-0 mt-0.5" />
                       <div>
-                        <h4 className="font-black text-sm text-slate-900 uppercase">Sábados y Domingos</h4>
-                        <p className="text-xs text-slate-600 mt-0.5">Abierto durante horario regular de mercado.</p>
+                        <h4 className="font-black text-sm text-slate-900 uppercase">{t.satSun}</h4>
+                        <p className="text-xs text-slate-600 mt-0.5">{t.satSunDesc}</p>
                       </div>
                     </div>
 
                     <div className="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
                       <MapPinIcon className="w-6 h-6 text-[#ce1126] shrink-0 mt-0.5" />
                       <div>
-                        <h4 className="font-black text-sm text-slate-900 uppercase">Dr. Flea's Market</h4>
-                        <p className="text-xs text-slate-600 mt-0.5">Highway 27 & Finch Ave area.</p>
+                        <h4 className="font-black text-sm text-slate-900 uppercase">{t.marketName}</h4>
+                        <p className="text-xs text-slate-600 mt-0.5">{t.marketLoc}</p>
                       </div>
                     </div>
                   </div>
@@ -637,7 +759,7 @@
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#003366] hover:bg-[#002244] text-white rounded-xl font-extrabold text-xs uppercase tracking-wider transition-all shadow-md"
                     >
-                      Ver actualizaciones en Facebook <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
+                      {t.marketFb} <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
                     </a>
                   </div>
                 </div>
@@ -662,11 +784,11 @@
             <div className="max-w-7xl mx-auto">
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-[#003366] rounded-xl text-xs font-black uppercase tracking-widest mb-4">
-                  Fácil y Rápido
+                  {t.howTag}
                 </span>
-                <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tight">¿Cómo hacer tu pedido?</h2>
+                <h2 className="text-3xl md:text-5xl font-black text-slate-900 uppercase tracking-tight">{t.howTitle}</h2>
                 <p className="text-slate-600 text-base mt-3 font-medium">
-                  Sigue estos simples pasos para encargar tus empanadas favoritas directamente con nosotros por WhatsApp.
+                  {t.howDesc}
                 </p>
               </div>
 
@@ -675,9 +797,9 @@
                   <div className="w-12 h-12 bg-[#003366] text-white font-black text-lg rounded-2xl flex items-center justify-center mb-6 shadow-md">
                     1
                   </div>
-                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">Elige tus Empanadas</h3>
+                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">{t.step1Title}</h3>
                   <p className="text-slate-600 text-sm font-medium leading-relaxed">
-                    Navega por nuestro menú, selecciona las variedades que más te gusten y añádelas a tu carrito de compras con sus respectivas cantidades.
+                    {t.step1Desc}
                   </p>
                 </div>
 
@@ -685,9 +807,9 @@
                   <div className="w-12 h-12 bg-[#ce1126] text-white font-black text-lg rounded-2xl flex items-center justify-center mb-6 shadow-md">
                     2
                   </div>
-                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">Completa tus Datos</h3>
+                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">{t.step2Title}</h3>
                   <p className="text-slate-600 text-sm font-medium leading-relaxed">
-                    Abre tu carro de compras, ingresa tu nombre, número de contacto y detalles de retiro o entrega para personalizar tu pedido.
+                    {t.step2Desc}
                   </p>
                 </div>
 
@@ -695,9 +817,9 @@
                   <div className="w-12 h-12 bg-[#25D366] text-white font-black text-lg rounded-2xl flex items-center justify-center mb-6 shadow-md">
                     3
                   </div>
-                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">Envía por WhatsApp</h3>
+                  <h3 className="font-black text-xl text-slate-900 uppercase tracking-tight mb-3">{t.step3Title}</h3>
                   <p className="text-slate-600 text-sm font-medium leading-relaxed">
-                    Haz clic en el botón de enviar para transmitir tu pedido directamente a nuestro WhatsApp oficial: <strong className="text-slate-900">647-865-1507</strong>.
+                    {t.step3Desc}
                   </p>
                 </div>
               </div>
@@ -707,7 +829,7 @@
           {/* Catalog Grid */}
           <main className="max-w-7xl mx-auto px-4 py-20">
             <div className="flex items-center gap-6 mb-16">
-              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight shrink-0">Nuestro Menú</h2>
+              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight shrink-0">{t.menuTitle}</h2>
               <div className="h-2 bg-[#ce1126] w-24 rounded-full"></div>
               <div className="h-px bg-slate-300 flex-1"></div>
             </div>
@@ -716,7 +838,8 @@
               {PRODUCTS.map(product => (
                 <ProductCard 
                   key={product.id} 
-                  product={product} 
+                  product={product}
+                  lang={lang}
                   onSelect={(prod) => setSelectedProduct(prod)} 
                 />
               ))}
@@ -727,6 +850,7 @@
           {selectedProduct && (
             <ProductDetailModal 
               product={selectedProduct} 
+              lang={lang}
               onClose={() => setSelectedProduct(null)} 
               onAdd={addToCart} 
             />
@@ -740,7 +864,7 @@
               <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-500">
                 <div className="p-6 border-b-4 border-[#ce1126] flex items-center justify-between bg-[#003366] text-white">
                   <div>
-                    <h3 className="font-black text-2xl uppercase tracking-tight">Tu Pedido</h3>
+                    <h3 className="font-black text-2xl uppercase tracking-tight">{t.cartTitle}</h3>
                     <p className="text-xs text-red-300 font-bold uppercase tracking-widest mt-1">WhatsApp: 647-865-1507</p>
                   </div>
                   <button onClick={() => setIsCartOpen(false)} className="p-2 hover:bg-[#002244] rounded-full transition-colors text-white">
@@ -754,35 +878,32 @@
                       <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm border-2 border-dashed border-slate-300 text-slate-400 font-black text-2xl">
                         SF
                       </div>
-                      <p className="text-slate-900 font-black text-xl">Tu carro está vacío</p>
-                      <p className="text-slate-500 mt-1 text-sm">Selecciona tus empanadas favoritas del menú</p>
+                      <p className="text-slate-900 font-black text-xl">{t.cartEmptyTitle}</p>
+                      <p className="text-slate-500 mt-1 text-sm">{t.cartEmptyDesc}</p>
                     </div>
                   ) : (
-                    cart.map(item => {
-                      const isCustom = item.price === "CONSULTENOS";
-                      return (
-                        <div key={item.cartId} className="flex gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                          <img src={item.image} className="w-20 h-20 object-cover rounded-xl shrink-0" alt={item.name} />
-                          <div className="flex-1">
-                            <h4 className="font-black text-slate-900 text-sm uppercase leading-tight">{item.name}</h4>
-                            <p className="text-[11px] font-bold text-[#ce1126] uppercase mt-1">Presentación: {item.selectedSize}</p>
-                            <div className="flex items-center justify-between mt-3">
-                              <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 border border-slate-200">
-                                <button onClick={() => updateQuantity(item.cartId, -1)} className="w-7 h-7 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-md transition-all font-bold">-</button>
-                                <span className="text-xs font-black w-6 text-center text-slate-900">{item.quantity}</span>
-                                <button onClick={() => updateQuantity(item.cartId, 1)} className="w-7 h-7 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-md transition-all font-bold">+</button>
-                              </div>
-                              <span className="font-black text-sm text-slate-900">
-                                {isCustom ? "A convenir" : `$${(item.price * item.quantity).toLocaleString('es-CL')}`}
-                              </span>
+                    cart.map(item => (
+                      <div key={item.cartId} className="flex gap-4 p-4 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <img src={item.image} className="w-20 h-20 object-cover rounded-xl shrink-0" alt={item.name[lang]} />
+                        <div className="flex-1">
+                          <h4 className="font-black text-slate-900 text-sm uppercase leading-tight">{item.name[lang]}</h4>
+                          <p className="text-[11px] font-bold text-[#ce1126] uppercase mt-1">Unidad</p>
+                          <div className="flex items-center justify-between mt-3">
+                            <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 border border-slate-200">
+                              <button onClick={() => updateQuantity(item.cartId, -1)} className="w-7 h-7 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-md transition-all font-bold">-</button>
+                              <span className="text-xs font-black w-6 text-center text-slate-900">{item.quantity}</span>
+                              <button onClick={() => updateQuantity(item.cartId, 1)} className="w-7 h-7 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-md transition-all font-bold">+</button>
                             </div>
+                            <span className="font-black text-sm text-slate-900">
+                              ${(item.price * item.quantity).toFixed(2)} CAD
+                            </span>
                           </div>
-                          <button onClick={() => removeFromCart(item.cartId)} className="text-slate-400 hover:text-[#ce1126] transition-colors p-1">
-                            <XIcon className="w-5 h-5" />
-                          </button>
                         </div>
-                      );
-                    })
+                        <button onClick={() => removeFromCart(item.cartId)} className="text-slate-400 hover:text-[#ce1126] transition-colors p-1">
+                          <XIcon className="w-5 h-5" />
+                        </button>
+                      </div>
+                    ))
                   )}
                 </div>
 
@@ -790,10 +911,10 @@
                   <div className="p-6 border-t border-slate-200 bg-white shadow-2xl">
                     <div className="space-y-3 mb-4">
                       <div>
-                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">Tu Nombre</label>
+                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">{t.nameLabel}</label>
                         <input 
                           type="text" 
-                          placeholder="Ej: Carlos Pérez" 
+                          placeholder={t.namePlaceholder} 
                           className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
                           value={formData.name}
                           onChange={e => setFormData({...formData, name: e.target.value})}
@@ -801,10 +922,10 @@
                       </div>
                       
                       <div>
-                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">WhatsApp de Contacto</label>
+                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">{t.phoneLabel}</label>
                         <input 
                           type="tel" 
-                          placeholder="Ej: +1 647 865 1507" 
+                          placeholder={t.phonePlaceholder} 
                           className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
                           value={formData.phone}
                           onChange={e => setFormData({...formData, phone: e.target.value})}
@@ -812,10 +933,10 @@
                       </div>
 
                       <div>
-                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">Dirección de Entrega / Notas</label>
+                        <label className="text-[10px] font-black uppercase text-slate-900 mb-1 block tracking-wider">{t.addressLabel}</label>
                         <input 
                           type="text" 
-                          placeholder="Ej: Retiro en Dr. Flea's / Dirección" 
+                          placeholder={t.addressPlaceholder} 
                           className="w-full p-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-bold text-slate-900 focus:border-[#ce1126] outline-none"
                           value={formData.address}
                           onChange={e => setFormData({...formData, address: e.target.value})}
@@ -824,8 +945,8 @@
                     </div>
 
                     <div className="flex items-center justify-between py-4 border-t border-dashed border-slate-200 mb-4">
-                      <span className="text-slate-600 font-bold uppercase text-xs">Total Estimado</span>
-                      <span className="text-2xl font-black text-slate-900">${total.toLocaleString('es-CL')}</span>
+                      <span className="text-slate-600 font-bold uppercase text-xs">{t.estimatedTotal}</span>
+                      <span className="text-2xl font-black text-slate-900">${total.toFixed(2)} CAD</span>
                     </div>
 
                     <button 
@@ -833,7 +954,7 @@
                       disabled={!formData.name || !formData.phone}
                       className="w-full bg-[#25D366] hover:bg-[#1da851] disabled:opacity-40 text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all shadow-lg uppercase tracking-wider text-xs"
                     >
-                      <SendIcon className="w-5 h-5 fill-current" /> Enviar Pedido por WhatsApp (647-865-1507)
+                      <SendIcon className="w-5 h-5 fill-current" /> {t.sendWa}
                     </button>
                   </div>
                 )}
@@ -853,38 +974,38 @@
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h4 className="text-lg font-black uppercase tracking-tight">Sin Fronteras</h4>
+                  <h4 className="text-lg font-black uppercase tracking-tight">{t.navTitle}</h4>
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed">
-                  Empanadas chilenas artesanales preparadas con dedicación por Susana y Willie. Encuéntranos cada fin de semana en Dr. Flea's Flea Market.
+                  {t.footerDesc}
                 </p>
               </div>
               
               <div>
-                <h4 className="text-sm font-black uppercase tracking-widest text-[#ce1126] mb-4">Redes Sociales</h4>
+                <h4 className="text-sm font-black uppercase tracking-widest text-[#ce1126] mb-4">{t.footerSocial}</h4>
                 <a 
                   href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-slate-200 hover:text-white font-bold text-sm bg-[#002244] px-4 py-2.5 rounded-xl border border-blue-900 shadow-sm"
                 >
-                  Visita nuestra página de Facebook <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
+                  {t.facebookBtn} <ExternalLinkIcon className="w-4 h-4 text-[#ce1126]" />
                 </a>
               </div>
 
               <div>
-                <h4 className="text-sm font-black uppercase tracking-widest text-[#ce1126] mb-4">Contacto & Pedidos</h4>
+                <h4 className="text-sm font-black uppercase tracking-widest text-[#ce1126] mb-4">{t.footerContact}</h4>
                 <p className="text-slate-300 text-sm font-medium mb-2">
-                  WhatsApp oficial de pedidos: <strong className="text-white">647-865-1507</strong>
+                  WhatsApp: <strong className="text-white">647-865-1507</strong>
                 </p>
                 <p className="text-slate-300 text-xs">
-                  Sábados y Domingos en Dr. Flea's Flea Market (Highway 27).
+                  {t.satSun} ({t.marketName}).
                 </p>
               </div>
             </div>
             
             <div className="max-w-7xl mx-auto border-t border-blue-900 mt-12 pt-8 text-center">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">© 2026 SIN FRONTERAS EMPANADAS • SUSANA Y WILLIE 🇨🇱</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">{t.footerRights}</p>
             </div>
           </footer>
         </div>
