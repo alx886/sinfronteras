@@ -48,11 +48,11 @@
                 </div>
             </div>
 
-            <!-- Desktop & Language Navigation -->
+            <!-- Desktop & Language Navigation (English / Spanish) -->
             <div class="flex items-center space-x-4">
                 <div class="bg-stone-100 p-1 rounded-xl flex items-center text-xs font-semibold">
                     <button id="lang-en" onclick="setLanguage('en')" class="px-3 py-1.5 rounded-lg bg-white text-stone-900 shadow-sm transition-all">EN</button>
-                    <button id="lang-fr" onclick="setLanguage('fr')" class="px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all">FR</button>
+                    <button id="lang-es" onclick="setLanguage('es')" class="px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all">ES</button>
                 </div>
                 <button onclick="toggleCartModal()" class="relative bg-brand-500 hover:bg-brand-600 text-white p-2.5 rounded-2xl shadow-md transition-all flex items-center justify-center">
                     <i class="fa-solid fa-cart-shopping text-lg"></i>
@@ -88,15 +88,15 @@
     <main id="menu-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div>
-                <h2 id="menu-heading" class="text-2xl sm:text-3xl font-extrabold text-stone-900">Our Menu / Notre Menu</h2>
+                <h2 id="menu-heading" class="text-2xl sm:text-3xl font-extrabold text-stone-900">Our Menu / Menú</h2>
                 <p id="menu-subheading" class="text-stone-500 text-sm mt-1">Select your favorite empanadas and customize quantities.</p>
             </div>
             <!-- Category Filter Buttons -->
             <div class="flex flex-wrap gap-2" id="category-filters">
-                <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-500 text-white shadow-sm transition-all" data-category="all">All / Tous</button>
-                <button onclick="filterCategory('Savory')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all" data-category="Savory">Savory / Salées</button>
-                <button onclick="filterCategory('Sweet')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all" data-category="Sweet">Sweet / Sucrées</button>
-                <button onclick="filterCategory('Frozen')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all" data-category="Frozen">Frozen / Congelées</button>
+                <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-500 text-white shadow-sm transition-all" data-category="all">All / Todos</button>
+                <button onclick="filterCategory('Savory')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all" data-category="Savory">Savory / Saladas</button>
+                <button onclick="filterCategory('Sweet')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all" data-category="Sweet">Sweet / Dulces</button>
+                <button onclick="filterCategory('Frozen')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-stone-200 text-stone-700 hover:bg-stone-300 transition-all" data-category="Frozen">Frozen Packs / Congelados</button>
             </div>
         </div>
 
@@ -154,18 +154,18 @@
             </div>
             <form id="order-form" onsubmit="submitWhatsAppOrder(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-name">Full Name / Nom complet</label>
+                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-name">Full Name / Nombre completo</label>
                     <input type="text" id="cust-name" required placeholder="e.g., Maria Garcia" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-phone">Phone Number / Téléphone</label>
+                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-phone">Phone Number / Teléfono</label>
                     <input type="tel" id="cust-phone" required placeholder="e.g., 416-555-0199" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-fulfillment">Fulfillment / Mode de livraison</label>
+                    <label class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-1" id="label-fulfillment">Fulfillment / Método de entrega</label>
                     <select id="cust-fulfillment" class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none bg-white transition-all">
-                        <option value="Pickup">Pickup / Cueillette (Toronto)</option>
-                        <option value="Delivery">Delivery / Livraison (GTA)</option>
+                        <option value="Pickup">Pickup / Recogida (Toronto)</option>
+                        <option value="Delivery">Delivery / Entrega (GTA)</option>
                     </select>
                 </div>
                 <div>
@@ -195,76 +195,76 @@
     </footer>
 
     <script>
-        // Bilingual Product Catalog based on Sin Fronteras price list
+        // Official Sin Fronteras Product Catalog (Exact items from price list)
         const products = [
             {
                 id: 1,
-                name: { en: "Beef Empanada", fr: "Empanada au Bœuf" },
-                desc: { en: "Traditional seasoned ground beef, onions, peppers, and spices.", fr: "Bœuf haché traditionnel assaisonné, oignons, poivrons et épices." },
+                name: { en: "Beef Empanada", es: "Empanada de Carne" },
+                desc: { en: "Traditional seasoned ground beef, onions, peppers, and spices.", es: "Carne picada tradicional sazonada, cebolla, pimientos y especias." },
                 price: 4.50,
                 category: "Savory",
                 image: "https://placehold.co/600x400/7c2d12/ffffff?text=Beef+Empanada"
             },
             {
                 id: 2,
-                name: { en: "Chicken Empanada", fr: "Empanada au Poulet" },
-                desc: { en: "Juicy shredded chicken breast with herbs and vegetables.", fr: "Poitrine de poulet effilochée juteuse avec herbes et légumes." },
+                name: { en: "Chicken Empanada", es: "Empanada de Pollo" },
+                desc: { en: "Juicy shredded chicken breast with herbs and vegetables.", es: "Pechuga de pollo jugosa desmenuzada con hierbas y verduras." },
                 price: 4.50,
                 category: "Savory",
                 image: "https://placehold.co/600x400/c2410c/ffffff?text=Chicken+Empanada"
             },
             {
                 id: 3,
-                name: { en: "Ham & Cheese Empanada", fr: "Empanada Jambon & Fromage" },
-                desc: { en: "Savory ham and melted mozzarella cheese filling.", fr: "Garniture savoureuse de jambon et de fromage mozzarella fondu." },
+                name: { en: "Ham & Cheese Empanada", es: "Empanada de Jamón y Queso" },
+                desc: { en: "Savory ham and melted mozzarella cheese filling.", es: "Relleno de jamón sabroso y queso mozzarella derretido." },
                 price: 4.50,
                 category: "Savory",
                 image: "https://placehold.co/600x400/ea580c/ffffff?text=Ham+%26+Cheese"
             },
             {
                 id: 4,
-                name: { en: "Spinach & Cheese Empanada", fr: "Empanada Épinards & Fromage" },
-                desc: { en: "Fresh spinach mixed with creamy ricotta and mozzarella.", fr: "Épinards frais mélangés à de la ricotta crémeuse et de la mozzarella." },
+                name: { en: "Spinach & Cheese Empanada", es: "Empanada de Espinaca y Queso" },
+                desc: { en: "Fresh spinach mixed with creamy ricotta and mozzarella.", es: "Espinaca fresca mezclada con ricotta cremosa y mozzarella." },
                 price: 4.50,
                 category: "Savory",
                 image: "https://placehold.co/600x400/15803d/ffffff?text=Spinach+%26+Cheese"
             },
             {
                 id: 5,
-                name: { en: "Sweet Corn & Cheese (Humita)", fr: "Maïs Doux & Fromage (Humita)" },
-                desc: { en: "Sweet corn cream filling with gooey melted cheese.", fr: "Garniture à la crème de maïs doux avec fromage fondant." },
+                name: { en: "Sweet Corn & Cheese (Humita)", es: "Choclo y Queso (Humita)" },
+                desc: { en: "Sweet corn cream filling with gooey melted cheese.", es: "Relleno de crema de choclo dulce con queso fundido." },
                 price: 4.75,
                 category: "Savory",
                 image: "https://placehold.co/600x400/ca8a04/ffffff?text=Sweet+Corn+%26+Cheese"
             },
             {
                 id: 6,
-                name: { en: "Guava & Cheese Empanada (Sweet)", fr: "Empanada Goyave & Fromage (Sucrée)" },
-                desc: { en: "Sweet tropical guava paste paired with creamy cheese.", fr: "Pâte de goyave tropicale sucrée associée à du fromage crémeux." },
+                name: { en: "Guava & Cheese Empanada (Sweet)", es: "Empanada de Guayaba y Queso (Dulce)" },
+                desc: { en: "Sweet tropical guava paste paired with creamy cheese.", es: "Dulce de guayaba tropical combinado con queso cremoso." },
                 price: 4.25,
                 category: "Sweet",
                 image: "https://placehold.co/600x400/be185d/ffffff?text=Guava+%26+Cheese"
             },
             {
                 id: 7,
-                name: { en: "Dulce de Leche Empanada", fr: "Empanada au Dulce de Leche" },
-                desc: { en: "Filled with rich artisanal dulce de leche and dusted with sugar.", fr: "Rempli de dulce de leche artisanal riche et saupoudré de sucre." },
+                name: { en: "Dulce de Leche Empanada", es: "Empanada de Dulce de Leche" },
+                desc: { en: "Filled with rich artisanal dulce de leche and dusted with sugar.", es: "Rellena de rico dulce de leche artesanal y espolvoreada con azúcar." },
                 price: 4.25,
                 category: "Sweet",
                 image: "https://placehold.co/600x400/854d0e/ffffff?text=Dulce+de+Leche"
             },
             {
                 id: 8,
-                name: { en: "Frozen Pack - Beef (6 pcs)", fr: "Paquet Congelé - Bœuf (6 mcx)" },
-                desc: { en: "Take-home raw frozen beef empanadas ready to bake at home.", fr: "Empanadas de bœuf crues congelées à emporter, prêtes à cuire." },
+                name: { en: "Frozen Pack - Beef (6 pcs)", es: "Paquete Congelado - Carne (6 pzas)" },
+                desc: { en: "Take-home raw frozen beef empanadas ready to bake at home.", es: "Empanadas de carne crudas congeladas para hornear en casa." },
                 price: 24.00,
                 category: "Frozen",
                 image: "https://placehold.co/600x400/3f3f46/ffffff?text=Frozen+Beef+Pack"
             },
             {
                 id: 9,
-                name: { en: "Frozen Pack - Assorted Mix (6 pcs)", fr: "Paquet Congelé - Assortiment (6 mcx)" },
-                desc: { en: "Mix and match your favorite flavors in a frozen ready-to-bake pack.", fr: "Mélangez vos saveurs préférées dans un paquet congelé prêt à cuire." },
+                name: { en: "Frozen Pack - Assorted Mix (6 pcs)", es: "Paquete Congelado - Surtido (6 pzas)" },
+                desc: { en: "Mix and match your favorite flavors in a frozen ready-to-bake pack.", es: "Mezcla tus sabores favoritos en un paquete congelado listo para hornear." },
                 price: 25.00,
                 category: "Frozen",
                 image: "https://placehold.co/600x400/52525b/ffffff?text=Frozen+Assorted+Pack"
@@ -286,7 +286,7 @@
                 allCat: "All",
                 savoryCat: "Savory",
                 sweetCat: "Sweet",
-                frozenCat: "Frozen",
+                frozenCat: "Frozen Packs",
                 addToCart: "Add to Order",
                 modalTitle: "Your Order Summary",
                 totalLabel: "Total Amount:",
@@ -300,36 +300,36 @@
                 pickup: "Pickup (Toronto)",
                 delivery: "Delivery (GTA)"
             },
-            fr: {
-                heroTitle: "Empanadas Artisanales Authentiques",
-                heroSubtitle: "Fraîchement cuites ou congelées prêtes à cuire. Commandez directement via WhatsApp pour cueillette ou livraison!",
-                browse: "Voir le Menu",
-                whatsappDirect: "Discuter sur WhatsApp",
-                menuHeading: "Notre Menu",
-                menuSubheading: "Sélectionnez vos empanadas préférées et ajustez les quantités.",
-                allCat: "Tous",
-                savoryCat: "Salées",
-                sweetCat: "Sucrées",
-                frozenCat: "Congelées",
-                addToCart: "Ajouter à la commande",
-                modalTitle: "Résumé de votre commande",
-                totalLabel: "Montant Total:",
-                checkoutText: "Passer la commande WhatsApp",
-                checkoutModalTitle: "Complétez votre commande",
-                labelName: "Nom complet",
-                labelPhone: "Numéro de téléphone",
-                labelFulfillment: "Mode de livraison",
-                labelAddress: "Adresse de livraison / Notes",
-                sendOrder: "Envoyer la commande sur WhatsApp",
-                pickup: "Cueillette (Toronto)",
-                delivery: "Livraison (GTA)"
+            es: {
+                heroTitle: "Empanadas Artesanales Auténticas",
+                heroSubtitle: "Recién horneadas o congeladas listas para hornear hechas con amor. ¡Pide directamente por WhatsApp para recoger o delivery!",
+                browse: "Ver Menú",
+                whatsappDirect: "Chatear por WhatsApp",
+                menuHeading: "Nuestro Menú",
+                menuSubheading: "Selecciona tus empanadas favoritas y ajusta las cantidades.",
+                allCat: "Todos",
+                savoryCat: "Saladas",
+                sweetCat: "Dulces",
+                frozenCat: "Congelados",
+                addToCart: "Agregar al pedido",
+                modalTitle: "Resumen de tu pedido",
+                totalLabel: "Monto Total:",
+                checkoutText: "Proceder al pedido por WhatsApp",
+                checkoutModalTitle: "Completa tu pedido",
+                labelName: "Nombre completo",
+                labelPhone: "Número de teléfono",
+                labelFulfillment: "Método de entrega",
+                labelAddress: "Dirección de entrega / Notas",
+                sendOrder: "Enviar pedido a WhatsApp",
+                pickup: "Recogida (Toronto)",
+                delivery: "Entrega (GTA)"
             }
         };
 
         function setLanguage(lang) {
             currentLang = lang;
             document.getElementById('lang-en').className = lang === 'en' ? 'px-3 py-1.5 rounded-lg bg-white text-stone-900 shadow-sm transition-all' : 'px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all';
-            document.getElementById('lang-fr').className = lang === 'fr' ? 'px-3 py-1.5 rounded-lg bg-white text-stone-900 shadow-sm transition-all' : 'px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all';
+            document.getElementById('lang-es').className = lang === 'es' ? 'px-3 py-1.5 rounded-lg bg-white text-stone-900 shadow-sm transition-all' : 'px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 transition-all';
             
             // Update static strings
             const t = uiStrings[lang];
@@ -416,7 +416,6 @@
             cart[productId] += delta;
             if (cart[productId] <= 0) delete cart[productId];
 
-            // Update UI elements for this product if rendered
             const qtyElem = document.getElementById(`qty-${productId}`);
             if (qtyElem) qtyElem.innerText = cart[productId] || 0;
             const subElem = document.getElementById(`subtotal-${productId}`);
@@ -469,7 +468,7 @@
             const entries = Object.entries(cart);
 
             if (entries.length === 0) {
-                container.innerHTML = `<div class="text-center py-8 text-stone-400 text-sm">Your cart is empty. / Votre panier est vide.</div>`;
+                container.innerHTML = `<div class="text-center py-8 text-stone-400 text-sm">Your cart is empty. / Tu carrito está vacío.</div>`;
                 modalTotalPrice.innerText = `$0.00 CAD`;
                 return;
             }
@@ -526,11 +525,11 @@
             const address = document.getElementById('cust-address').value;
 
             let orderText = `Hello Sin Fronteras! I would like to place an order:%0A%0A`;
-            orderText += `*Customer:* ${name}%0A`;
-            orderText += `*Phone:* ${phone}%0A`;
-            orderText += `*Fulfillment:* ${fulfillment}%0A`;
+            orderText += `*Customer / Cliente:* ${name}%0A`;
+            orderText += `*Phone / Teléfono:* ${phone}%0A`;
+            orderText += `*Fulfillment / Entrega:* ${fulfillment}%0A`;
             if(address) orderText += `*Address/Notes:* ${address}%0A%0A`;
-            orderText += `*Items:*%0A`;
+            orderText += `*Items / Productos:*%0A`;
 
             let totalPrice = 0;
             for (const [id, qty] of Object.entries(cart)) {
@@ -538,13 +537,13 @@
                 if (p) {
                     const sub = qty * p.price;
                     totalPrice += sub;
-                    orderText += `- ${qty}x ${p.name.en} ($${sub.toFixed(2)})%0A`;
+                    orderText += `- ${qty}x ${p.name.en} / ${p.name.es} ($${sub.toFixed(2)})%0A`;
                 }
             }
 
-            orderText += `%0A*Total Amount:* $${totalPrice.toFixed(2)} CAD`;
+            orderText += `%0A*Total Amount / Total:* $${totalPrice.toFixed(2)} CAD`;
 
-            const whatsappNumber = "14165550199"; // Sin Fronteras WhatsApp number placeholder
+            const whatsappNumber = "14165550199";
             const url = `https://wa.me/${whatsappNumber}?text=${orderText}`;
             window.open(url, '_blank');
         }
