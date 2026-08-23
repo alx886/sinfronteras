@@ -1,278 +1,733 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sin Frontera Empanadas</title>
-    <!-- Tailwind CSS CDN for modern styling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sin Fronteras Empanadas | Authentic Chilean Empanadas in Toronto</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        chileRed: '#D52B1E',
-                        chileBlue: '#0039A6',
+                        chileRed: {
+                            50: '#fef2f2',
+                            100: '#ffe1e1',
+                            500: '#e11d48',
+                            600: '#d52b1e', // Authentic Chilean Flag Red
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                        },
+                        chileBlue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            600: '#1d4ed8',
+                            700: '#0039a6', // Authentic Chilean Flag Blue
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-</head>
-<body class="bg-white text-gray-800 font-sans antialiased flex flex-col min-h-screen">
 
-    <!-- Top Bar: Translation & Branding -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .chile-flag-gradient {
+            background: linear-gradient(135deg, #0039a6 0%, #0039a6 48%, #ffffff 48%, #ffffff 52%, #d52b1e 52%, #d52b1e 100%);
+        }
+
+        .chile-accent-bar {
+            background: linear-gradient(to right, #0039a6 0%, #0039a6 40%, #ffffff 40%, #ffffff 60%, #d52b1e 60%, #d52b1e 100%);
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Hide scrollbars for clean horizontal slider */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .shadow-soft {
+            box-shadow: 0 10px 30px -10px rgba(0, 57, 166, 0.08);
+        }
+
+        .shadow-floating {
+            box-shadow: 0 20px 40px -15px rgba(213, 43, 30, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-800 min-h-screen flex flex-col pb-28">
+
+    <div class="chile-accent-bar h-2.5 w-full fixed top-0 z-50"></div>
+
+    <!-- Sticky Header -->
+    <header class="sticky top-2.5 z-40 glass-header border-b border-slate-100 shadow-sm">
         <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <img src="https://i.ibb.co/9PQx2SK/logo.jpg" alt="Sin Frontera Empanadas Logo" class="w-10 h-10 object-contain rounded-full border border-chileBlue">
-                <span class="font-bold text-sm text-chileBlue tracking-tight" data-en="Sin Frontera Empanadas" data-es="Empanadas Sin Frontera">Sin Frontera Empanadas</span>
-            </div>
-            <!-- Language Toggle Button -->
-            <button id="langToggle" onclick="toggleLanguage()" class="bg-chileBlue text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow hover:bg-blue-800 transition-colors focus:outline-none focus:ring-2 focus:ring-chileBlue">
-                🇨🇱 Español
+            <!-- Brand Logo & Name -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="relative w-14 h-14 rounded-2xl bg-white p-1 border-2 border-chileBlue-700 shadow-md flex items-center justify-center overflow-hidden shrink-0">
+                    <img src="https://i.ibb.co/9PQx2SK/logo.jpg" 
+                         onerror="this.onerror=null; this.src='https://i.ibb.co/9PQx2SK/logo.png';" 
+                         alt="Sin Fronteras Empanadas Logo" 
+                         class="w-full h-full object-contain group-hover:scale-105 transition-transform">
+                </div>
+                <div>
+                    <h1 class="font-display font-extrabold text-lg text-slate-900 leading-tight tracking-tight">
+                        SIN <span class="text-chileRed-600">FRONTERAS</span>
+                    </h1>
+                    <p class="text-xs font-semibold text-chileBlue-700 tracking-wide uppercase flex items-center gap-1">
+                        <span>EMPANADAS</span>
+                        <span class="text-xs">🇨🇱</span>
+                    </p>
+                </div>
+            </a>
+
+            <!-- Language Switcher Button -->
+            <button onclick="toggleLanguage()" id="langBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 hover:bg-slate-200 text-xs font-bold text-slate-800 transition-all shadow-sm active:scale-95">
+                <span id="langFlag">🇨🇱</span>
+                <span id="langText">Español</span>
+                <i class="fa-solid fa-arrows-rotate text-[10px] text-chileBlue-700 ml-0.5"></i>
             </button>
         </div>
     </header>
 
-    <!-- Main Content Area Optimized for Mobile -->
-    <main class="flex-grow max-w-md w-full mx-auto px-4 py-6 space-y-8">
+    <main class="flex-1 max-w-md mx-auto w-full px-4 pt-4 space-y-6">
 
-        <!-- Hero Section / Introduction -->
-        <section class="text-center space-y-2">
-            <h1 class="text-2xl font-black text-chileBlue" data-en="Authentic Chilean Empanadas" data-es="Empanadas Chilenas Auténticas">Authentic Chilean Empanadas</h1>
-            <p class="text-sm text-gray-600" data-en="Handmade with love by Susana and Willy. Order directly via WhatsApp!" data-es="Hechas a mano con amor por Susana y ¡Pídelas directo por WhatsApp!">Handmade with love by Susana and Willy. Order directly via WhatsApp!</p>
-        </section>
-
-        <!-- Flea Market Section -->
-        <section class="bg-gray-50 border border-gray-200 rounded-2xl p-4 shadow-sm space-y-3">
-            <div class="flex items-center space-x-2 text-chileRed font-bold text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span data-en="Visit Us at Dr. Flea's Market!" data-es="¡Visítanos en el Mercado Dr. Flea's!">Visit Us at Dr. Flea's Market!</span>
+        <!-- Hero Card -->
+        <section class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-chileBlue-900 via-chileBlue-800 to-slate-900 text-white p-6 shadow-xl">
+            <!-- Star background element -->
+            <div class="absolute -right-6 -bottom-6 text-white/5 text-9xl font-black select-none pointer-events-none">
+                ★
             </div>
-            <div class="overflow-hidden rounded-xl shadow-inner">
-                <img src="https://i.ibb.co/zhSLZWtS/fleamarket2.jpg" alt="Dr. Flea's Flea Market" class="w-full h-40 object-cover hover:scale-105 transition-transform duration-300">
-            </div>
-            <div class="text-xs text-gray-600 space-y-1">
-                <p><strong data-en="Location:" data-es="Dirección:">Location:</strong> <a href="https://maps.google.com/?q=8+Westmore+Dr,+Toronto,+Ontario+M9V+3Z7" target="_blank" class="text-chileBlue underline">Dr. Flea's - 8 Westmore Dr, Toronto, ON M9V 3Z7</a></p>
-                <p><strong data-en="Hours:" data-es="Horarios:">Hours:</strong> <span data-en="Every Saturday & Sunday | 10:00 AM - 5:00 PM" data-es="Todos los Sábados y Domingos | 10:00 AM - 5:00 PM">Saturday & Sunday 10:00AM - 5:00PM</span></p>
-            </div>
-        </section>
+            
+            <div class="relative z-10 space-y-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-chileRed-600/90 backdrop-blur-md text-white text-xs font-extrabold tracking-wider uppercase">
+                    <span>★ 100% Auténtico Chileno</span>
+                </div>
 
-        <!-- Products Section -->
-        <section class="space-y-4">
-            <h2 class="text-lg font-bold text-gray-900 border-b pb-2 flex justify-between items-center">
-                <span data-en="Our Menu" data-es="Nuestro Menú">Our Menu</span>
-                <span class="text-xs font-normal text-gray-500" data-en="Select quantities below" data-es="Selecciona cantidades abajo">Select quantities below</span>
-            </h2>
+                <h2 class="font-display text-2xl font-black leading-tight tracking-tight text-white" id="heroTitle">
+                    ¡Las Mejores Empanadas Chilenas en Toronto!
+                </h2>
 
-            <!-- Product Cards Container -->
-            <div class="space-y-4" id="product-list">
-                
-                <!-- Product 1: Meat (Pino) -->
-                <article class="flex items-center bg-white border border-gray-100 rounded-xl p-3 shadow-sm gap-3 product-item" data-name="Meat Empanada (Pino)" data-es-name="Empanada de Pino" data-price="4.50">
-                    <img src="https://i.ibb.co/0RkMxKrR/pino-1.jpg" alt="Empanada De Pino" class="w-20 h-20 object-cover rounded-lg flex-shrink-0 border">
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-sm text-gray-900" data-en="Meat Empanada" data-es="Empanada de Pino">Meat Empanada</h3>
-                        <p class="text-xs text-gray-500 italic" data-en="Empanada De Pino" data-es="Pino (Carne y cebolla tradicional)">Empanada De Pino</p>
-                        <p class="text-chileRed font-bold text-sm mt-1">$4.50</p>
-                    </div>
-                    <div class="flex flex-col items-end justify-center">
-                        <label for="qty-1" class="sr-only">Quantity for Meat Empanada</label>
-                        <input type="number" id="qty-1" min="0" value="0" class="qty-input w-16 text-center border border-gray-300 rounded-md py-1 text-sm focus:ring-2 focus:ring-chileBlue focus:outline-none" oninput="calculateTotal()">
-                    </div>
-                </article>
+                <p class="text-xs text-blue-100 leading-relaxed" id="heroSubtitle">
+                    Hechas a mano por <strong>Susana & Willy</strong> con recetas tradicionales, ingredientes frescos y mucho amor.
+                </p>
 
-                <!-- Product 2: Chicken -->
-                <article class="flex items-center bg-white border border-gray-100 rounded-xl p-3 shadow-sm gap-3 product-item" data-name="Chicken Empanada" data-es-name="Empanada de Pollo" data-price="4.50">
-                    <img src="https://i.ibb.co/7PnStK3/pollo.jpg" alt="Empanada De Pollo" class="w-20 h-20 object-cover rounded-lg flex-shrink-0 border">
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-sm text-gray-900" data-en="Chicken Empanada" data-es="Empanada de Pollo">Chicken Empanada</h3>
-                        <p class="text-xs text-gray-500 italic" data-en="Empanada De Pollo" data-es="Pollo tierno sazonado">Empanada De Pollo</p>
-                        <p class="text-chileRed font-bold text-sm mt-1">$4.50</p>
-                    </div>
-                    <div class="flex flex-col items-end justify-center">
-                        <label for="qty-2" class="sr-only">Quantity for Chicken Empanada</label>
-                        <input type="number" id="qty-2" min="0" value="0" class="qty-input w-16 text-center border border-gray-300 rounded-md py-1 text-sm focus:ring-2 focus:ring-chileBlue focus:outline-none" oninput="calculateTotal()">
-                    </div>
-                </article>
-
-                <!-- Product 3: Cheese -->
-                <article class="flex items-center bg-white border border-gray-100 rounded-xl p-3 shadow-sm gap-3 product-item" data-name="Cheese Empanada" data-es-name="Empanada de Queso" data-price="3.50">
-                    <img src="https://i.ibb.co/qL7dBRHC/queso-1.jpg" alt="Cheese Empanda" class="w-20 h-20 object-cover rounded-lg flex-shrink-0 border">
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-sm text-gray-900" data-en="Cheese Empanada" data-es="Empanada de Queso">Cheese Empanda</h3>
-                        <p class="text-xs text-gray-500 italic" data-en="Empanada de Queso" data-es="Queso fundido clásico">Empanada de Queso</p>
-                        <p class="text-chileRed font-bold text-sm mt-1">$3.50</p>
-                    </div>
-                    <div class="flex flex-col items-end justify-center">
-                        <label for="qty-3" class="sr-only">Quantity for Cheese Empanada</label>
-                        <input type="number" id="qty-3" min="0" value="0" class="qty-input w-16 text-center border border-gray-300 rounded-md py-1 text-sm focus:ring-2 focus:ring-chileBlue focus:outline-none" oninput="calculateTotal()">
-                    </div>
-                </article>
-
-                <!-- Product 4: Napolitan -->
-                <article class="flex items-center bg-white border border-gray-100 rounded-xl p-3 shadow-sm gap-3 product-item" data-name="Napolitan" data-es-name="Napolitana" data-price="4.50">
-                    <img src="https://i.ibb.co/27DmxVfg/Empanadas-Napolitana.png" alt="Napolitana" class="w-20 h-20 object-cover rounded-lg flex-shrink-0 border">
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-sm text-gray-900" data-en="Napolitan" data-es="Napolitana">Napolitan</h3>
-                        <p class="text-xs text-gray-500 italic" data-en="Napolitana" data-es="Queso, jamón, tomate y orégano">Napolitana</p>
-                        <p class="text-chileRed font-bold text-sm mt-1">$4.50</p>
-                    </div>
-                    <div class="flex flex-col items-end justify-center">
-                        <label for="qty-4" class="sr-only">Quantity for Napolitan</label>
-                        <input type="number" id="qty-4" min="0" value="0" class="qty-input w-16 text-center border border-gray-300 rounded-md py-1 text-sm focus:ring-2 focus:ring-chileBlue focus:outline-none" oninput="calculateTotal()">
-                    </div>
-                </article>
-
-                <!-- Product 5: Spinach & Cheese -->
-                <article class="flex items-center bg-white border border-gray-100 rounded-xl p-3 shadow-sm gap-3 product-item" data-name="Spinach & Cheese" data-es-name="Queso y Espinacas" data-price="4.00">
-                    <img src="https://i.ibb.co/BVgRn3s2/queso-espinaca.jpg" alt="Queso y Espinacas" class="w-20 h-20 object-cover rounded-lg flex-shrink-0 border">
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-sm text-gray-900" data-en="Spinach & Cheese" data-es="Queso y Espinacas">Spinach & Cheese</h3>
-                        <p class="text-xs text-gray-500 italic" data-en="Queso y Espinacas" data-es="Espinaca fresca y queso fundido">Queso y Espinacas</p>
-                        <p class="text-chileRed font-bold text-sm mt-1">$4.00</p>
-                    </div>
-                    <div class="flex flex-col items-end justify-center">
-                        <label for="qty-5" class="sr-only">Quantity for Spinach & Cheese</label>
-                        <input type="number" id="qty-5" min="0" value="0" class="qty-input w-16 text-center border border-gray-300 rounded-md py-1 text-sm focus:ring-2 focus:ring-chileBlue focus:outline-none" oninput="calculateTotal()">
-                    </div>
-                </article>
-
-                <!-- Product 6: Ham & Cheese -->
-                <article class="flex items-center bg-white border border-gray-100 rounded-xl p-3 shadow-sm gap-3 product-item" data-name="Ham & Cheese" data-es-name="Jamón con Queso" data-price="4.00">
-                    <img src="https://i.ibb.co/WWWQ1Zzw/quesojamon.jpg" alt="Jamon con Queso" class="w-20 h-20 object-cover rounded-lg flex-shrink-0 border">
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-sm text-gray-900" data-en="Ham & Cheese" data-es="Jamón con Queso">Ham & Cheese</h3>
-                        <p class="text-xs text-gray-500 italic" data-en="Jamon con Queso" data-es="Jamón y abundante queso">Jamon con Queso</p>
-                        <p class="text-chileRed font-bold text-sm mt-1">$4.00</p>
-                    </div>
-                    <div class="flex flex-col items-end justify-center">
-                        <label for="qty-6" class="sr-only">Quantity for Ham & Cheese</label>
-                        <input type="number" id="qty-6" min="0" value="0" class="qty-input w-16 text-center border border-gray-300 rounded-md py-1 text-sm focus:ring-2 focus:ring-chileBlue focus:outline-none" oninput="calculateTotal()">
-                    </div>
-                </article>
-
-                <!-- Product 7: Tuna -->
-                <article class="flex items-center bg-white border border-gray-100 rounded-xl p-3 shadow-sm gap-3 product-item" data-name="Tuna" data-es-name="Atún" data-price="4.00">
-                    <img src="https://i.ibb.co/zhDFWkkW/empanada-atun.png" alt="Atun" class="w-20 h-20 object-cover rounded-lg flex-shrink-0 border">
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-sm text-gray-900" data-en="Tuna" data-es="Atún">Tuna</h3>
-                        <p class="text-xs text-gray-500 italic" data-en="Atun" data-es="Atún sazonado al estilo casero">Atun</p>
-                        <p class="text-chileRed font-bold text-sm mt-1">$4.00</p>
-                    </div>
-                    <div class="flex flex-col items-end justify-center">
-                        <label for="qty-7" class="sr-only">Quantity for Tuna</label>
-                        <input type="number" id="qty-7" min="0" value="0" class="qty-input w-16 text-center border border-gray-300 rounded-md py-1 text-sm focus:ring-2 focus:ring-chileBlue focus:outline-none" oninput="calculateTotal()">
-                    </div>
-                </article>
-
-                <!-- Product 8: Mushrooms & Cheese -->
-                <article class="flex items-center bg-white border border-gray-100 rounded-xl p-3 shadow-sm gap-3 product-item" data-name="Mushrooms & Cheese" data-es-name="Queso con Champiñones" data-price="4.00">
-                    <img src="https://i.ibb.co/VYR92jKp/queso-champinones.jpg" alt="Queso con Champinones" class="w-20 h-20 object-cover rounded-lg flex-shrink-0 border">
-                    <div class="flex-grow">
-                        <h3 class="font-bold text-sm text-gray-900" data-en="Mushrooms & Cheese" data-es="Queso con Champiñones">Mushrooms & Cheese</h3>
-                        <p class="text-xs text-gray-500 italic" data-en="Queso con Champinones" data-es="Champiñones frescos y queso fundido">Queso con Champinones</p>
-                        <p class="text-chileRed font-bold text-sm mt-1">$4.00</p>
-                    </div>
-                    <div class="flex flex-col items-end justify-center">
-                        <label for="qty-8" class="sr-only">Quantity for Mushrooms & Cheese</label>
-                        <input type="number" id="qty-8" min="0" value="0" class="qty-input w-16 text-center border border-gray-300 rounded-md py-1 text-sm focus:ring-2 focus:ring-chileBlue focus:outline-none" oninput="calculateTotal()">
-                    </div>
-                </article>
-
+                <!-- Quick Action Buttons -->
+                <div class="pt-2 flex items-center gap-3">
+                    <a href="#menu" class="flex-1 bg-chileRed-600 hover:bg-chileRed-700 active:scale-95 text-white text-xs font-bold py-3 px-4 rounded-xl text-center shadow-md flex items-center justify-center gap-2 transition-all">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span id="heroOrderBtn">Ver Menú y Ordenar</span>
+                    </a>
+                    <a href="https://wa.me/16478651507" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white text-xs font-bold p-3 rounded-xl flex items-center justify-center shadow-md transition-all" aria-label="WhatsApp Direct">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                    </a>
+                </div>
             </div>
         </section>
+
+        <section id="fleamarket" class="bg-white border border-slate-100 rounded-3xl p-5 shadow-soft space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-chileRed-50 text-chileRed-600 flex items-center justify-center font-bold text-base">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest text-chileBlue-700 block" id="fleaTag">Punto de Venta Semanal</span>
+                        <h3 class="font-display font-extrabold text-base text-slate-900" id="fleaTitle">Dr. Flea's Flea Market</h3>
+                    </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span id="openBadge">Sáb y Dom</span>
+                </span>
+            </div>
+
+            <!-- Flea Market Image -->
+            <div class="relative rounded-2xl overflow-hidden aspect-[16/9] bg-slate-100 border border-slate-200">
+                <img src="https://i.ibb.co/zhSLZWtS/fleamarket2.jpg" 
+                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop';" 
+                     alt="Sin Fronteras Empanadas at Dr Flea Market" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent flex items-end p-3">
+                    <p class="text-white text-xs font-medium flex items-center gap-1.5" id="fleaOwnersNote">
+                        <i class="fa-solid fa-heart text-chileRed-500"></i>
+                        <span>¡Susana y Willy los esperan cada fin de semana!</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Market Info Cards -->
+            <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1">
+                    <div class="flex items-center gap-1.5 text-chileBlue-700 font-bold">
+                        <i class="fa-regular fa-clock"></i>
+                        <span id="fleaHoursTitle">Horario</span>
+                    </div>
+                    <p class="font-bold text-slate-800" id="fleaHours">Sábado y Domingo</p>
+                    <p class="text-slate-500 text-[11px]">10:00 AM – 5:00 PM</p>
+                </div>
+
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 space-y-1">
+                    <div class="flex items-center gap-1.5 text-chileRed-600 font-bold">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="fleaLocTitle">Ubicación</span>
+                    </div>
+                    <p class="font-bold text-slate-800">Dr. Flea's Market</p>
+                    <p class="text-slate-500 text-[11px] truncate">8 Westmore Dr, Toronto</p>
+                </div>
+            </div>
+
+            <!-- Get Directions Button -->
+            <a href="https://maps.google.com/?q=8+Westmore+Dr,+Toronto,+Ontario+M9V+3Z7" 
+               target="_blank" 
+               class="w-full py-2.5 px-4 rounded-xl border border-chileBlue-700 text-chileBlue-700 hover:bg-chileBlue-50 font-bold text-xs flex items-center justify-center gap-2 transition-colors">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span id="fleaMapBtn">Abrir Dirección en Maps</span>
+            </a>
+        </section>
+
+        <section id="menu" class="space-y-4 pt-2">
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-chileRed-600 block" id="menuSubtitle">Nuestra Carta</span>
+                    <h2 class="font-display font-extrabold text-xl text-slate-900" id="menuTitle">Menú de Empanadas</h2>
+                </div>
+                <span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-bold" id="itemCountBadge">8 Variedades</span>
+            </div>
+
+            <!-- Product Cards List -->
+            <div class="space-y-3.5" id="productList">
+                <!-- Dynamic Javascript rendering will populate here -->
+            </div>
+        </section>
+
+        <section class="bg-gradient-to-br from-slate-900 to-chileBlue-900 rounded-3xl p-6 text-white space-y-5 shadow-xl">
+            <div class="flex items-center gap-4">
+                <div class="w-16 h-16 rounded-2xl bg-white p-1 border-2 border-chileRed-600 overflow-hidden shrink-0 shadow-md">
+                    <img src="https://i.ibb.co/9PQx2SK/logo.jpg" 
+                         onerror="this.onerror=null; this.src='https://i.ibb.co/9PQx2SK/logo.png';" 
+                         alt="Susana y Willy" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-chileRed-500 block" id="storyTag">Los Fundadores</span>
+                    <h3 class="font-display font-extrabold text-lg text-white">Susana & Willy</h3>
+                    <p class="text-xs text-blue-200" id="storySub">Sin Fronteras Empanadas</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed font-light" id="storyText">
+                Llevando el sabor tradicional y casero de Chile a Toronto. Elaboramos cada empanada con masa artesanal crujiente y rellenos sazonados a la perfección.
+            </p>
+
+            <!-- Social Media Buttons -->
+            <div class="pt-2 border-t border-white/10 space-y-2">
+                <span class="text-[11px] font-bold text-slate-400 block uppercase tracking-wider" id="socialTitle">Síguenos en Redes Sociales</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <a href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" target="_blank" class="bg-white/10 hover:bg-white/20 active:scale-95 p-2.5 rounded-xl flex items-center justify-center gap-2 text-xs font-semibold text-white transition-all">
+                        <i class="fa-brands fa-facebook text-blue-400 text-sm"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://www.instagram.com/sin_fronteras_empanadas/" target="_blank" class="bg-white/10 hover:bg-white/20 active:scale-95 p-2.5 rounded-xl flex items-center justify-center gap-2 text-xs font-semibold text-white transition-all">
+                        <i class="fa-brands fa-instagram text-pink-400 text-sm"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.tiktok.com/@susanaywilly" target="_blank" class="bg-white/10 hover:bg-white/20 active:scale-95 p-2.5 rounded-xl flex items-center justify-center gap-2 text-xs font-semibold text-white transition-all">
+                        <i class="fa-brands fa-tiktok text-slate-200 text-sm"></i>
+                        <span>TikTok</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-xs text-slate-400 pt-4 pb-12 space-y-1">
+            <p class="font-bold text-slate-600">Sin Fronteras Empanadas © 2026</p>
+            <p>Toronto, Ontario, Canada • WhatsApp: (647) 865-1507</p>
+        </footer>
 
     </main>
 
-    <!-- Sticky Bottom Cart / WhatsApp Checkout Panel -->
-    <footer class="sticky bottom-0 bg-white border-t border-gray-200 shadow-lg p-4 z-40">
-        <div class="max-w-md mx-auto flex items-center justify-between gap-4">
-            <div>
-                <p class="text-xs text-gray-500 uppercase font-bold" data-en="Total Amount" data-es="Monto Total">Total Amount</p>
-                <p id="total-price" class="text-xl font-black text-chileRed">$0.00</p>
+    <div id="cartBar" class="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-2xl transition-transform duration-300">
+        <div class="max-w-md mx-auto space-y-3">
+            
+            <!-- Summary Bar Header -->
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="relative w-10 h-10 rounded-xl bg-chileRed-600 text-white flex items-center justify-center font-bold shadow-md">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-chileBlue-700 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block" id="cartTotalLabel">Total Estimado</span>
+                        <span id="cartTotal" class="font-display font-extrabold text-lg text-slate-900">$0.00 CAD</span>
+                    </div>
+                </div>
+
+                <!-- Toggle Order Form Button -->
+                <button onclick="toggleOrderForm()" id="checkoutBtn" class="bg-chileRed-600 hover:bg-chileRed-700 active:scale-95 text-white font-bold text-xs py-2.5 px-4 rounded-xl shadow-md transition-all flex items-center gap-2 disabled:opacity-50 disabled:pointer-events-none" disabled>
+                    <span id="btnCheckoutText">Completar Pedido</span>
+                    <i class="fa-solid fa-chevron-up text-[10px]" id="checkoutChevron"></i>
+                </button>
             </div>
-            <button onclick="sendWhatsAppOrder()" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center space-x-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
-                <span data-en="Order via WhatsApp" data-es="Pedir por WhatsApp">Order via WhatsApp</span>
-            </button>
+
+            <!-- Expandable Order Details & Customer Info Form -->
+            <div id="orderForm" class="hidden space-y-3 pt-3 border-t border-slate-100 text-xs">
+                
+                <!-- Order Summary Breakdown -->
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-1 max-h-32 overflow-y-auto" id="orderItemsSummary">
+                    <p class="text-slate-400 italic text-[11px]">No has agregado empanadas aún.</p>
+                </div>
+
+                <!-- Customer Form Inputs -->
+                <div class="space-y-2">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1" id="labelName">Tu Nombre *</label>
+                            <input type="text" id="custName" placeholder="Ej: María González" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-chileBlue-700 text-xs">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1" id="labelPhone">Teléfono *</label>
+                            <input type="tel" id="custPhone" placeholder="Ej: (647) 555-0199" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-chileBlue-700 text-xs">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1" id="labelOption">Tipo de Entrega</label>
+                            <select id="custOption" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-chileBlue-700 text-xs bg-white">
+                                <option value="Flea Market Pickup (Dr. Flea's - Sáb/Dom)">Dr. Flea's Market (Sáb/Dom)</option>
+                                <option value="Pre-Order / Pickup">Pedido Especial / Recogida</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-slate-700 mb-1" id="labelDate">Día / Hora Estimada</label>
+                            <input type="text" id="custDate" placeholder="Ej: Sábado 12:00 PM" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-chileBlue-700 text-xs">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1" id="labelPayment">Método de Pago</label>
+                        <select id="custPayment" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-chileBlue-700 text-xs bg-white">
+                            <option value="cash">Efectivo al Recoger / Cash on Pickup</option>
+                            <option value="etransfer">Interac e-Transfer</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1" id="labelNotes">Notas Adicionales (Opcional)</label>
+                        <input type="text" id="custNotes" placeholder="Ej: Salsa picante extra por favor" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:border-chileBlue-700 text-xs">
+                    </div>
+                </div>
+
+                <!-- Direct Submit via WhatsApp Button -->
+                <button onclick="submitOrderWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-extrabold text-sm py-3 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span id="btnSendWhatsapp">Enviar Pedido por WhatsApp</span>
+                </button>
+            </div>
+
         </div>
-    </footer>
+    </div>
 
-    <!-- Script Logic for Dynamic Total Calculation, Language Translation, and WhatsApp Submission -->
     <script>
-        const whatsappNumber = "6478651507"; //[cite: 1]
+        const PRODUCTS = [
+            {
+                id: 'pino',
+                nameEs: 'Empanada de Pino',
+                nameEn: 'Meat Empanada (Pino)',
+                price: 4.50,
+                descEs: 'Tradicional chilena con pino de carne, cebolla, huevo duro, aceituna y pasas.',
+                descEn: 'Traditional Chilean ground beef seasoned with onions, boiled egg, olive, and raisins.',
+                img: 'https://i.ibb.co/0RkMxKrR/pino-1.jpg',
+                tag: 'Popular'
+            },
+            {
+                id: 'pollo',
+                nameEs: 'Empanada de Pollo',
+                nameEn: 'Chicken Empanada',
+                price: 4.50,
+                descEs: 'Jugoso pino de pollo sazonado con especias tradicionales chilenas.',
+                descEn: 'Juicy shredded chicken cooked with traditional Chilean herbs and spices.',
+                img: 'https://i.ibb.co/7PnStK3/pollo.jpg',
+                tag: 'Favorito'
+            },
+            {
+                id: 'queso',
+                nameEs: 'Empanada de Queso',
+                nameEn: 'Cheese Empanada',
+                price: 3.50,
+                descEs: 'Crujiente masa rellena de abundante queso derretido caliente.',
+                descEn: 'Crispy golden dough filled with rich melted cheese.',
+                img: 'https://i.ibb.co/qL7dBRHC/queso-1.jpg',
+                tag: 'Clásico'
+            },
+            {
+                id: 'napolitana',
+                nameEs: 'Empanada Napolitana',
+                nameEn: 'Napolitan Empanada',
+                price: 4.50,
+                descEs: 'Rellena de queso derretido, jamón, tomate fresco y orégano.',
+                descEn: 'Stuffed with melted cheese, ham, fresh sliced tomato, and oregano.',
+                img: 'https://i.ibb.co/27DmxVfg/Empanadas-Napolitana.png',
+                tag: 'Especial'
+            },
+            {
+                id: 'espinaca',
+                nameEs: 'Queso y Espinacas',
+                nameEn: 'Spinach & Cheese',
+                price: 4.00,
+                descEs: 'Espinacas frescas salteadas combinadas con delicioso queso fundido.',
+                descEn: 'Fresh sautéed spinach blended with delicious melted cheese.',
+                img: 'https://i.ibb.co/BVgRn3s2/queso-espinaca.jpg',
+                tag: 'Vegetariano'
+            },
+            {
+                id: 'jamonqueso',
+                nameEs: 'Jamón con Queso',
+                nameEn: 'Ham & Cheese',
+                price: 4.00,
+                descEs: 'Combinación clásica de jamón seleccionado y queso frito suave.',
+                descEn: 'Classic pairing of premium ham and smooth melted cheese.',
+                img: 'https://i.ibb.co/WWWQ1Zzw/quesojamon.jpg',
+                tag: 'Delicioso'
+            },
+            {
+                id: 'atun',
+                nameEs: 'Empanada de Atún',
+                nameEn: 'Tuna Empanada',
+                price: 4.00,
+                descEs: 'Atún sazonado con cebolla, pimientos y especias costeras.',
+                descEn: 'Seasoned tuna cooked with onions, peppers, and coastal spices.',
+                img: 'https://i.ibb.co/zhDFWkkW/empanada-atun.png',
+                tag: 'Mariscos'
+            },
+            {
+                id: 'champinones',
+                nameEs: 'Queso con Champiñones',
+                nameEn: 'Mushrooms & Cheese',
+                price: 4.00,
+                descEs: 'Champiñones salteados al sartén fundidos con queso supremo.',
+                descEn: 'Sautéed savory mushrooms melted together with rich cheese.',
+                img: 'https://i.ibb.co/VYR92jKp/queso-champinones.jpg',
+                tag: 'Vegetariano'
+            }
+        ];
 
-        function calculateTotal() {
-            const items = document.querySelectorAll('.product-item');
-            let total = 0;
-            items.forEach(item => {
-                const price = parseFloat(item.getAttribute('data-price'));
-                const qtyInput = item.querySelector('.qty-input');
-                const qty = parseInt(qtyInput.value) || 0;
-                total += price * qty;
+        let currentLang = 'es'; // 'es' or 'en'
+        let cart = {}; // { product_id: quantity }
+
+        const TEXTS = {
+            es: {
+                heroTitle: '¡Las Mejores Empanadas Chilenas en Toronto!',
+                heroSubtitle: 'Hechas a mano por <strong>Susana & Willy</strong> con recetas tradicionales, ingredientes frescos y mucho amor.',
+                heroOrderBtn: 'Ver Menú y Ordenar',
+                fleaTag: 'Punto de Venta Semanal',
+                fleaTitle: 'Dr. Flea\'s Flea Market',
+                openBadge: 'Sáb y Dom',
+                fleaOwnersNote: '¡Susana y Willy los esperan cada fin de semana!',
+                fleaHoursTitle: 'Horario',
+                fleaHours: 'Sábado y Domingo',
+                fleaLocTitle: 'Ubicación',
+                fleaMapBtn: 'Abrir Dirección en Google Maps',
+                menuSubtitle: 'Nuestra Carta',
+                menuTitle: 'Menú de Empanadas',
+                itemCountBadge: '8 Variedades',
+                storyTag: 'Los Fundadores',
+                storySub: 'Sin Fronteras Empanadas',
+                storyText: 'Llevando el sabor tradicional y casero de Chile a Toronto. Elaboramos cada empanada con masa artesanal crujiente y rellenos sazonados a la perfección.',
+                socialTitle: 'Síguenos en Redes Sociales',
+                cartTotalLabel: 'Total Estimado',
+                btnCheckoutText: 'Completar Pedido',
+                labelName: 'Tu Nombre *',
+                labelPhone: 'Tu Teléfono *',
+                labelOption: 'Tipo de Entrega',
+                labelDate: 'Día / Hora Estimada',
+                labelPayment: 'Método de Pago',
+                labelNotes: 'Notas Adicionales (Opcional)',
+                btnSendWhatsapp: 'Enviar Pedido por WhatsApp',
+                addBtn: 'Agregar',
+                langLabel: 'Español'
+            },
+            en: {
+                heroTitle: 'Best Authentic Chilean Empanadas in Toronto!',
+                heroSubtitle: 'Handmade by <strong>Susana & Willy</strong> using traditional family recipes and fresh ingredients.',
+                heroOrderBtn: 'Explore Menu & Order',
+                fleaTag: 'Weekly Flea Market Location',
+                fleaTitle: 'Dr. Flea\'s Flea Market',
+                openBadge: 'Sat & Sun',
+                fleaOwnersNote: 'Susana & Willy welcome you every weekend!',
+                fleaHoursTitle: 'Market Hours',
+                fleaHours: 'Saturday & Sunday',
+                fleaLocTitle: 'Location',
+                fleaMapBtn: 'Get Directions on Google Maps',
+                menuSubtitle: 'Our Menu',
+                menuTitle: 'Empanadas Selection',
+                itemCountBadge: '8 Varieties',
+                storyTag: 'The Owners',
+                storySub: 'Sin Fronteras Empanadas',
+                storyText: 'Bringing the authentic taste of homemade Chilean empanadas to Toronto. Made with crispy golden crust and rich, savory fillings.',
+                socialTitle: 'Follow Us on Social Media',
+                cartTotalLabel: 'Estimated Total',
+                btnCheckoutText: 'Review Order',
+                labelName: 'Your Full Name *',
+                labelPhone: 'Your Phone Number *',
+                labelOption: 'Pickup Option',
+                labelDate: 'Estimated Day / Time',
+                labelPayment: 'Payment Method',
+                labelNotes: 'Special Instructions (Optional)',
+                btnSendWhatsapp: 'Submit Order via WhatsApp',
+                addBtn: 'Add',
+                langLabel: 'English'
+            }
+        };
+
+        function renderProducts() {
+            const listEl = document.getElementById('productList');
+            listEl.innerHTML = '';
+
+            PRODUCTS.forEach(p => {
+                const qty = cart[p.id] || 0;
+                const name = currentLang === 'es' ? p.nameEs : p.nameEn;
+                const desc = currentLang === 'es' ? p.descEs : p.descEn;
+
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl p-3.5 border border-slate-100 shadow-sm hover:shadow-md transition-all flex gap-3.5 items-center';
+
+                card.innerHTML = `
+                    <div class="relative w-24 h-24 rounded-xl overflow-hidden bg-slate-100 shrink-0 border border-slate-100">
+                        <img src="${p.img}" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=400&auto=format&fit=crop';" 
+                             alt="${name}" 
+                             class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="flex-1 min-w-0 flex flex-col justify-between h-24 py-0.5">
+                        <div>
+                            <div class="flex items-start justify-between gap-1">
+                                <h3 class="font-display font-bold text-sm text-slate-900 leading-tight truncate">${name}</h3>
+                                <span class="font-extrabold text-sm text-chileRed-600 shrink-0">$${p.price.toFixed(2)}</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 line-clamp-2 mt-1 leading-snug">${desc}</p>
+                        </div>
+
+                        <!-- Quantity Selector Controls -->
+                        <div class="flex items-center justify-between pt-1">
+                            <span class="text-[10px] font-bold text-slate-400">CAD / c.u.</span>
+                            
+                            <div class="flex items-center gap-2 bg-slate-50 p-1 rounded-xl border border-slate-200">
+                                <button onclick="updateQty('${p.id}', -1)" class="w-6 h-6 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-700 font-bold text-xs hover:bg-slate-100 active:scale-95 transition-all">
+                                    <i class="fa-solid fa-minus text-[9px]"></i>
+                                </button>
+
+                                <span class="w-5 text-center font-extrabold text-xs text-slate-800">${qty}</span>
+
+                                <button onclick="updateQty('${p.id}', 1)" class="w-6 h-6 rounded-lg bg-chileRed-600 text-white flex items-center justify-center font-bold text-xs hover:bg-chileRed-700 active:scale-95 transition-all shadow-sm">
+                                    <i class="fa-solid fa-plus text-[9px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                listEl.appendChild(card);
             });
-            document.getElementById('total-price').innerText = `$${total.toFixed(2)}`;
         }
 
-        function sendWhatsAppOrder() {
-            const items = document.querySelectorAll('.product-item');
-            let orderLines = [];
-            let total = 0;
-            const currentLang = document.documentElement.getAttribute('data-lang');
+        function updateQty(id, delta) {
+            const current = cart[id] || 0;
+            const next = current + delta;
 
-            items.forEach(item => {
-                const qtyInput = item.querySelector('.qty-input');
-                const qty = parseInt(qtyInput.value) || 0;
-                if (qty > 0) {
-                    const name = currentLang === 'es' ? item.getAttribute('data-es-name') : item.getAttribute('data-name');
-                    const price = parseFloat(item.getAttribute('data-price'));
-                    const subtotal = price * qty;
-                    total += subtotal;
-                    orderLines.push(`- ${qty}x ${name} ($${subtotal.toFixed(2)})`);
+            if (next <= 0) {
+                delete cart[id];
+            } else {
+                cart[id] = next;
+            }
+
+            renderProducts();
+            calculateCartTotal();
+        }
+
+        function calculateCartTotal() {
+            let total = 0;
+            let totalCount = 0;
+            const summaryContainer = document.getElementById('orderItemsSummary');
+            summaryContainer.innerHTML = '';
+
+            const activeItems = [];
+
+            PRODUCTS.forEach(p => {
+                if (cart[p.id]) {
+                    const qty = cart[p.id];
+                    const itemTotal = qty * p.price;
+                    total += itemTotal;
+                    totalCount += qty;
+
+                    const name = currentLang === 'es' ? p.nameEs : p.nameEn;
+                    activeItems.push({ name, qty, itemTotal, price: p.price });
+
+                    const row = document.createElement('div');
+                    row.className = 'flex items-center justify-between font-medium text-slate-700';
+                    row.innerHTML = `
+                        <span>${qty}x ${name}</span>
+                        <span class="font-bold">$${itemTotal.toFixed(2)}</span>
+                    `;
+                    summaryContainer.appendChild(row);
                 }
             });
 
-            if (orderLines.length === 0) {
-                alert(currentLang === 'es' ? 'Por favor selecciona al menos una empanada.' : 'Please select at least one empanada.');
-                return;
+            if (totalCount === 0) {
+                summaryContainer.innerHTML = `<p class="text-slate-400 italic text-[11px]">${currentLang === 'es' ? 'No has agregado empanadas aún.' : 'No empanadas added yet.'}</p>`;
             }
 
-            let message = currentLang === 'es' ? 
-                `¡Hola! Me gustaría hacer el siguiente pedido de Sin Frontera Empanadas:\n\n${orderLines.join('\n')}\n\n*Total: $${total.toFixed(2)}*\n¡Muchas gracias!` :
-                `Hi! I would like to place an order from Sin Frontera Empanadas:\n\n${orderLines.join('\n')}\n\n*Total: $${total.toFixed(2)}*\nThank you!`;
+            document.getElementById('cartBadge').innerText = totalCount;
+            document.getElementById('cartTotal').innerText = `$${total.toFixed(2)} CAD`;
 
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/1${whatsappNumber}?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            checkoutBtn.disabled = totalCount === 0;
+
+            if (totalCount === 0) {
+                // Auto collapse if empty
+                document.getElementById('orderForm').classList.add('hidden');
+                document.getElementById('checkoutChevron').className = 'fa-solid fa-chevron-up text-[10px]';
+            }
+        }
+
+        function toggleOrderForm() {
+            const form = document.getElementById('orderForm');
+            const chevron = document.getElementById('checkoutChevron');
+
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden');
+                chevron.className = 'fa-solid fa-chevron-down text-[10px]';
+            } else {
+                form.classList.add('hidden');
+                chevron.className = 'fa-solid fa-chevron-up text-[10px]';
+            }
         }
 
         function toggleLanguage() {
-            const html = document.documentElement;
-            const currentLang = html.getAttribute('data-lang');
-            const newLang = currentLang === 'en' ? 'es' : 'en';
-            html.setAttribute('data-lang', newLang);
+            currentLang = currentLang === 'es' ? 'en' : 'es';
 
-            // Toggle button text
-            const toggleBtn = document.getElementById('langToggle');
-            if (newLang === 'es') {
-                toggleBtn.innerText = '🇬🇧 English';
-            } else {
-                toggleBtn.innerText = '🇨🇱 Español (Chileno)';
+            // Update Language Toggle Button UI
+            document.getElementById('langFlag').innerText = currentLang === 'es' ? '🇨🇱' : '🇨🇦';
+            document.getElementById('langText').innerText = currentLang === 'es' ? 'Español' : 'English';
+
+            // Update all static text keys
+            const dict = TEXTS[currentLang];
+            Object.keys(dict).forEach(key => {
+                const el = document.getElementById(key);
+                if (el) {
+                    el.innerHTML = dict[key];
+                }
+            });
+
+            renderProducts();
+            calculateCartTotal();
+        }
+
+        function submitOrderWhatsApp() {
+            const nameInput = document.getElementById('custName').value.trim();
+            const phoneInput = document.getElementById('custPhone').value.trim();
+            const optionInput = document.getElementById('custOption').value;
+            const dateInput = document.getElementById('custDate').value.trim();
+            const paymentInput = document.getElementById('custPayment').value;
+            const notesInput = document.getElementById('custNotes').value.trim();
+
+            if (!nameInput) {
+                alert(currentLang === 'es' ? 'Por favor ingresa tu nombre.' : 'Please enter your name.');
+                document.getElementById('custName').focus();
+                return;
             }
 
-            // Translate all elements with data-en and data-es attributes
-            const translatables = document.querySelectorAll('[data-en][data-es]');
-            translatables.forEach(el => {
-                el.innerText = el.getAttribute(`data-${newLang}`);
+            if (!phoneInput) {
+                alert(currentLang === 'es' ? 'Por favor ingresa tu número de teléfono.' : 'Please enter your phone number.');
+                document.getElementById('custPhone').focus();
+                return;
+            }
+
+            // Build order text
+            let itemsListText = '';
+            let totalAmount = 0;
+
+            PRODUCTS.forEach(p => {
+                if (cart[p.id]) {
+                    const qty = cart[p.id];
+                    const lineTotal = qty * p.price;
+                    totalAmount += lineTotal;
+                    const pName = currentLang === 'es' ? p.nameEs : p.nameEn;
+                    itemsListText += `• ${qty}x ${pName} ($${lineTotal.toFixed(2)})\n`;
+                }
             });
+
+            if (!itemsListText) {
+                alert(currentLang === 'es' ? 'Tu carrito está vacío.' : 'Your cart is empty.');
+                return;
+            }
+
+            const isEs = currentLang === 'es';
+
+            let paymentMessage = '';
+            if (paymentInput === 'etransfer') {
+                paymentMessage = isEs 
+                    ? '💳 *Método de Pago:* Interac e-Transfer (Me gustaría pagar mediante Interac e-Transfer, por favor provéanme la información requerida para realizar la transferencia).'
+                    : '💳 *Payment Method:* Interac e-Transfer (I would like to pay via Interac e-Transfer, please send me the transfer details so I can complete payment).';
+            } else {
+                paymentMessage = isEs 
+                    ? '💵 *Método de Pago:* Efectivo al recoger'
+                    : '💵 *Payment Method:* Cash on pickup';
+            }
+
+            let msg = `🇨🇱 *NUEVO PEDIDO - SIN FRONTERAS EMPANADAS*\n\n`;
+            msg += `👤 *Cliente:* ${nameInput}\n`;
+            msg += `📞 *Teléfono:* ${phoneInput}\n`;
+            msg += `📍 *Entrega:* ${optionInput}\n`;
+            if (dateInput) msg += `⏰ *Día/Hora:* ${dateInput}\n`;
+            msg += `${paymentMessage}\n`;
+            if (notesInput) msg += `📝 *Notas:* ${notesInput}\n`;
+            msg += `\n📋 *DETALLE DEL PEDIDO:*\n${itemsListText}\n`;
+            msg += `💰 *TOTAL ESTIMADO:* $${totalAmount.toFixed(2)} CAD\n\n`;
+            msg += isEs ? `¡Hola Susana y Willy! Me gustaría confirmar este pedido. ¡Muchas gracias!` : `Hi Susana & Willy! I would like to place this order. Thank you!`;
+
+            const phone = "16478651507";
+            const encodedMsg = encodeURIComponent(msg);
+            const waUrl = `https://wa.me/${phone}?text=${encodedMsg}`;
+
+            window.open(waUrl, '_blank');
         }
+
+        window.onload = function() {
+            renderProducts();
+            calculateCartTotal();
+        };
     </script>
 </body>
 </html>
