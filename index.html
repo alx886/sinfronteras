@@ -1,215 +1,926 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store Catalog</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React & ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <!-- Babel for JSX -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-</head>
-<body class="bg-slate-50 text-slate-900 font-sans antialiased">
-    <div id="root"></div>
+    <title>Sin Fronteras Empanadas | Authentic Chilean Empanadas in Toronto</title>
+    <meta name="description" content="Order authentic Chilean empanadas from Sin Fronteras Empanadas in Toronto. Available at Dr. Flea's Flea Market. Order online via WhatsApp!">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+    <!-- Stylesheet -->
+    <style>
+        :root {
+            --chile-red: #D52B1E;
+            --chile-blue: #003366;
+            --chile-white: #FFFFFF;
+            --dark-neutral: #1E293B;
+            --light-neutral: #F8FAFC;
+            --gray-border: #E2E8F0;
+            --success-green: #25D366;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
 
-        // Simple SVG Icons
-        const XIcon = ({ className }) => (
-            <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        );
+        /* Reset & Base Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        const PlusIcon = ({ className }) => (
-            <svg className={className} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-            </svg>
-        );
+        body {
+            font-family: 'Inter', sans-serif, system-ui;
+            color: var(--dark-neutral);
+            background-color: var(--light-neutral);
+            line-height: 1.6;
+        }
 
-        // Translations & Mock Data
-        const TRANSLATIONS = {
-            en: {
-                modalUnit: "Unit Price",
-                modalQty: "Quantity",
-                subtotal: "Subtotal",
-                addCart: "Add to Cart",
-                title: "Product Catalog"
-            },
-            es: {
-                modalUnit: "Precio Unitario",
-                modalQty: "Cantidad",
-                subtotal: "Subtotal",
-                addCart: "Añadir al Carrito",
-                title: "Catálogo de Productos"
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--chile-blue);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button, input {
+            font: inherit;
+        }
+
+        /* Accessibility Utilities */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Chilean Banner Ribbon */
+        .chilean-ribbon {
+            display: flex;
+            height: 6px;
+            width: 100%;
+        }
+        .ribbon-blue { background-color: var(--chile-blue); flex: 1; }
+        .ribbon-white { background-color: var(--chile-white); flex: 1; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; }
+        .ribbon-red { background-color: var(--chile-red); flex: 1; }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--chile-white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--chile-red);
+        }
+
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--chile-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-neutral);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--chile-red);
+        }
+
+        .lang-btn {
+            background-color: var(--chile-blue);
+            color: var(--chile-white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            background-color: #002244;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.85)), url('https://i.ibb.co/C5vLZscs/fleamarket.png') center/cover no-repeat;
+            color: var(--chile-white);
+            text-align: center;
+            padding: 5rem 1.5rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--chile-white);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #E2E8F0;
+        }
+
+        .btn-primary {
+            background-color: var(--chile-red);
+            color: var(--chile-white);
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #B52216;
+            transform: translateY(-2px);
+        }
+
+        /* Main Container Layout */
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: 1fr;
             }
-        };
+        }
 
-        const MOCK_PRODUCT = {
-            id: 1,
-            name: { en: "Sample Product", es: "Producto de Ejemplo" },
-            description: { 
-                en: "This is a high-quality sample product description to show how the modal layout works seamlessly.", 
-                es: "Esta es una descripción de producto de alta calidad para mostrar cómo funciona el diseño." 
-            },
-            prices: { "Unidad": 19.99 },
-            image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60"
-        };
+        /* Section Headings */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
 
-        // Zoom Image Helper Component
-        const ZoomImage = ({ src, alt }) => (
-            <div className="overflow-hidden rounded-2xl bg-slate-100 aspect-square flex items-center justify-center">
-                <img src={src} alt={alt} className="object-cover w-full h-full hover:scale-105 transition-transform duration-300" />
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--chile-red);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: var(--chile-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            border: 1px solid var(--gray-border);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img-wrapper {
+            height: 180px;
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--chile-blue);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #64748B;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--gray-border);
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--chile-red);
+            font-size: 1.1rem;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .qty-btn {
+            background: var(--light-neutral);
+            border: 1px solid var(--gray-border);
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .qty-btn:hover {
+            background: var(--chile-blue);
+            color: var(--chile-white);
+            border-color: var(--chile-blue);
+        }
+
+        .qty-input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid var(--gray-border);
+            border-radius: 4px;
+            padding: 0.25rem;
+            font-weight: 600;
+        }
+
+        /* Order Sidebar / Cart */
+        .order-sidebar {
+            background: var(--chile-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-border);
+            align-self: start;
+            position: sticky;
+            top: 100px;
+        }
+
+        .cart-items {
+            list-style: none;
+            max-height: 250px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            padding-right: 0.25rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--gray-border);
+            font-size: 0.9rem;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 1rem 0 1.5rem 0;
+            padding-top: 0.75rem;
+            border-top: 2px solid var(--chile-blue);
+            color: var(--chile-blue);
+        }
+
+        .whatsapp-btn {
+            background-color: var(--success-green);
+            color: var(--chile-white);
+            width: 100%;
+            padding: 0.85rem;
+            border-radius: 6px;
+            border: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.05rem;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1EBE57;
+            transform: translateY(-2px);
+        }
+
+        .empty-cart-msg {
+            color: #64748B;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-style: italic;
+        }
+
+        /* Flea Market Section */
+        .market-section {
+            grid-column: 1 / -1;
+            background: var(--chile-white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            border: 1px solid var(--gray-border);
+        }
+
+        @media (max-width: 768px) {
+            .market-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .market-img {
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .market-details h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--chile-blue);
+        }
+
+        .market-details p {
+            margin-bottom: 1rem;
+            color: #475569;
+        }
+
+        .market-info-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .market-info-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .market-info-list strong {
+            color: var(--chile-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--chile-blue);
+            color: var(--chile-white);
+            text-align: center;
+            padding: 3rem 1.5rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            color: #CBD5E1;
+        }
+
+        .social-link {
+            color: var(--chile-white);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Language toggle helper classes */
+        [data-lang="es"] [data-en] {
+            display: none !important;
+        }
+        [data-lang="en"] [data-es] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Chilean Flag Ribbon Header -->
+    <div class="chilean-ribbon" aria-hidden="true">
+        <div class="ribbon-blue"></div>
+        <div class="ribbon-white"></div>
+        <div class="ribbon-red"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <img src="https://i.ibb.co/9PQx2SK/logo.jpg" alt="Sin Fronteras Empanadas Logo" class="brand-logo">
+                <span class="brand-title">Sin Fronteras Empanadas</span>
+            </a>
+            <nav aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="#menu" data-en="Menu" data-es="Menú">Menu</a></li>
+                    <li><a href="#market" data-en="Dr. Flea's Market" data-es="Dr. Flea's Market">Dr. Flea's Market</a></li>
+                    <li>
+                        <button id="langToggle" class="lang-btn" aria-label="Switch language to Spanish">ES</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-en="Authentic Chilean Empanadas in Toronto" data-es="Auténticas Empanadas Chilenas en Toronto">Authentic Chilean Empanadas in Toronto</h1>
+            <p data-en="Handcrafted daily with premium ingredients, traditional spices, and baked to golden perfection. Taste the tradition!" data-es="Elaboradas diariamente con ingredientes de primera calidad, especias tradicionales y horneadas a la perfección. ¡Prueba la tradición!">Handcrafted daily with premium ingredients, traditional spices, and baked to golden perfection. Taste the tradition!</p>
+            <a href="#menu" class="btn-primary" data-en="Order Online Now" data-es="Pedir en Línea Ahora">Order Online Now</a>
+        </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <main>
+        <!-- Product Catalog Section -->
+        <section id="menu">
+            <h2 class="section-title" data-en="Our Menu (Prices in CAD)" data-es="Nuestro Menú (Precios en CAD)">Our Menu (Prices in CAD)</h2>
+            <div class="products-grid" id="productsGrid">
+                
+                <!-- Product 1: Meat (Pino) -->
+                <article class="product-card" data-id="meat" data-name-en="Meat Empanada (Pino)" data-name-es="Empanada De Pino" data-price="4.50">
+                    <div class="product-img-wrapper">
+                        <picture>
+                            <img src="https://i.ibb.co/0RkMxKrR/pino-1.jpg" alt="Meat Empanada De Pino" class="product-img" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name" data-en="Meat Empanada (Pino)" data-es="Empanada De Pino">Meat Empanada (Pino)</h3>
+                        <p class="product-desc" data-en="Traditional seasoned minced beef, onions, spices, egg, and olive." data-es="Carne picada sazonada tradicionalmente, cebolla, especias, huevo y aceituna.">Traditional seasoned minced beef, onions, spices, egg, and olive.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$4.50 CAD</span>
+                            <div class="qty-controls">
+                                <button type="button" class="qty-btn decrease" aria-label="Decrease quantity">-</button>
+                                <input type="number" class="qty-input" value="0" min="0" max="99" aria-label="Quantity for Meat Empanada">
+                                <button type="button" class="qty-btn increase" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 2: Chicken -->
+                <article class="product-card" data-id="chicken" data-name-en="Chicken Empanada" data-name-es="Empanada De Pollo" data-price="4.50">
+                    <div class="product-img-wrapper">
+                        <picture>
+                            <img src="https://i.ibb.co/9PQx2SK/logo.jpg" alt="Chicken Empanada" class="product-img" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name" data-en="Chicken Empanada" data-es="Empanada De Pollo">Chicken Empanada</h3>
+                        <p class="product-desc" data-en="Tender shredded chicken with savory seasonings and vegetables." data-es="Tierno pollo desmenuzado con sabrosos condimentos y vegetales.">Tender shredded chicken with savory seasonings and vegetables.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$4.50 CAD</span>
+                            <div class="qty-controls">
+                                <button type="button" class="qty-btn decrease" aria-label="Decrease quantity">-</button>
+                                <input type="number" class="qty-input" value="0" min="0" max="99" aria-label="Quantity for Chicken Empanada">
+                                <button type="button" class="qty-btn increase" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 3: Cheese -->
+                <article class="product-card" data-id="cheese" data-name-en="Cheese Empanada" data-name-es="Empanada de Queso" data-price="3.50">
+                    <div class="product-img-wrapper">
+                        <picture>
+                            <img src="https://i.ibb.co/qL7dBRHC/queso-1.jpg" alt="Cheese Empanada" class="product-img" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name" data-en="Cheese Empanada" data-es="Empanada de Queso">Cheese Empanada</h3>
+                        <p class="product-desc" data-en="Melted premium mozzarella and rich cheese blend." data-es="Queso mozzarella fundido de primera calidad.">Melted premium mozzarella and rich cheese blend.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$3.50 CAD</span>
+                            <div class="qty-controls">
+                                <button type="button" class="qty-btn decrease" aria-label="Decrease quantity">-</button>
+                                <input type="number" class="qty-input" value="0" min="0" max="99" aria-label="Quantity for Cheese Empanada">
+                                <button type="button" class="qty-btn increase" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 4: Napolitan -->
+                <article class="product-card" data-id="napolitan" data-name-en="Napolitan Empanada" data-name-es="Napolitana" data-price="4.50">
+                    <div class="product-img-wrapper">
+                        <picture>
+                            <img src="https://i.ibb.co/27DmxVfg/Empanadas-Napolitana.png" alt="Napolitan Empanada" class="product-img" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name" data-en="Napolitan Empanada" data-name-es="Napolitana">Napolitan Empanada</h3>
+                        <p class="product-desc" data-en="Mozzarella cheese, ham, fresh tomatoes, and oregano." data-es="Queso mozzarella, jamón, tomates frescos y orégano.">Mozzarella cheese, ham, fresh tomatoes, and oregano.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$4.50 CAD</span>
+                            <div class="qty-controls">
+                                <button type="button" class="qty-btn decrease" aria-label="Decrease quantity">-</button>
+                                <input type="number" class="qty-input" value="0" min="0" max="99" aria-label="Quantity for Napolitan Empanada">
+                                <button type="button" class="qty-btn increase" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 5: Spinach & Cheese -->
+                <article class="product-card" data-id="spinach" data-name-en="Spinach & Cheese" data-name-es="Queso y Espinacas" data-price="4.00">
+                    <div class="product-img-wrapper">
+                        <picture>
+                            <img src="https://i.ibb.co/BVgRn3s2/queso-espinaca.jpg" alt="Spinach and Cheese Empanada" class="product-img" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name" data-en="Spinach & Cheese" data-name-es="Queso y Espinacas">Spinach & Cheese</h3>
+                        <p class="product-desc" data-en="Sautéed spinach blended with creamy cheese." data-es="Espinacas salteadas mezcladas con queso cremoso.">Sautéed spinach blended with creamy cheese.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$4.00 CAD</span>
+                            <div class="qty-controls">
+                                <button type="button" class="qty-btn decrease" aria-label="Decrease quantity">-</button>
+                                <input type="number" class="qty-input" value="0" min="0" max="99" aria-label="Quantity for Spinach and Cheese Empanada">
+                                <button type="button" class="qty-btn increase" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 6: Ham & Cheese -->
+                <article class="product-card" data-id="ham" data-name-en="Ham & Cheese" data-name-es="Jamon con Queso" data-price="4.00">
+                    <div class="product-img-wrapper">
+                        <picture>
+                            <img src="https://i.ibb.co/WWWQ1Zzw/quesojamon.jpg" alt="Ham and Cheese Empanada" class="product-img" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name" data-en="Ham & Cheese" data-name-es="Jamon con Queso">Ham & Cheese</h3>
+                        <p class="product-desc" data-en="Savory ham paired with melted cheese." data-es="Jamón ahumado combinado con queso fundido.">Savory ham paired with melted cheese.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$4.00 CAD</span>
+                            <div class="qty-controls">
+                                <button type="button" class="qty-btn decrease" aria-label="Decrease quantity">-</button>
+                                <input type="number" class="qty-input" value="0" min="0" max="99" aria-label="Quantity for Ham and Cheese Empanada">
+                                <button type="button" class="qty-btn increase" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 7: Tuna -->
+                <article class="product-card" data-id="tuna" data-name-en="Tuna Empanada" data-name-es="Atun" data-price="4.00">
+                    <div class="product-img-wrapper">
+                        <picture>
+                            <img src="https://i.ibb.co/zhDFWkkW/empanada-atun.png" alt="Tuna Empanada" class="product-img" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name" data-en="Tuna Empanada" data-name-es="Atun">Tuna Empanada</h3>
+                        <p class="product-desc" data-en="Flaky tuna with onions, tomatoes, and savory Mediterranean spices." data-es="Atún jugoso con cebolla, tomates y especias.">Flaky tuna with onions, tomatoes, and savory Mediterranean spices.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$4.00 CAD</span>
+                            <div class="qty-controls">
+                                <button type="button" class="qty-btn decrease" aria-label="Decrease quantity">-</button>
+                                <input type="number" class="qty-input" value="0" min="0" max="99" aria-label="Quantity for Tuna Empanada">
+                                <button type="button" class="qty-btn increase" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product 8: Mushrooms & Cheese -->
+                <article class="product-card" data-id="mushrooms" data-name-en="Mushrooms & Cheese" data-name-es="Queso con Champinones" data-price="4.00">
+                    <div class="product-img-wrapper">
+                        <picture>
+                            <img src="https://i.ibb.co/VYR92jKp/queso-champinones.jpg" alt="Mushrooms and Cheese Empanada" class="product-img" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-name" data-en="Mushrooms & Cheese" data-name-es="Queso con Champinones">Mushrooms & Cheese</h3>
+                        <p class="product-desc" data-en="Fresh mushrooms sautéed and folded with melted cheese." data-es="Hongos frescos salteados y combinados con queso fundido.">Fresh mushrooms sautéed and folded with melted cheese.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$4.00 CAD</span>
+                            <div class="qty-controls">
+                                <button type="button" class="qty-btn decrease" aria-label="Decrease quantity">-</button>
+                                <input type="number" class="qty-input" value="0" min="0" max="99" aria-label="Quantity for Mushrooms and Cheese Empanada">
+                                <button type="button" class="qty-btn increase" aria-label="Increase quantity">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
             </div>
-        );
+        </section>
 
-        // Fixed Product Detail Modal Component
-        const ProductDetailModal = ({ product, lang, onClose, onAdd }) => {
-            const [quantity, setQuantity] = useState(1);
+        <!-- Order Sidebar / Cart Summary -->
+        <aside class="order-sidebar" aria-label="Order Summary">
+            <h3 class="section-title" style="font-size: 1.5rem;" data-en="Your Order" data-es="Tu Pedido">Your Order</h3>
+            <ul class="cart-items" id="cartItems">
+                <li class="empty-cart-msg" data-en="Your cart is empty. Select quantities from the menu." data-es="Tu carrito está vacío. Selecciona cantidades del menú.">Your cart is empty. Select quantities from the menu.</li>
+            </ul>
+            <div class="cart-total">
+                <span data-en="Total:" data-es="Total:">Total:</span>
+                <span id="cartTotal">$0.00 CAD</span>
+            </div>
+            <button id="whatsappOrderBtn" class="whatsapp-btn" disabled>
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                <span data-en="Send Order via WhatsApp" data-es="Enviar Pedido por WhatsApp">Send Order via WhatsApp</span>
+            </button>
+        </aside>
 
-            if (!product) return null;
-
-            const currentPrice = product.prices["Unidad"];
-            const t = TRANSLATIONS[lang];
-            const name = product.name[lang];
-            const description = product.description[lang];
-
-            const handleAddToCart = () => {
-                onAdd(product, "Unidad", quantity);
-                onClose();
-            };
-
-            return (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-                    <div 
-                        className="fixed inset-0 bg-[#003366]/60 backdrop-blur-sm transition-opacity duration-300" 
-                        onClick={onClose} 
-                    />
-                    
-                    <div className="relative bg-white rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl z-10 border-2 border-slate-200 animate-in fade-in zoom-in-95 duration-200">
-                        <button 
-                            onClick={onClose}
-                            className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors text-slate-700"
-                        >
-                            <XIcon className="w-5 h-5" />
-                        </button>
-
-                        <div className="mb-6">
-                            <ZoomImage src={product.image} alt={name} />
+        <!-- Dr. Flea's Flea Market Presence Section -->
+        <section id="market" class="market-section">
+            <div class="market-img">
+                <picture>
+                    <img src="https://i.ibb.co/C5vLZscs/fleamarket.png" alt="Dr. Flea's Flea Market" loading="lazy">
+                </picture>
+            </div>
+            <div class="market-details">
+                <h3 data-en="Visit Us at Dr. Flea's Flea Market!" data-es="¡Visítanos en Dr. Flea's Flea Market!">Visit Us at Dr. Flea's Flea Market!</h3>
+                <p data-en="Come experience Toronto's largest indoor & outdoor flea market and enjoy our freshly baked, piping hot empanadas in person!" data-es="¡Ven a conocer el mercado de pulgas cubierto y al aire libre más grande de Toronto y disfruta de nuestras empanadas recién horneadas!">Come experience Toronto's largest indoor & outdoor flea market and enjoy our freshly baked, piping hot empanadas in person!</p>
+                
+                <ul class="market-info-list">
+                    <li>
+                        <span aria-hidden="true">📍</span>
+                        <div>
+                            <strong data-en="Location:" data-es="Ubicación:">Location:</strong> 
+                            <span>8 Westmore Dr, Etobicoke, ON M9V 3Z7 (Hwy 27 & Albion Rd)</span>
                         </div>
-
-                        <div className="mb-6">
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="px-3 py-1 bg-red-100 text-[#ce1126] rounded-lg text-xs font-black uppercase tracking-wider">
-                                    {t.modalUnit}
-                                </span>
-                                <span className="text-xl font-black text-slate-900">${currentPrice.toFixed(2)} CAD</span>
-                            </div>
-                            
-                            <h3 className="text-2xl font-black text-slate-900 tracking-tight uppercase mb-2">
-                                {name}
-                            </h3>
-                            
-                            <p className="text-slate-600 text-sm font-medium leading-relaxed">
-                                {description}
-                            </p>
+                    </li>
+                    <li>
+                        <span aria-hidden="true">🕒</span>
+                        <div>
+                            <strong data-en="Hours of Operation:" data-es="Horario de Atención:">Hours of Operation:</strong> 
+                            <span data-en="Saturday & Sunday: 10:00 AM – 5:00 PM" data-es="Sábado y Domingo: 10:00 AM – 5:00 PM">Saturday & Sunday: 10:00 AM – 5:00 PM</span>
                         </div>
+                    </li>
+                </ul>
+                <a href="https://drfleas.com" target="_blank" rel="noopener noreferrer" class="btn-primary" data-en="Learn More About Dr. Flea's" data-es="Más información sobre Dr. Flea's">Learn More About Dr. Flea's</a>
+            </div>
+        </section>
+    </main>
 
-                        <div className="space-y-6 border-t border-slate-100 pt-6">
-                            <div className="flex items-center justify-between">
-                                <span className="text-xs font-bold uppercase text-slate-700">{t.modalQty}</span>
-                                <div className="flex items-center gap-3 bg-slate-100 p-1 rounded-xl border border-slate-200">
-                                    <button 
-                                        onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
-                                        className="w-9 h-9 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-lg transition-all font-bold text-base shadow-sm"
-                                    >
-                                        -
-                                    </button>
-                                    <span className="text-base font-black w-8 text-center text-slate-900">{quantity}</span>
-                                    <button 
-                                        onClick={() => setQuantity(prev => prev + 1)}
-                                        className="w-9 h-9 flex items-center justify-center bg-white hover:bg-[#003366] hover:text-white rounded-lg transition-all font-bold text-base shadow-sm"
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                            </div>
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p data-en="&copy; 2026 Sin Fronteras Empanadas. All rights reserved." data-es="&copy; 2026 Sin Fronteras Empanadas. Todos los derechos reservados.">&copy; 2026 Sin Fronteras Empanadas. All rights reserved.</p>
+            <p>
+                <a href="https://www.facebook.com/p/Sin-fronteras-100043854919662/" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                    <span data-en="Visit our Facebook Page" data-es="Visita nuestra página de Facebook">Visit our Facebook Page</span>
+                </a>
+            </p>
+        </div>
+    </footer>
 
-                            <div className="space-y-4 border-t border-slate-100 pt-4">
-                                <div className="flex items-center justify-between">
-                                    <span className="text-xs text-slate-500 font-bold uppercase">{t.subtotal}</span>
-                                    <span className="text-xl font-black text-slate-900">${(currentPrice * quantity).toFixed(2)} CAD</span>
-                                </div>
-                                
-                                <button 
-                                    onClick={handleAddToCart}
-                                    className="w-full bg-[#ce1126] hover:bg-[#b00f20] text-white py-4 rounded-xl font-black flex items-center justify-center gap-3 transition-all active:scale-95 shadow-lg uppercase tracking-widest text-xs"
-                                >
-                                    <PlusIcon className="w-5 h-5 mr-1" /> {t.addCart}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-        };
+    <!-- JavaScript for Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const WHATSAPP_NUMBER = '6478651507';
+            const productCards = document.querySelectorAll('.product-card');
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            const whatsappOrderBtn = document.getElementById('whatsappOrderBtn');
+            const langToggleBtn = document.getElementById('langToggle');
+            const htmlElement = document.documentElement;
 
-        // Main App Component
-        const App = () => {
-            const [lang, setLang] = useState('en');
-            const [isModalOpen, setIsModalOpen] = useState(false);
-            const [cart, setCart] = useState([]);
+            let currentLang = 'en';
 
-            const handleAddToCart = (product, unit, qty) => {
-                setCart(prev => [...prev, { ...product, unit, qty }]);
-                alert(`Added ${qty} ${product.name[lang]} to cart!`);
-            };
+            // Language Toggle Functionality
+            langToggleBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'en' ? 'es' : 'en';
+                htmlElement.setAttribute('lang', currentLang);
+                htmlElement.setAttribute('data-lang', currentLang);
+                langToggleBtn.textContent = currentLang === 'en' ? 'ES' : 'EN';
+                langToggleBtn.setAttribute('aria-label', currentLang === 'en' ? 'Switch language to Spanish' : 'Cambiar idioma a inglés');
+                updateCartDisplay();
+            });
 
-            return (
-                <div className="min-h-screen flex flex-col items-center justify-center p-6">
-                    <div className="absolute top-6 right-6 flex gap-2">
-                        <button 
-                            onClick={() => setLang('en')} 
-                            className={`px-3 py-1 rounded font-bold text-sm ${lang === 'en' ? 'bg-[#003366] text-white' : 'bg-slate-200 text-slate-700'}`}
-                        >
-                            EN
-                        </button>
-                        <button 
-                            onClick={() => setLang('es')} 
-                            className={`px-3 py-1 rounded font-bold text-sm ${lang === 'es' ? 'bg-[#003366] text-white' : 'bg-slate-200 text-slate-700'}`}
-                        >
-                            ES
-                        </button>
-                    </div>
+            // Quantity increment / decrement buttons
+            productCards.forEach(card => {
+                const decreaseBtn = card.querySelector('.decrease');
+                const increaseBtn = card.querySelector('.increase');
+                const qtyInput = card.querySelector('.qty-input');
 
-                    <div className="text-center space-y-4">
-                        <h1 className="text-4xl font-black text-slate-800">{TRANSLATIONS[lang].title}</h1>
-                        <p className="text-slate-600">Click below to test the product details modal window.</p>
-                        <button 
-                            onClick={() => setIsModalOpen(true)}
-                            className="bg-[#003366] text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-blue-900 transition-all"
-                        >
-                            Open Product Modal
-                        </button>
-                    </div>
+                decreaseBtn.addEventListener('click', () => {
+                    let val = parseInt(qtyInput.value) || 0;
+                    if (val > 0) {
+                        qtyInput.value = val - 1;
+                        updateCart();
+                    }
+                });
 
-                    {isModalOpen && (
-                        <ProductDetailModal 
-                            product={MOCK_PRODUCT} 
-                            lang={lang} 
-                            onClose={() => setIsModalOpen(false)} 
-                            onAdd={handleAddToCart} 
-                        />
-                    )}
-                </div>
-            );
-        };
+                increaseBtn.addEventListener('click', () => {
+                    let val = parseInt(qtyInput.value) || 0;
+                    if (val < 99) {
+                        qtyInput.value = val + 1;
+                        updateCart();
+                    }
+                });
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+                qtyInput.addEventListener('input', () => {
+                    let val = parseInt(qtyInput.value);
+                    if (isNaN(val) || val < 0) qtyInput.value = 0;
+                    if (val > 99) qtyInput.value = 99;
+                    updateCart();
+                });
+            });
+
+            let cartData = [];
+
+            function updateCart() {
+                cartData = [];
+                let total = 0;
+
+                productCards.forEach(card => {
+                    const qty = parseInt(card.querySelector('.qty-input').value) || 0;
+                    if (qty > 0) {
+                        const nameEn = card.getAttribute('data-name-en');
+                        const nameEs = card.getAttribute('data-name-es');
+                        const price = parseFloat(card.getAttribute('data-price'));
+                        const subtotal = price * qty;
+                        total += subtotal;
+
+                        cartData.push({
+                            nameEn,
+                            nameEs,
+                            qty,
+                            price,
+                            subtotal
+                        });
+                    }
+                });
+
+                updateCartDisplay(total);
+            }
+
+            function updateCartDisplay(totalOverride) {
+                let total = 0;
+                cartItemsContainer.innerHTML = '';
+
+                if (cartData.length === 0) {
+                    const emptyMsg = document.createElement('li');
+                    emptyMsg.className = 'empty-cart-msg';
+                    emptyMsg.setAttribute('data-en', 'Your cart is empty. Select quantities from the menu.');
+                    emptyMsg.setAttribute('data-es', 'Tu carrito está vacío. Selecciona cantidades del menú.');
+                    emptyMsg.textContent = currentLang === 'en' 
+                        ? 'Your cart is empty. Select quantities from the menu.' 
+                        : 'Tu carrito está vacío. Selecciona cantidades del menú.';
+                    cartItemsContainer.appendChild(emptyMsg);
+                    cartTotalElement.textContent = '$0.00 CAD';
+                    whatsappOrderBtn.setAttribute('disabled', 'true');
+                    return;
+                }
+
+                whatsappOrderBtn.removeAttribute('disabled');
+
+                cartData.forEach(item => {
+                    total += item.subtotal;
+                    const li = document.createElement('li');
+                    li.className = 'cart-item';
+                    const itemName = currentLang === 'en' ? item.nameEn : item.nameEs;
+                    li.innerHTML = `
+                        <span>${item.qty}x ${itemName}</span>
+                        <strong>$${item.subtotal.toFixed(2)}</strong>
+                    `;
+                    cartItemsContainer.appendChild(li);
+                });
+
+                cartTotalElement.textContent = `$${total.toFixed(2)} CAD`;
+            }
+
+            // WhatsApp Order Submission
+            whatsappOrderBtn.addEventListener('click', () => {
+                if (cartData.length === 0) return;
+
+                let message = currentLang === 'en' 
+                    ? "Hello! I would like to place an order for Sin Fronteras Empanadas:\n\n" 
+                    : "¡Hola! Me gustaría hacer un pedido de Sin Fronteras Empanadas:\n\n";
+
+                let total = 0;
+                cartData.forEach(item => {
+                    const itemName = currentLang === 'en' ? item.nameEn : item.nameEs;
+                    message += `- ${item.qty}x ${itemName} ($${item.subtotal.toFixed(2)})\n`;
+                    total += item.subtotal;
+                });
+
+                message += currentLang === 'en'
+                    ? `\n*Total: $${total.toFixed(2)} CAD*\n\nPlease let me know pickup/delivery details. Thank you!`
+                    : `\n*Total: $${total.toFixed(2)} CAD*\n\nPor favor indíquenme los detalles de recojo/entrega. ¡Gracias!`;
+
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/1${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        });
     </script>
 </body>
 </html>
