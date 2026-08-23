@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
-    <!-- Stylesheet -->
     <style>
         :root {
             --chile-red: #D52B1E;
@@ -402,6 +401,12 @@
             transform: translateY(-2px);
         }
 
+        .whatsapp-btn:disabled {
+            background-color: #94A3B8;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .empty-cart-msg {
             color: #64748B;
             text-align: center;
@@ -505,14 +510,12 @@
 </head>
 <body>
 
-    <!-- Chilean Flag Ribbon Header -->
     <div class="chilean-ribbon" aria-hidden="true">
         <div class="ribbon-blue"></div>
         <div class="ribbon-white"></div>
         <div class="ribbon-red"></div>
     </div>
 
-    <!-- Header & Navigation -->
     <header>
         <div class="nav-container">
             <a href="#" class="brand">
@@ -531,7 +534,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1 data-en="Authentic Chilean Empanadas in Toronto" data-es="Auténticas Empanadas Chilenas en Toronto">Authentic Chilean Empanadas in Toronto</h1>
@@ -540,14 +542,12 @@
         </div>
     </section>
 
-    <!-- Main Content Layout -->
     <main>
-        <!-- Product Catalog Section -->
         <section id="menu">
             <h2 class="section-title" data-en="Our Menu (Prices in CAD)" data-es="Nuestro Menú (Precios en CAD)">Our Menu (Prices in CAD)</h2>
             <div class="products-grid" id="productsGrid">
                 
-                <!-- Product 1: Meat (Pino) -->
+                <!-- Meat Empanada -->
                 <article class="product-card" data-id="meat" data-name-en="Meat Empanada (Pino)" data-name-es="Empanada De Pino" data-price="4.50">
                     <div class="product-img-wrapper">
                         <picture>
@@ -568,7 +568,7 @@
                     </div>
                 </article>
 
-                <!-- Product 2: Chicken -->
+                <!-- Chicken Empanada -->
                 <article class="product-card" data-id="chicken" data-name-en="Chicken Empanada" data-name-es="Empanada De Pollo" data-price="4.50">
                     <div class="product-img-wrapper">
                         <picture>
@@ -589,7 +589,7 @@
                     </div>
                 </article>
 
-                <!-- Product 3: Cheese -->
+                <!-- Cheese Empanada -->
                 <article class="product-card" data-id="cheese" data-name-en="Cheese Empanada" data-name-es="Empanada de Queso" data-price="3.50">
                     <div class="product-img-wrapper">
                         <picture>
@@ -610,7 +610,7 @@
                     </div>
                 </article>
 
-                <!-- Product 4: Napolitan -->
+                <!-- Napolitan Empanada -->
                 <article class="product-card" data-id="napolitan" data-name-en="Napolitan Empanada" data-name-es="Napolitana" data-price="4.50">
                     <div class="product-img-wrapper">
                         <picture>
@@ -631,7 +631,7 @@
                     </div>
                 </article>
 
-                <!-- Product 5: Spinach & Cheese -->
+                <!-- Spinach & Cheese -->
                 <article class="product-card" data-id="spinach" data-name-en="Spinach & Cheese" data-name-es="Queso y Espinacas" data-price="4.00">
                     <div class="product-img-wrapper">
                         <picture>
@@ -652,7 +652,7 @@
                     </div>
                 </article>
 
-                <!-- Product 6: Ham & Cheese -->
+                <!-- Ham & Cheese -->
                 <article class="product-card" data-id="ham" data-name-en="Ham & Cheese" data-name-es="Jamon con Queso" data-price="4.00">
                     <div class="product-img-wrapper">
                         <picture>
@@ -673,7 +673,7 @@
                     </div>
                 </article>
 
-                <!-- Product 7: Tuna -->
+                <!-- Tuna -->
                 <article class="product-card" data-id="tuna" data-name-en="Tuna Empanada" data-name-es="Atun" data-price="4.00">
                     <div class="product-img-wrapper">
                         <picture>
@@ -694,7 +694,7 @@
                     </div>
                 </article>
 
-                <!-- Product 8: Mushrooms & Cheese -->
+                <!-- Mushrooms & Cheese -->
                 <article class="product-card" data-id="mushrooms" data-name-en="Mushrooms & Cheese" data-name-es="Queso con Champinones" data-price="4.00">
                     <div class="product-img-wrapper">
                         <picture>
@@ -718,7 +718,7 @@
             </div>
         </section>
 
-        <!-- Order Sidebar / Cart Summary -->
+        <!-- Order Sidebar -->
         <aside class="order-sidebar" aria-label="Order Summary">
             <h3 class="section-title" style="font-size: 1.5rem;" data-en="Your Order" data-es="Tu Pedido">Your Order</h3>
             <ul class="cart-items" id="cartItems">
@@ -736,7 +736,6 @@
             </button>
         </aside>
 
-        <!-- Dr. Flea's Flea Market Presence Section -->
         <section id="market" class="market-section">
             <div class="market-img">
                 <picture>
@@ -768,7 +767,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div style="max-width: 1200px; margin: 0 auto;">
             <p data-en="&copy; 2026 Sin Fronteras Empanadas. All rights reserved." data-es="&copy; 2026 Sin Fronteras Empanadas. Todos los derechos reservados.">&copy; 2026 Sin Fronteras Empanadas. All rights reserved.</p>
@@ -781,7 +779,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Interactivity -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const WHATSAPP_NUMBER = '6478651507';
@@ -859,18 +856,16 @@
                     }
                 });
 
-                updateCartDisplay(total);
+                updateCartDisplay();
             }
 
-            function updateCartDisplay(totalOverride) {
+            function updateCartDisplay() {
                 let total = 0;
                 cartItemsContainer.innerHTML = '';
 
                 if (cartData.length === 0) {
                     const emptyMsg = document.createElement('li');
                     emptyMsg.className = 'empty-cart-msg';
-                    emptyMsg.setAttribute('data-en', 'Your cart is empty. Select quantities from the menu.');
-                    emptyMsg.setAttribute('data-es', 'Tu carrito está vacío. Selecciona cantidades del menú.');
                     emptyMsg.textContent = currentLang === 'en' 
                         ? 'Your cart is empty. Select quantities from the menu.' 
                         : 'Tu carrito está vacío. Selecciona cantidades del menú.';
